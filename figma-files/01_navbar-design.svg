@@ -1,0 +1,49 @@
+<svg width="1440" height="80" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Navbar Component Design</title>
+
+  <!-- Nav background -->
+  <rect width="1440" height="80" fill="#F0F0F0" fill-opacity="0.92"/>
+  <rect width="1440" height="1" y="79" fill="#000000" fill-opacity="0.08"/>
+
+  <!-- Logo group -->
+  <circle cx="60" cy="40" r="5" fill="url(#logo-grad)"/>
+  <text x="76" y="45" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#111111" letter-spacing="-0.4">Kunal.dev</text>
+
+  <!-- Nav links -->
+  <text x="540" y="45" font-family="Inter, sans-serif" font-size="13.5" font-weight="500" fill="#555555" letter-spacing="0.1">About</text>
+  <text x="620" y="45" font-family="Inter, sans-serif" font-size="13.5" font-weight="500" fill="#555555" letter-spacing="0.1">Projects</text>
+  <text x="716" y="45" font-family="Inter, sans-serif" font-size="13.5" font-weight="500" fill="#555555" letter-spacing="0.1">Skills</text>
+  <text x="790" y="45" font-family="Inter, sans-serif" font-size="13.5" font-weight="500" fill="#555555" letter-spacing="0.1">Contact</text>
+
+  <!-- Active underline on About -->
+  <rect x="540" y="50" width="36" height="1.5" rx="1" fill="#3b82f6"/>
+
+  <!-- Status indicator -->
+  <circle cx="1340" cy="40" r="4" fill="#22c55e"/>
+  <circle cx="1340" cy="40" r="7" fill="#22c55e" fill-opacity="0.2"/>
+  <text x="1352" y="45" font-family="Inter, sans-serif" font-size="12" font-weight="500" fill="#555555">Available for work</text>
+
+  <!-- Hamburger (mobile hint, shown faded) -->
+  <rect x="1390" y="33" width="22" height="1.5" rx="1" fill="#111111" opacity="0.3"/>
+  <rect x="1390" y="39" width="22" height="1.5" rx="1" fill="#111111" opacity="0.3"/>
+  <rect x="1390" y="45" width="22" height="1.5" rx="1" fill="#111111" opacity="0.3"/>
+
+  <!-- Annotation: height -->
+  <line x1="1430" y1="0" x2="1430" y2="80" stroke="#3b82f6" stroke-width="0.5" stroke-dasharray="3 3"/>
+  <text x="1434" y="44" font-family="Inter, sans-serif" font-size="9" fill="#3b82f6">80px</text>
+
+  <!-- Annotation: padding -->
+  <line x1="0" y1="72" x2="52" y2="72" stroke="#f59e0b" stroke-width="0.5"/>
+  <text x="16" y="70" font-family="Inter, sans-serif" font-size="9" fill="#f59e0b">52px</text>
+
+  <!-- Component label -->
+  <rect x="0" y="0" width="160" height="18" fill="#111111"/>
+  <text x="8" y="12" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#ffffff" letter-spacing="0.08em">NAVBAR — DESKTOP</text>
+
+  <defs>
+    <linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#555555"/>
+    </linearGradient>
+  </defs>
+</svg>

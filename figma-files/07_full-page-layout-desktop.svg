@@ -1,0 +1,164 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Full Page Layout — Desktop 1440px</title>
+
+  <!-- Page background -->
+  <rect width="1440" height="900" fill="#F0F0F0"/>
+
+  <!-- Background grid -->
+  <defs>
+    <pattern id="grid" width="52" height="52" patternUnits="userSpaceOnUse">
+      <path d="M 52 0 L 0 0 0 52" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="orb1" cx="70%" cy="10%" r="40%">
+      <stop offset="0%" stop-color="#B4B4B4" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="60%" cy="90%" r="30%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <radialGradient id="orb3" cx="10%" cy="55%" r="22%">
+      <stop offset="0%" stop-color="#969696" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="hl-grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="50%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1440" height="900" fill="url(#grid)"/>
+  <rect width="1440" height="900" fill="url(#orb1)"/>
+  <rect width="1440" height="900" fill="url(#orb2)"/>
+  <rect width="1440" height="900" fill="url(#orb3)"/>
+
+  <!-- ── NAVBAR ── -->
+  <rect width="1440" height="64" fill="#F0F0F0" fill-opacity="0.92"/>
+  <rect width="1440" height="1" y="63" fill="#000000" fill-opacity="0.08"/>
+  <circle cx="52" cy="32" r="4" fill="#333333"/>
+  <text x="64" y="37" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#111111">Kunal.dev</text>
+  <text x="580" y="37" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#555555">About</text>
+  <text x="648" y="37" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#555555">Projects</text>
+  <text x="736" y="37" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#555555">Skills</text>
+  <text x="804" y="37" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#555555">Contact</text>
+  <circle cx="1360" cy="32" r="4" fill="#22c55e"/>
+  <circle cx="1360" cy="32" r="7" fill="#22c55e" fill-opacity="0.2"/>
+  <text x="1372" y="37" font-family="Inter, sans-serif" font-size="11" font-weight="500" fill="#555555">Available for work</text>
+
+  <!-- ── HERO LEFT — TEXT ── -->
+  <!-- Badge -->
+  <rect x="64" y="128" width="248" height="26" rx="13" fill="#000000" fill-opacity="0.05" stroke="#000000" stroke-opacity="0.1" stroke-width="1"/>
+  <circle cx="80" cy="141" r="3" fill="#555555"/>
+  <text x="90" y="145" font-family="Inter, sans-serif" font-size="9.5" font-weight="600" fill="#555555" letter-spacing="1">FULL-STACK ENGINEER &amp; DESIGNER</text>
+
+  <!-- Headline -->
+  <text x="64" y="210" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="#111111" letter-spacing="-2.5">Where Design</text>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="#111111" letter-spacing="-2.5">Meets </text>
+  <!-- Gradient word -->
+  <rect x="232" y="222" width="290" height="58" fill="url(#hl-grad)" opacity="0.85" rx="2"/>
+  <text x="64" y="270" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="transparent" letter-spacing="-2.5">Meets Intelligent</text>
+  <text x="64" y="330" font-family="Inter, sans-serif" font-size="56" font-weight="900" fill="#111111" letter-spacing="-2.5">Engineering</text>
+
+  <!-- Subtext -->
+  <text x="64" y="374" font-family="Inter, sans-serif" font-size="15" fill="#555555">I craft high-performance web apps blending design precision</text>
+  <text x="64" y="394" font-family="Inter, sans-serif" font-size="15" fill="#555555">with modern engineering — from pixel-perfect UI to scalable</text>
+  <text x="64" y="414" font-family="Inter, sans-serif" font-size="15" fill="#555555">backend systems.</text>
+
+  <!-- Chips -->
+  <g transform="translate(64, 436)">
+    <rect width="52" height="22" rx="11" fill="#000000" fill-opacity="0.05" stroke="#000000" stroke-opacity="0.09" stroke-width="1"/>
+    <text x="10" y="15" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#555555">React</text>
+    <rect x="60" width="58" height="22" rx="11" fill="#000000" fill-opacity="0.05" stroke="#000000" stroke-opacity="0.09" stroke-width="1"/>
+    <text x="70" y="15" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#555555">Next.js</text>
+    <rect x="126" width="76" height="22" rx="11" fill="#000000" fill-opacity="0.05" stroke="#000000" stroke-opacity="0.09" stroke-width="1"/>
+    <text x="136" y="15" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#555555">TypeScript</text>
+    <rect x="210" width="60" height="22" rx="11" fill="#000000" fill-opacity="0.05" stroke="#000000" stroke-opacity="0.09" stroke-width="1"/>
+    <text x="220" y="15" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#555555">Node.js</text>
+    <rect x="278" width="50" height="22" rx="11" fill="#000000" fill-opacity="0.05" stroke="#000000" stroke-opacity="0.09" stroke-width="1"/>
+    <text x="288" y="15" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#555555">Figma</text>
+    <rect x="336" width="60" height="22" rx="11" fill="#000000" fill-opacity="0.05" stroke="#000000" stroke-opacity="0.09" stroke-width="1"/>
+    <text x="346" y="15" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#555555">AI Tools</text>
+  </g>
+
+  <!-- Stats -->
+  <text x="64" y="510" font-family="Inter, sans-serif" font-size="26" font-weight="800" fill="#111111" letter-spacing="-1">3+</text>
+  <text x="64" y="526" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#999999">Years Experience</text>
+  <text x="164" y="510" font-family="Inter, sans-serif" font-size="26" font-weight="800" fill="#111111" letter-spacing="-1">20+</text>
+  <text x="164" y="526" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#999999">Projects Shipped</text>
+  <text x="272" y="510" font-family="Inter, sans-serif" font-size="26" font-weight="800" fill="#111111" letter-spacing="-1">10+</text>
+  <text x="272" y="526" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#999999">Happy Clients</text>
+
+  <!-- ── HERO RIGHT — SYSTEM CORE ── -->
+  <!-- Glow -->
+  <circle cx="1010" cy="480" r="148" fill="url(#orb1)" opacity="0.6"/>
+  <circle cx="1010" cy="480" r="115" fill="url(#orb1)" opacity="0.4"/>
+
+  <!-- Rings -->
+  <circle cx="1010" cy="480" r="111" stroke="#000000" stroke-opacity="0.06" stroke-width="1" fill="none"/>
+  <circle cx="1010" cy="480" r="96"  stroke="#3b82f6" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="5 4" fill="none"/>
+  <circle cx="1010" cy="480" r="80"  stroke="#000000" stroke-opacity="0.12" stroke-width="1" fill="none"/>
+
+  <!-- Profile -->
+  <circle cx="1010" cy="480" r="68" fill="#CCCCCC"/>
+  <circle cx="1010" cy="480" r="68" stroke="white" stroke-width="3" fill="none"/>
+  <circle cx="1010" cy="480" r="72" stroke="#000000" stroke-opacity="0.08" stroke-width="5" fill="none"/>
+  <circle cx="1010" cy="460" r="20" fill="#AAAAAA"/>
+  <ellipse cx="1010" cy="516" rx="34" ry="22" fill="#AAAAAA"/>
+  <text x="1010" y="484" font-family="Inter, sans-serif" font-size="10" fill="#666666" text-anchor="middle">Photo</text>
+
+  <!-- Core label -->
+  <rect x="976" y="552" width="68" height="18" rx="9" fill="#000000" fill-opacity="0.05" stroke="#000000" stroke-opacity="0.1" stroke-width="1"/>
+  <text x="1010" y="565" font-family="Inter, sans-serif" font-size="7.5" font-weight="700" fill="#555555" text-anchor="middle" letter-spacing="2">KUNAL</text>
+
+  <!-- Connection lines -->
+  <path d="M 768 258 C 840 330, 920 400, 1010 480" stroke="#888888" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="5 5" fill="none"/>
+  <path d="M 1252 258 C 1180 330, 1100 400, 1010 480" stroke="#3b82f6" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="5 5" fill="none"/>
+  <path d="M 712 480 C 800 472, 900 476, 1010 480" stroke="#888888" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="5 5" fill="none"/>
+  <path d="M 1308 480 C 1220 472, 1120 476, 1010 480" stroke="#3b82f6" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="5 5" fill="none"/>
+  <path d="M 768 702 C 840 630, 920 560, 1010 480" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="5 5" fill="none"/>
+  <path d="M 1252 702 C 1180 630, 1100 560, 1010 480" stroke="#888888" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="5 5" fill="none"/>
+
+  <!-- Skill cards -->
+  <rect x="680" y="228" width="160" height="56" rx="12" fill="white" fill-opacity="0.9" stroke="#000000" stroke-opacity="0.08" stroke-width="1"/>
+  <rect x="692" y="240" width="28" height="28" rx="7" fill="#000000" fill-opacity="0.08"/>
+  <text x="728" y="254" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#111111">Frontend Eng.</text>
+  <text x="728" y="268" font-family="Inter, sans-serif" font-size="9" fill="#999999">React · Next.js</text>
+
+  <rect x="1100" y="228" width="160" height="56" rx="12" fill="white" fill-opacity="0.9" stroke="#000000" stroke-opacity="0.08" stroke-width="1"/>
+  <rect x="1112" y="240" width="28" height="28" rx="7" fill="rgba(100,100,100,0.08)"/>
+  <text x="1148" y="254" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#111111">UI/UX Design</text>
+  <text x="1148" y="268" font-family="Inter, sans-serif" font-size="9" fill="#999999">Figma · Systems</text>
+
+  <rect x="624" y="452" width="160" height="56" rx="12" fill="white" fill-opacity="0.9" stroke="#000000" stroke-opacity="0.08" stroke-width="1"/>
+  <rect x="636" y="464" width="28" height="28" rx="7" fill="rgba(71,85,105,0.09)"/>
+  <text x="672" y="478" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#111111">Backend Systems</text>
+  <text x="672" y="492" font-family="Inter, sans-serif" font-size="9" fill="#999999">Node.js · APIs</text>
+
+  <rect x="1156" y="452" width="160" height="56" rx="12" fill="white" fill-opacity="0.9" stroke="#000000" stroke-opacity="0.08" stroke-width="1"/>
+  <rect x="1168" y="464" width="28" height="28" rx="7" fill="rgba(59,130,246,0.1)"/>
+  <text x="1204" y="478" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#111111">AI Integration</text>
+  <text x="1204" y="492" font-family="Inter, sans-serif" font-size="9" fill="#999999">LLMs · Agents</text>
+
+  <rect x="680" y="676" width="160" height="56" rx="12" fill="white" fill-opacity="0.9" stroke="#000000" stroke-opacity="0.08" stroke-width="1"/>
+  <rect x="692" y="688" width="28" height="28" rx="7" fill="rgba(100,100,100,0.08)"/>
+  <text x="728" y="702" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#111111">Performance</text>
+  <text x="728" y="716" font-family="Inter, sans-serif" font-size="9" fill="#999999">Core Web Vitals</text>
+
+  <rect x="1100" y="676" width="160" height="56" rx="12" fill="white" fill-opacity="0.9" stroke="#000000" stroke-opacity="0.08" stroke-width="1"/>
+  <rect x="1112" y="688" width="28" height="28" rx="7" fill="rgba(99,102,241,0.09)"/>
+  <text x="1148" y="702" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="#111111">Sys. Architecture</text>
+  <text x="1148" y="716" font-family="Inter, sans-serif" font-size="9" fill="#999999">Cloud · DevOps</text>
+
+  <!-- Grid column divider -->
+  <line x1="720" y1="64" x2="720" y2="900" stroke="#3b82f6" stroke-width="0.5" stroke-dasharray="4 4" opacity="0.3"/>
+
+  <!-- Annotations -->
+  <rect x="0" y="0" width="200" height="18" fill="#111111"/>
+  <text x="8" y="12" font-family="Inter, sans-serif" font-size="9" font-weight="600" fill="#ffffff" letter-spacing="0.08em">FULL PAGE — DESKTOP 1440</text>
+
+  <text x="64" y="880" font-family="Inter, sans-serif" font-size="9" fill="#3b82f6">← 64px padding</text>
+  <text x="1360" y="880" font-family="Inter, sans-serif" font-size="9" fill="#3b82f6">64px →</text>
+  <line x1="64" y1="870" x2="64" y2="900" stroke="#3b82f6" stroke-width="0.5"/>
+  <line x1="1376" y1="870" x2="1376" y2="900" stroke="#3b82f6" stroke-width="0.5"/>
+</svg>
