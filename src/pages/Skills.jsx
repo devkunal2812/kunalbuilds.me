@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence, useMotionValue, useAnimationFrame } from 'framer-motion'
 import { SKILL_CARDS } from '../data/skills'
 import styles from './Skills.module.css'
 
@@ -15,9 +15,37 @@ const EXPERIENCE_ITEMS = [
 function TickerRow({ items, speed = 30, reverse = false, type = 'skill' }) {
   const [isPaused, setIsPaused] = useState(false)
   const [hoveredItem, setHoveredItem] = useState(null)
+  const x = useMotionValue(0)
+  const trackRef = useRef(null)
 
   // Duplicate items for seamless loop
   const duplicatedItems = [...items, ...items, ...items]
+
+  // Calculate velocity based on speed (pixels per second)
+  const velocity = reverse ? 50 : -50
+  const adjustedVelocity = velocity * (40 / speed)
+
+  useAnimationFrame((time, delta) => {
+    if (!isPaused && trackRef.current) {
+      const currentX = x.get()
+      const trackWidth = trackRef.current.offsetWidth / 3 // One third is one loop
+      
+      let newX = currentX + (adjustedVelocity * delta) / 1000
+
+      // Reset position seamlessly when one loop completes
+      if (reverse) {
+        if (newX >= 0) {
+          newX = -trackWidth
+        }
+      } else {
+        if (newX <= -trackWidth) {
+          newX = 0
+        }
+      }
+
+      x.set(newX)
+    }
+  })
 
   return (
     <div className={styles.tickerRow}>
@@ -26,18 +54,9 @@ function TickerRow({ items, speed = 30, reverse = false, type = 'skill' }) {
       <div className={styles.fadeRight} />
 
       <motion.div
+        ref={trackRef}
         className={styles.tickerTrack}
-        animate={isPaused ? {} : {
-          x: reverse ? [0, '-33.333%'] : ['-33.333%', 0],
-        }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: 'loop',
-            duration: speed,
-            ease: 'linear',
-          },
-        }}
+        style={{ x }}
       >
         {duplicatedItems.map((item, index) => {
           const itemKey = `${item.id}-${index}`
@@ -111,7 +130,7 @@ function TickerRow({ items, speed = 30, reverse = false, type = 'skill' }) {
                         <h4>{item.event}</h4>
                         <p className={styles.detailRole}>{item.role}</p>
                         <p className={styles.detailYear}>{item.year}</p>
-                        <div className={styles.detailBadge}>Experience</div>
+                        <div className={styles.detailBadge}>Achievement</div>
                       </>
                     )}
                   </motion.div>
