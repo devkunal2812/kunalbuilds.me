@@ -5,7 +5,7 @@
 }
 
 :root {
-  --bg:             #f0f0f0;
+  --bg-primary:     #f0f0f0;
   --bg-card:        rgba(255, 255, 255, 0.9);
   --text-primary:   #111111;
   --text-secondary: #555555;
@@ -19,13 +19,26 @@
   --nav-h: 64px;
 }
 
-html { scroll-behavior: smooth; }
+html { 
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-h);
+}
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg);
+  background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }

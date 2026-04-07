@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from 'react'
+import { useEffect, useRef } from 'react'
 import SkillCard from './SkillCard'
 import { SKILL_CARDS } from '../data/skills'
 import styles from './SystemCore.module.css'
@@ -14,7 +14,6 @@ export default function SystemCore({ heroRef }) {
 
   const lerp = (a, b, t) => a + (b - a) * t
 
-  // Smooth parallax
   useEffect(() => {
     const hero = heroRef.current
     const core = coreRef.current
@@ -46,7 +45,6 @@ export default function SystemCore({ heroRef }) {
     }
   }, [heroRef])
 
-  // Staggered card entrance
   useEffect(() => {
     const core = coreRef.current
     if (!core) return
@@ -62,7 +60,7 @@ export default function SystemCore({ heroRef }) {
         setTimeout(() => {
           c.style.opacity = '1'
           c.style.transform = 'translateY(0)'
-        }, 80 + i * 100)
+        }, 80 + i * 120)
       })
       obs.unobserve(core)
     }, { threshold: 0.1 })
@@ -71,78 +69,81 @@ export default function SystemCore({ heroRef }) {
   }, [])
 
   return (
-    <div className={styles.core} id="system-core" ref={coreRef}>
-      <ConnectionsSVG />
+    <div className={styles.coreWrapper}>
+      <div className={styles.core} id="system-core" ref={coreRef}>
+        <ConnectionsSVG />
 
-      <div className={styles.coreFace}>
-        <div className={styles.coreGlow} />
-        <div className={`${styles.coreGlow} ${styles.coreGlow2}`} />
-        <div className={`${styles.coreRing} ${styles.ring1}`} />
-        <div className={`${styles.coreRing} ${styles.ring2}`} />
-        <div className={`${styles.coreRing} ${styles.ring3}`} />
-        <div className={styles.faceFrame}>
-          <img src={profilePhoto} alt="Kunal — Profile" className={styles.faceImg} />
+        <div className={styles.coreFace}>
+          <div className={styles.coreGlow} />
+          <div className={`${styles.coreGlow} ${styles.coreGlow2}`} />
+          <div className={`${styles.coreRing} ${styles.ring1}`} />
+          <div className={`${styles.coreRing} ${styles.ring2}`} />
+          <div className={`${styles.coreRing} ${styles.ring3}`} />
+          <div className={styles.faceFrame}>
+            <img src={profilePhoto} alt="Kunal — Profile" className={styles.faceImg} />
+          </div>
+          <div className={styles.coreLabel}>KUNAL</div>
         </div>
-        <div className={styles.coreLabel}>KUNAL</div>
+
+        {SKILL_CARDS.map((card) => (
+          <SkillCard key={card.id} {...card} />
+        ))}
       </div>
 
-      {SKILL_CARDS.map((card) => (
-        <SkillCard key={card.id} {...card} />
-      ))}
+      {/* Mobile pill scroll strip — pills inside are shown/hidden via CSS */}
+      <div className={styles.mobilePillRow}>
+        {SKILL_CARDS.map((card) => (
+          <SkillCard key={`m-${card.id}`} {...card} />
+        ))}
+      </div>
     </div>
   )
 }
 
-// SVG uses a fixed 600×600 viewBox — scales naturally via CSS width/height
+// 6 paths: tl, tr, l, r, bl, br — all converge to center (300,300)
+const PATHS = [
+  { id: 'p-tl', d: 'M 95 110 C 160 190, 230 250, 300 300', gradId: 'lg-tl' },
+  { id: 'p-tr', d: 'M 505 110 C 440 190, 370 250, 300 300', gradId: 'lg-tr' },
+  { id: 'p-l',  d: 'M 40 300 C 130 295, 215 298, 300 300',  gradId: 'lg-l'  },
+  { id: 'p-r',  d: 'M 560 300 C 470 295, 385 298, 300 300', gradId: 'lg-r'  },
+  { id: 'p-bl', d: 'M 95 490 C 160 410, 230 350, 300 300',  gradId: 'lg-bl' },
+  { id: 'p-br', d: 'M 505 490 C 440 410, 370 350, 300 300', gradId: 'lg-br' },
+]
+
+const GRADIENTS = [
+  { id: 'lg-tl', x1: '0%',   y1: '0%',   x2: '100%', y2: '100%', c0: '#888', c1: '#444',   op1: 0.55 },
+  { id: 'lg-tr', x1: '100%', y1: '0%',   x2: '0%',   y2: '100%', c0: '#888', c1: '#3b82f6', op1: 0.5  },
+  { id: 'lg-l',  x1: '0%',   y1: '50%',  x2: '100%', y2: '50%',  c0: '#aaa', c1: '#555',   op1: 0.5  },
+  { id: 'lg-r',  x1: '100%', y1: '50%',  x2: '0%',   y2: '50%',  c0: '#aaa', c1: '#3b82f6', op1: 0.45 },
+  { id: 'lg-bl', x1: '0%',   y1: '100%', x2: '100%', y2: '0%',   c0: '#888', c1: '#6366f1', op1: 0.45 },
+  { id: 'lg-br', x1: '100%', y1: '100%', x2: '0%',   y2: '0%',   c0: '#888', c1: '#444',   op1: 0.5  },
+]
+
+const PARTICLES = [
+  { fill: '#666',    dur: '2.6s', begin: '0s',   path: '#p-tl', r: 2.5 },
+  { fill: '#3b82f6', dur: '2.9s', begin: '0.6s', path: '#p-tr', r: 2.5 },
+  { fill: '#888',    dur: '2.3s', begin: '1.1s', path: '#p-l',  r: 2.5 },
+  { fill: '#3b82f6', dur: '3.1s', begin: '0.3s', path: '#p-r',  r: 2.5 },
+  { fill: '#6366f1', dur: '2.7s', begin: '0.9s', path: '#p-bl', r: 2.5 },
+  { fill: '#555',    dur: '2.4s', begin: '1.4s', path: '#p-br', r: 2.5 },
+  { fill: '#aaa',    dur: '2.6s', begin: '1.3s', path: '#p-tl', r: 1.8, opacity: 0.6 },
+  { fill: '#3b82f6', dur: '2.9s', begin: '1.9s', path: '#p-tr', r: 1.8, opacity: 0.5 },
+  { fill: '#888',    dur: '2.3s', begin: '0.4s', path: '#p-l',  r: 1.8, opacity: 0.5 },
+  { fill: '#6366f1', dur: '3.0s', begin: '0.7s', path: '#p-bl', r: 1.8, opacity: 0.55 },
+  { fill: '#555',    dur: '2.5s', begin: '1.6s', path: '#p-br', r: 1.8, opacity: 0.5 },
+  { fill: '#3b82f6', dur: '2.8s', begin: '0.2s', path: '#p-r',  r: 1.8, opacity: 0.5 },
+]
+
 function ConnectionsSVG() {
-  const PARTICLES = [
-    { fill: '#666', dur: '2.6s', begin: '0s',   path: '#p-tl', r: 2.5 },
-    { fill: '#3b82f6', dur: '2.9s', begin: '0.6s', path: '#p-tr', r: 2.5 },
-    { fill: '#888', dur: '2.3s', begin: '1.1s', path: '#p-l',  r: 2.5 },
-    { fill: '#3b82f6', dur: '3.1s', begin: '0.3s', path: '#p-r',  r: 2.5 },
-    { fill: '#6366f1', dur: '2.7s', begin: '0.9s', path: '#p-bl', r: 2.5 },
-    { fill: '#555', dur: '2.4s', begin: '1.4s', path: '#p-br', r: 2.5 },
-    { fill: '#aaa', dur: '2.6s', begin: '1.3s', path: '#p-tl', r: 1.8, opacity: 0.6 },
-    { fill: '#3b82f6', dur: '2.9s', begin: '1.9s', path: '#p-tr', r: 1.8, opacity: 0.5 },
-    { fill: '#888', dur: '2.3s', begin: '0.4s', path: '#p-l',  r: 1.8, opacity: 0.5 },
-  ]
-
-  const PATHS = [
-    { id: 'p-tl', d: 'M 108 128 C 165 185, 228 248, 300 300', grad: 'url(#lg-tl)' },
-    { id: 'p-tr', d: 'M 492 128 C 435 185, 372 248, 300 300', grad: 'url(#lg-tr)' },
-    { id: 'p-l',  d: 'M 52 300 C 130 292, 212 296, 300 300',  grad: 'url(#lg-l)'  },
-    { id: 'p-r',  d: 'M 548 300 C 470 292, 388 296, 300 300', grad: 'url(#lg-r)'  },
-    { id: 'p-bl', d: 'M 108 472 C 165 415, 228 352, 300 300', grad: 'url(#lg-bl)' },
-    { id: 'p-br', d: 'M 492 472 C 435 415, 372 352, 300 300', grad: 'url(#lg-br)' },
-  ]
-
   return (
     <svg className={styles.connections} viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="lg-tl" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#888" stopOpacity="0"/>
-          <stop offset="100%" stopColor="#444" stopOpacity="0.5"/>
-        </linearGradient>
-        <linearGradient id="lg-tr" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#888" stopOpacity="0"/>
-          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.45"/>
-        </linearGradient>
-        <linearGradient id="lg-l" x1="0%" y1="50%" x2="100%" y2="50%">
-          <stop offset="0%" stopColor="#aaa" stopOpacity="0"/>
-          <stop offset="100%" stopColor="#555" stopOpacity="0.5"/>
-        </linearGradient>
-        <linearGradient id="lg-r" x1="100%" y1="50%" x2="0%" y2="50%">
-          <stop offset="0%" stopColor="#aaa" stopOpacity="0"/>
-          <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.4"/>
-        </linearGradient>
-        <linearGradient id="lg-bl" x1="0%" y1="100%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#888" stopOpacity="0"/>
-          <stop offset="100%" stopColor="#6366f1" stopOpacity="0.4"/>
-        </linearGradient>
-        <linearGradient id="lg-br" x1="100%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stopColor="#888" stopOpacity="0"/>
-          <stop offset="100%" stopColor="#444" stopOpacity="0.5"/>
-        </linearGradient>
+        {GRADIENTS.map(({ id, x1, y1, x2, y2, c0, c1, op1 }) => (
+          <linearGradient key={id} id={id} x1={x1} y1={y1} x2={x2} y2={y2}>
+            <stop offset="0%"   stopColor={c0} stopOpacity="0" />
+            <stop offset="100%" stopColor={c1} stopOpacity={op1} />
+          </linearGradient>
+        ))}
         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="2.5" result="blur"/>
           <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -154,12 +155,12 @@ function ConnectionsSVG() {
       </defs>
 
       {/* Connection lines */}
-      {PATHS.map(({ id, d, grad }) => (
+      {PATHS.map(({ id, d, gradId }) => (
         <path key={id} className={styles.connLine} d={d}
-          stroke={grad} strokeWidth="1.2" fill="none" filter="url(#glow)" />
+          stroke={`url(#${gradId})`} strokeWidth="1.2" fill="none" filter="url(#glow)" />
       ))}
 
-      {/* Particles */}
+      {/* Animated particles */}
       {PARTICLES.map((p, i) => (
         <circle key={i} r={p.r} fill={p.fill} opacity={p.opacity ?? 1} filter="url(#pglow)">
           <animateMotion dur={p.dur} repeatCount="indefinite" begin={p.begin}>

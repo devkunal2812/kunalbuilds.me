@@ -1,6 +1,10 @@
 .nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0; 
+  left: 0; 
+  right: 0;
+  width: 100%;
+  max-width: 100%;
   z-index: 200;
   height: var(--nav-h);
   display: flex;
@@ -139,7 +143,10 @@
 .drawer {
   position: fixed;
   top: var(--nav-h);
-  left: 0; right: 0;
+  left: 0; 
+  right: 0;
+  width: 100%;
+  max-width: 100%;
   z-index: 190;
   background: rgba(240,240,240,0.97);
   backdrop-filter: blur(20px);

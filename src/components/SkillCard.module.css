@@ -1,3 +1,4 @@
+/* ── Floating card (desktop) ── */
 .card {
   position: absolute;
   display: flex;
@@ -10,7 +11,8 @@
   box-shadow: var(--shadow-card);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  min-width: 190px;
+  min-width: 200px;
+  max-width: 230px;
   animation: cardFloat var(--float-dur, 4s) ease-in-out infinite var(--delay, 0s);
   transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
               box-shadow 0.3s ease,
@@ -25,13 +27,13 @@
   border-color: var(--border-hover);
 }
 
-/* ── Positions (% based so they scale with container) ── */
-.cardTl { top: 7%;    left: 0%;   }
-.cardTr { top: 7%;    right: 0%;  }
-.cardL  { top: 43%;   left: -3%;  }
-.cardR  { top: 43%;   right: -3%; }
-.cardBl { bottom: 7%; left: 0%;   }
-.cardBr { bottom: 7%; right: 0%;  }
+/* ── Positions ── */
+.cardTl { top: 5%;    left: -2%;  }
+.cardTr { top: 5%;    right: -2%; }
+.cardL  { top: 38%;   left: -5%;  }
+.cardR  { top: 38%;   right: -5%; }
+.cardBl { bottom: 5%; left: -2%;  }
+.cardBr { bottom: 5%; right: -2%; }
 
 @keyframes cardFloat {
   0%, 100% { transform: translateY(0px);  }
@@ -86,33 +88,75 @@
   text-overflow: ellipsis;
 }
 
-/* ── Responsive ── */
+/* ── Mobile pill — hidden on desktop ── */
+.mobilePill {
+  display: none;
+}
+
+/* ── Responsive desktop tweaks ── */
 @media (max-width: 1200px) {
-  .card { min-width: 172px; padding: 11px 13px; }
+  .card { min-width: 182px; max-width: 210px; padding: 11px 13px; }
 }
 
 @media (max-width: 1024px) {
-  .card { min-width: 158px; padding: 10px 12px; gap: 9px; }
-  .cardL  { left: -5%; }
-  .cardR  { right: -5%; }
-}
-
-@media (max-width: 640px) {
-  .card { min-width: 130px; padding: 9px 11px; gap: 8px; border-radius: 11px; }
-  .title { font-size: 0.7rem; }
-  .sub   { font-size: 0.6rem; }
-  .icon  { width: 28px; height: 28px; border-radius: 7px; }
-  .icon svg { width: 14px; height: 14px; }
+  .card { min-width: 165px; max-width: 195px; padding: 10px 12px; gap: 9px; }
   .cardL  { left: -6%; }
   .cardR  { right: -6%; }
 }
 
-@media (max-width: 420px) {
-  .card { min-width: 110px; padding: 8px 10px; gap: 7px; border-radius: 10px; }
-  .title { font-size: 0.64rem; }
-  .sub   { font-size: 0.56rem; }
-  .icon  { width: 24px; height: 24px; border-radius: 6px; }
-  .icon svg { width: 12px; height: 12px; }
-  .cardL  { left: -8%; }
-  .cardR  { right: -8%; }
+/* ── Mobile: hide floating cards, show pills ── */
+@media (max-width: 640px) {
+  .card { display: none !important; }
+
+  .mobilePill {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 8px;
+    /* gradient border trick */
+    background:
+      linear-gradient(var(--bg-card), var(--bg-card)) padding-box,
+      linear-gradient(135deg, rgba(59,130,246,0.35), rgba(99,102,241,0.25)) border-box;
+    border: 1px solid transparent;
+    border-radius: 100px;
+    padding: 7px 14px 7px 7px;
+    box-shadow: 0 2px 12px rgba(59,130,246,0.08), 0 1px 4px rgba(0,0,0,0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    white-space: nowrap;
+    cursor: default;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .mobilePill:active {
+    transform: scale(0.97);
+    box-shadow: 0 4px 18px rgba(59,130,246,0.15);
+  }
+
+  .pillIcon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(99,102,241,0.1));
+    border: 1px solid rgba(59,130,246,0.18);
+  }
+
+  .pillIcon svg { width: 13px; height: 13px; display: block; }
+
+  /* Icon variant colors carry through on mobile too */
+  .iconDark.pillIcon   { background: rgba(0,0,0,0.07);       border-color: rgba(0,0,0,0.12);       color: #111; }
+  .iconMid.pillIcon    { background: rgba(100,100,100,0.08);  border-color: rgba(100,100,100,0.15); color: #555; }
+  .iconAccent.pillIcon { background: rgba(59,130,246,0.12);   border-color: rgba(59,130,246,0.22);  color: var(--accent); }
+  .iconIndigo.pillIcon { background: rgba(99,102,241,0.1);    border-color: rgba(99,102,241,0.2);   color: var(--accent-dim); }
+  .iconSlate.pillIcon  { background: rgba(71,85,105,0.09);    border-color: rgba(71,85,105,0.16);   color: #475569; }
+
+  .pillTitle {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
 }

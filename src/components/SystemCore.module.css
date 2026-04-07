@@ -1,4 +1,15 @@
 /* ── Core container ── */
+.coreWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  justify-self: center;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+}
+
 .core {
   --size: 580px;
   --face: 136px;
@@ -12,9 +23,12 @@
   width: var(--size);
   height: var(--size);
   flex-shrink: 0;
-  justify-self: center;
-  z-index: 2;
   will-change: transform;
+}
+
+/* Mobile pill row — hidden on desktop */
+.mobilePillRow {
+  display: none;
 }
 
 .connections {
@@ -162,26 +176,84 @@
   }
 }
 
+/* ── Mobile: switch to pill strip layout ── */
 @media (max-width: 640px) {
-  .core {
-    --size: 360px;
-    --face: 96px;
-    --ring1: 112px;
-    --ring2: 136px;
-    --ring3: 158px;
-    --glow1: 162px;
-    --glow2: 208px;
+  .coreWrapper {
+    gap: 20px;
+    width: 100%;
   }
+
+  .core {
+    --size: 180px;
+    --face: 110px;
+    --ring1: 130px;
+    --ring2: 152px;
+    --ring3: 172px;
+    --glow1: 180px;
+    --glow2: 220px;
+  }
+
+  /* Hide SVG connections on mobile */
+  .connections { display: none; }
+
+  /* Bigger glows on mobile for visual richness */
+  .coreGlow {
+    background: radial-gradient(circle,
+      rgba(59,130,246,0.18) 0%,
+      rgba(99,102,241,0.08) 50%,
+      transparent 70%);
+  }
+
+  /* Accent ring colors on mobile */
+  .ring1 { border-color: rgba(59,130,246,0.2); }
+  .ring2 { border-color: rgba(99,102,241,0.22); }
+  .ring3 { border-color: rgba(59,130,246,0.1); }
+
+  /* Profile frame — gradient border on mobile */
+  .faceFrame {
+    border: 3px solid transparent;
+    background:
+      linear-gradient(white, white) padding-box,
+      linear-gradient(135deg, #3b82f6, #6366f1) border-box;
+    box-shadow:
+      0 0 0 4px rgba(59,130,246,0.1),
+      0 8px 32px rgba(59,130,246,0.2),
+      0 2px 12px rgba(0,0,0,0.15);
+  }
+
+  /* Label with accent */
+  .coreLabel {
+    background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(99,102,241,0.1));
+    border-color: rgba(59,130,246,0.2);
+    color: var(--accent);
+    letter-spacing: 0.28em;
+  }
+
+  /* Pill scroll row */
+  .mobilePillRow {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 4px 24px 16px;
+    width: 100%;
+    max-width: 100%;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .mobilePillRow::-webkit-scrollbar { display: none; }
 }
 
 @media (max-width: 420px) {
   .core {
-    --size: 300px;
-    --face: 82px;
-    --ring1: 96px;
-    --ring2: 116px;
-    --ring3: 134px;
-    --glow1: 138px;
-    --glow2: 176px;
+    --size: 160px;
+    --face: 96px;
+    --ring1: 114px;
+    --ring2: 134px;
+    --ring3: 152px;
+    --glow1: 158px;
+    --glow2: 196px;
   }
 }

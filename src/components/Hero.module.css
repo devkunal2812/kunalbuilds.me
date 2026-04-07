@@ -1,6 +1,15 @@
-/* ── Hero layout ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap');
+
+/* ── Mobile Only Container ── */
+.mobileOnly {
+  display: none;
+}
+
+/* ── Desktop Hero layout (ORIGINAL) ── */
 .hero {
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
@@ -10,7 +19,7 @@
   overflow: hidden;
 }
 
-/* ── Background ── */
+/* ── Background (ORIGINAL) ── */
 .bgGrid {
   position: absolute;
   inset: 0;
@@ -49,7 +58,7 @@
   top: 35%; left: 2%;
 }
 
-/* ── Hero text ── */
+/* ── Hero text (ORIGINAL) ── */
 .heroText {
   max-width: 520px;
   z-index: 2;
@@ -178,11 +187,405 @@
   letter-spacing: 0.02em;
 }
 
+/* ── MOBILE HERO STYLES ── */
+.mobileHero {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: calc(var(--nav-h) + 24px) 24px 48px;
+  background: var(--bg-primary);
+}
+
+/* Mobile Background - Same as desktop */
+.mobileBgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 100% 80% at 50% 40%, black 30%, transparent 100%);
+}
+
+.mobileBgOrb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.mobileBgOrb1 {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(59,130,246,0.13) 0%, transparent 68%);
+  filter: blur(60px);
+  top: -60px; right: -60px;
+}
+
+.mobileBgOrb2 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 68%);
+  filter: blur(60px);
+  bottom: 60px; left: -60px;
+}
+
+.mobileBgOrb3 {
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 68%);
+  filter: blur(48px);
+  top: 40%; right: 10%;
+}
+
+.mobileProfile {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.mobileAvatarWrapper {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.mobileAvatarGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    rgba(200,200,200,0.28) 0%,
+    rgba(59,130,246,0.08) 50%,
+    transparent 70%);
+  opacity: 0.7;
+  filter: blur(12px);
+  transform: scale(1.1);
+  animation: breathe 3.6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1.1); opacity: 0.7; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+.mobileAvatar {
+  position: relative;
+  width: 136px;
+  height: 136px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,0.96);
+  box-shadow:
+    0 0 0 5px rgba(0,0,0,0.08),
+    0 0 28px rgba(0,0,0,0.18),
+    0 0 56px rgba(59,130,246,0.1),
+    0 12px 40px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+.mobileAvatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+.mobileOrbitRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.12);
+  transform: scale(1.25);
+  animation: spinCw 14s linear infinite;
+}
+
+@keyframes spinCw {
+  to { transform: rotate(360deg) scale(1.25); }
+}
+
+.mobileOrbitDot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.mobileBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+  width: fit-content;
+}
+
+.mobileBadgePulse {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  animation: badgeBlink 2.2s ease-in-out infinite;
+}
+
+@keyframes badgeBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+.mobileName {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 3px 11px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+.mobileStats {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.mobileStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.mobileStatValue {
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.mobileStatLabel {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.mobileCarousel {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 24px;
+}
+
+.mobileCarouselLabel {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.mobileCarouselWrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.mobileFadeLeft,
+.mobileFadeRight {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.mobileFadeLeft {
+  left: 0;
+  background: linear-gradient(to right, var(--bg-primary), transparent);
+}
+
+.mobileFadeRight {
+  right: 0;
+  background: linear-gradient(to left, var(--bg-primary), transparent);
+}
+
+.mobileCarouselScroll {
+  display: flex;
+  gap: 12px;
+  padding: 0 24px 16px;
+  will-change: transform;
+  /* Remove scroll behavior for scroll-linked animation */
+}
+
+.mobileSkillCard {
+  position: relative;
+  flex-shrink: 0;
+  width: 140px;
+  scroll-snap-align: center;
+  border-radius: 12px;
+  padding: 14px;
+  text-align: left;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.08);
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobileSkillCard.mobileSkillCardActive {
+  background: rgba(255,255,255,0.98);
+  border-color: rgba(59,130,246,0.3);
+  box-shadow: 
+    0 4px 20px rgba(59,130,246,0.15),
+    0 0 0 2px rgba(59,130,246,0.1);
+  transform: translateY(-4px);
+}
+
+.mobileSkillIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  background: rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+}
+
+.mobileSkillCard.mobileSkillCardActive .mobileSkillIcon {
+  background: rgba(59,130,246,0.1);
+  color: var(--accent);
+}
+
+.mobileSkillIcon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.mobileSkillLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.mobileSkillTag {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.mobileActiveIndicator {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: badgeBlink 2s ease-in-out infinite;
+}
+
+.mobileScrollDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.mobileScrollDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.15);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobileScrollDot.mobileScrollDotActive {
+  width: 16px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
+.mobileCTA {
+  z-index: 10;
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.mobileCTAPrimary,
+.mobileCTASecondary {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.02em;
+}
+
+.mobileCTAPrimary {
+  color: white;
+  background: linear-gradient(135deg, var(--accent), #6366f1);
+  box-shadow: 0 4px 16px rgba(59,130,246,0.25);
+}
+
+.mobileCTASecondary {
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
 /* ── Responsive ── */
 
 /* Tablet landscape */
 @media (max-width: 1200px) {
-  .hero { padding: calc(var(--nav-h) + 40px) 48px 48px; }
+  .hero { 
+    padding: calc(var(--nav-h) + 40px) 48px 48px; 
+  }
 }
 
 /* Tablet portrait — stack vertically */
@@ -201,28 +604,23 @@
   }
 
   .sub { max-width: 100%; }
-
   .chips { justify-content: center; }
-
   .stats { justify-content: center; }
 }
 
-/* Mobile large */
-@media (max-width: 640px) {
-  .hero { padding: calc(var(--nav-h) + 32px) 20px 48px; gap: 40px; }
+/* Mobile - Switch to mobile hero */
+@media (max-width: 767px) {
+  .mobileOnly {
+    display: block;
+  }
 
-  .headline { font-size: clamp(2rem, 8vw, 2.8rem); }
-
-  .sub { font-size: 0.95rem; }
-
-  .stats { gap: 20px; }
-
-  .statValue { font-size: 1.3rem; }
+  .hero {
+    display: none;
+  }
 }
 
-/* Mobile small */
-@media (max-width: 380px) {
-  .headline { font-size: 1.9rem; }
-  .stats { gap: 16px; }
-  .statValue { font-size: 1.2rem; }
+@media (max-width: 480px) {
+  .hero {
+    padding: calc(var(--nav-h) + 24px) 20px 40px;
+  }
 }
