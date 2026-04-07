@@ -24,6 +24,13 @@ html {
   scroll-padding-top: var(--nav-h);
 }
 
+/* Mobile scroll snap behavior */
+@media (max-width: 767px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--bg-primary);

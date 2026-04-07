@@ -14,40 +14,11 @@ const STATS = [
 // Mobile Hero Component
 function MobileHero() {
   const [activeSkill, setActiveSkill] = useState(null)
-  const carouselRef = useRef(null)
   const skillsSectionRef = useRef(null)
-  const carouselScrollRef = useRef(null)
-  
-  const { scrollY } = useScroll()
-  const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3])
-  const heroScale = useTransform(scrollY, [0, 300], [1, 0.95])
-  
-  // Smooth spring physics for scroll
-  const smoothScrollY = useSpring(scrollY, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  })
-
-  // Horizontal scroll effect based on vertical scroll
-  const { scrollYProgress } = useScroll({
-    target: skillsSectionRef,
-    offset: ["start end", "end start"]
-  })
-  
-  // More dramatic horizontal movement
-  const carouselX = useTransform(scrollYProgress, [0, 0.5, 1], [200, 0, -200])
-  const smoothCarouselX = useSpring(carouselX, {
-    stiffness: 80,
-    damping: 25,
-    restDelta: 0.001
-  })
 
   const handleSkillClick = (id) => {
     setActiveSkill((prev) => (prev === id ? null : id))
   }
-
-  const activeSkillData = SKILL_CARDS.find((s) => s.id === activeSkill)
 
   return (
     <div className={styles.mobileHero}>
@@ -57,10 +28,9 @@ function MobileHero() {
       <div className={`${styles.mobileBgOrb} ${styles.mobileBgOrb2}`} />
       <div className={`${styles.mobileBgOrb} ${styles.mobileBgOrb3}`} />
 
-      {/* Profile Section */}
+      {/* Profile Section - First snap point */}
       <motion.div 
         className={styles.mobileProfile}
-        style={{ opacity: heroOpacity, scale: heroScale }}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -115,13 +85,13 @@ function MobileHero() {
         </motion.div>
       </motion.div>
 
-      {/* Skills Carousel */}
+      {/* Skills Carousel Section - Second snap point */}
       <motion.div 
         ref={skillsSectionRef}
         className={styles.mobileCarousel}
         initial={{ opacity: 0, y: 60 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false, margin: "-80px", amount: 0.3 }}
+        viewport={{ once: true, margin: "-80px", amount: 0.3 }}
         transition={{ 
           duration: 1, 
           ease: [0.16, 1, 0.3, 1],
@@ -142,11 +112,7 @@ function MobileHero() {
           <div className={styles.mobileFadeLeft} />
           <div className={styles.mobileFadeRight} />
           
-          <motion.div 
-            ref={carouselScrollRef} 
-            className={styles.mobileCarouselScroll}
-            style={{ x: smoothCarouselX }}
-          >
+          <div className={styles.mobileCarouselScroll}>
             {SKILL_CARDS.map((skill, i) => (
               <motion.button
                 key={skill.id}
@@ -186,7 +152,7 @@ function MobileHero() {
                 )}
               </motion.button>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll Dots */}
@@ -235,6 +201,27 @@ function MobileHero() {
         >
           Get in Touch
         </motion.button>
+      </motion.div>
+
+      {/* Scroll Indicator for Profile Section */}
+      <motion.div 
+        className={styles.mobileScrollHint}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 1.5 }}
+      >
+        <motion.div
+          className={styles.mobileScrollArrow}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ 
+            repeat: Infinity, 
+            duration: 1.5, 
+            ease: "easeInOut" 
+          }}
+        >
+          ↓
+        </motion.div>
+        <span className={styles.mobileScrollText}>Scroll to explore skills</span>
       </motion.div>
     </div>
   )
