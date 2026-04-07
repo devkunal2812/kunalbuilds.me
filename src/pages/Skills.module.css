@@ -233,11 +233,64 @@
   padding: 20px 28px;
 }
 
+.experienceIconWrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(99, 102, 241, 0.1));
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.experienceIconWrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.15));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tickerItem:hover .experienceIconWrapper::before {
+  opacity: 1;
+}
+
+.tickerItem:hover .experienceIconWrapper {
+  transform: rotate(-5deg) scale(1.1);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.experienceIconSvg {
+  position: relative;
+  z-index: 1;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experienceIconSvg svg {
+  width: 24px;
+  height: 24px;
+}
+
+.tickerItem:hover .experienceIconSvg {
+  transform: scale(1.1);
+}
+
 .experienceIcon {
   font-size: 2rem;
   flex-shrink: 0;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   filter: grayscale(0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .tickerItem:hover .experienceIcon {

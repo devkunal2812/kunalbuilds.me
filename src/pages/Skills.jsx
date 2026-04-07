@@ -4,12 +4,12 @@ import { SKILL_CARDS } from '../data/skills'
 import styles from './Skills.module.css'
 
 const EXPERIENCE_ITEMS = [
-  { id: 1, event: 'Tech Conference 2024', role: 'Speaker', year: '2024', icon: '🎤' },
-  { id: 2, event: 'Startup Accelerator', role: 'Mentor', year: '2023', icon: '🚀' },
-  { id: 3, event: 'Hackathon Winner', role: 'Team Lead', year: '2023', icon: '🏆' },
-  { id: 4, event: 'Open Source Contributor', role: 'Maintainer', year: '2022-Present', icon: '💻' },
-  { id: 5, event: 'Design Workshop', role: 'Instructor', year: '2023', icon: '🎨' },
-  { id: 6, event: 'Tech Meetup', role: 'Organizer', year: '2022-2024', icon: '👥' },
+  { id: 1, event: 'Tech Conference 2024', role: 'Speaker', year: '2024', icon: '🎤', iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>` },
+  { id: 2, event: 'Startup Accelerator', role: 'Mentor', year: '2023', icon: '🚀', iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>` },
+  { id: 3, event: 'Hackathon Winner', role: 'Team Lead', year: '2023', icon: '🏆', iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>` },
+  { id: 4, event: 'Open Source Contributor', role: 'Maintainer', year: '2022-Present', icon: '💻', iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>` },
+  { id: 5, event: 'Design Workshop', role: 'Instructor', year: '2023', icon: '🎨', iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 0-9.95 9h11.64L9.74 7.05a1 1 0 0 1 1.41-1.41l5.66 5.65a1 1 0 0 1 0 1.42l-5.66 5.65a1 1 0 0 1-1.41 0 1 1 0 0 1 0-1.41L13.69 13H2.05A10 10 0 1 0 12 2z"/><circle cx="12" cy="12" r="3"/></svg>` },
+  { id: 6, event: 'Tech Meetup', role: 'Organizer', year: '2022-2024', icon: '👥', iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>` },
 ]
 
 function TickerRow({ items, speed = 30, reverse = false, type = 'skill' }) {
@@ -71,7 +71,16 @@ function TickerRow({ items, speed = 30, reverse = false, type = 'skill' }) {
                   </>
                 ) : (
                   <>
-                    <span className={styles.experienceIcon}>{item.icon}</span>
+                    <div className={styles.experienceIconWrapper}>
+                      {item.iconSvg ? (
+                        <div 
+                          className={styles.experienceIconSvg}
+                          dangerouslySetInnerHTML={{ __html: item.iconSvg }}
+                        />
+                      ) : (
+                        <span className={styles.experienceIcon}>{item.icon}</span>
+                      )}
+                    </div>
                     <div className={styles.experienceContent}>
                       <span className={styles.experienceEvent}>{item.event}</span>
                       <span className={styles.experienceRole}>{item.role}</span>

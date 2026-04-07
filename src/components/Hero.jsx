@@ -30,17 +30,16 @@ function MobileHero() {
   })
 
   // Horizontal scroll effect based on vertical scroll
-  // When scrolling down (scrollY increases), carousel moves left (negative x)
-  // When scrolling up (scrollY decreases), carousel moves right (positive x)
   const { scrollYProgress } = useScroll({
     target: skillsSectionRef,
     offset: ["start end", "end start"]
   })
   
-  const carouselX = useTransform(scrollYProgress, [0, 1], [100, -100])
+  // More dramatic horizontal movement
+  const carouselX = useTransform(scrollYProgress, [0, 0.5, 1], [200, 0, -200])
   const smoothCarouselX = useSpring(carouselX, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 80,
+    damping: 25,
     restDelta: 0.001
   })
 
