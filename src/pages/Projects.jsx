@@ -219,7 +219,10 @@ function ProjectCard({ project, index }) {
 
 export default function Projects() {
   return (
-    <section className={styles.projects} id="projects">
+    <section 
+      className={styles.projects} 
+      id="projects"
+    >
       <div className={styles.header}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
