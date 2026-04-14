@@ -14,7 +14,31 @@ const STATS = [
 // Mobile Hero Component
 function MobileHero() {
   const [activeSkill, setActiveSkill] = useState(null)
-  const skillsSectionRef = useRef(null)
+  const stickyRef = useRef(null)
+
+  // Track scroll through the sticky container
+  const { scrollYProgress } = useScroll({
+    target: stickyRef,
+    offset: ['start start', 'end end']
+  })
+
+  // Calculate total scroll distance needed
+  const cardWidth = 152
+  const totalScroll = (SKILL_CARDS.length - 2) * cardWidth
+
+  // Cards start at 0 and move left as you scroll through the section
+  // 0.05 → 0.95 gives a small buffer at start/end
+  const carouselX = useTransform(
+    scrollYProgress,
+    [0.05, 0.95],
+    [0, -totalScroll]
+  )
+
+  const smoothX = useSpring(carouselX, {
+    stiffness: 100,
+    damping: 25,
+    restDelta: 0.001
+  })
 
   const handleSkillClick = (id) => {
     setActiveSkill((prev) => (prev === id ? null : id))
@@ -85,123 +109,71 @@ function MobileHero() {
         </motion.div>
       </motion.div>
 
-      {/* Skills Carousel Section - Second snap point */}
-      <motion.div 
-        ref={skillsSectionRef}
-        className={styles.mobileCarousel}
-        initial={{ opacity: 0, y: 60 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px", amount: 0.3 }}
-        transition={{ 
-          duration: 1, 
-          ease: [0.16, 1, 0.3, 1],
-          opacity: { duration: 0.8 }
-        }}
+      {/* Skills Carousel — sticky horizontal scroll section */}
+      {/* Outer div is tall (scroll space), inner is sticky (pins in place) */}
+      <div
+        ref={stickyRef}
+        className={styles.mobileCarouselOuter}
       >
-        <motion.p 
-          className={styles.mobileCarouselLabel}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          Explore Skills
-        </motion.p>
+        <div className={styles.mobileCarouselSticky}>
+          <motion.p 
+            className={styles.mobileCarouselLabel}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            Explore Skills
+          </motion.p>
 
-        <div className={styles.mobileCarouselWrapper}>
-          <div className={styles.mobileFadeLeft} />
-          <div className={styles.mobileFadeRight} />
-          
-          <div className={styles.mobileCarouselScroll}>
-            {SKILL_CARDS.map((skill, i) => (
-              <motion.button
-                key={skill.id}
-                onClick={() => handleSkillClick(skill.id)}
-                className={`${styles.mobileSkillCard} ${activeSkill === skill.id ? styles.mobileSkillCardActive : ''}`}
-                initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-30px", amount: 0.5 }}
-                transition={{ 
-                  duration: 0.6, 
-                  delay: i * 0.08,
-                  ease: [0.16, 1, 0.3, 1],
-                  scale: { type: "spring", stiffness: 300, damping: 25 }
-                }}
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <motion.div 
-                  className={styles.mobileSkillIcon}
-                  dangerouslySetInnerHTML={{ __html: skill.icon }}
-                  whileHover={{ 
-                    rotate: [0, -8, 8, -8, 0],
-                    scale: 1.1
-                  }}
-                  transition={{ duration: 0.5 }}
-                />
-                <p className={styles.mobileSkillLabel}>{skill.title}</p>
-                <p className={styles.mobileSkillTag}>{skill.sub}</p>
-                {activeSkill === skill.id && (
-                  <motion.span 
-                    className={styles.mobileActiveIndicator}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0, opacity: 0 }}
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          <div className={styles.mobileCarouselWrapper}>
+            <div className={styles.mobileFadeLeft} />
+            <div className={styles.mobileFadeRight} />
+            
+            {/* Cards slide right as user scrolls down */}
+            <motion.div
+              className={styles.mobileCarouselScroll}
+              style={{ x: smoothX }}
+            >
+              {SKILL_CARDS.map((skill, i) => (
+                <motion.button
+                  key={skill.id}
+                  onClick={() => handleSkillClick(skill.id)}
+                  className={`${styles.mobileSkillCard} ${activeSkill === skill.id ? styles.mobileSkillCardActive : ''}`}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.06 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.div 
+                    className={styles.mobileSkillIcon}
+                    dangerouslySetInnerHTML={{ __html: skill.icon }}
                   />
-                )}
-              </motion.button>
-            ))}
+                  <p className={styles.mobileSkillLabel}>{skill.title}</p>
+                  <p className={styles.mobileSkillTag}>{skill.sub}</p>
+                  {activeSkill === skill.id && (
+                    <motion.span 
+                      className={styles.mobileActiveIndicator}
+                      initial={{ scale: 0, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                    />
+                  )}
+                </motion.button>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Progress indicator */}
+          <div className={styles.mobileScrollProgress}>
+            <motion.div
+              className={styles.mobileScrollProgressBar}
+              style={{ scaleX: scrollYProgress, transformOrigin: 'left' }}
+            />
           </div>
         </div>
-
-        {/* Scroll Dots */}
-        <motion.div 
-          className={styles.mobileScrollDots}
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          {SKILL_CARDS.map((s, i) => (
-            <motion.button
-              key={s.id}
-              onClick={() => handleSkillClick(s.id)}
-              className={`${styles.mobileScrollDot} ${activeSkill === s.id ? styles.mobileScrollDotActive : ''}`}
-              whileHover={{ scale: 1.3 }}
-              whileTap={{ scale: 0.9 }}
-              initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.5 + i * 0.05 }}
-            />
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* CTA Buttons */}
-      <motion.div 
-        className={styles.mobileCTA}
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <motion.button 
-          className={styles.mobileCTAPrimary}
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          View Projects
-        </motion.button>
-        <motion.button 
-          className={styles.mobileCTASecondary}
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Get in Touch
-        </motion.button>
-      </motion.div>
+      </div>
 
       {/* Scroll Indicator for Profile Section */}
       <motion.div 

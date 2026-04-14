@@ -9,6 +9,7 @@
   background: var(--color-bg-secondary);
   color: var(--color-text-primary);
   overflow-x: hidden;
+  scroll-snap-align: start;
 }
 
 /* Subtle grid texture */

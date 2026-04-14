@@ -6,33 +6,28 @@
 
 /* ============================================================
    DESIGN TOKENS — Light Mode (default)
-   ============================================================
-   Structure:
-   --color-{role}-{variant}
-   Roles: bg, surface, text, border, accent, shadow
    ============================================================ */
 
 :root {
 
-  /* ── Navigation height ── */
   --nav-h: 64px;
 
   /* ── Background ── */
-  --color-bg-primary:    #ffffff;   /* page background */
-  --color-bg-secondary:  #f4f4f5;   /* subtle section bg */
-  --color-bg-card:       #ffffff;   /* card / panel */
-  --color-bg-card-hover: #fafafa;   /* card on hover */
-  --color-bg-surface:    rgba(0, 0, 0, 0.04); /* floating elements */
-  --color-bg-overlay:    rgba(0, 0, 0, 0.08);       /* scrim / overlay */
+  --color-bg-primary:    #ffffff;
+  --color-bg-secondary:  #f4f4f5;
+  --color-bg-card:       #ffffff;
+  --color-bg-card-hover: #fafafa;
+  --color-bg-surface:    rgba(0, 0, 0, 0.04);
+  --color-bg-overlay:    rgba(0, 0, 0, 0.08);
 
   /* ── Text ── */
-  --color-text-primary:   #111111;  /* headings, body */
-  --color-text-secondary: #555555;  /* subtext, labels */
-  --color-text-muted:     #999999;  /* placeholders, hints */
-  --color-text-inverse:   #f0ede8;  /* text on dark bg */
-  --color-text-on-accent: #ffffff;  /* text on accent bg */
+  --color-text-primary:   #111111;
+  --color-text-secondary: #555555;
+  --color-text-muted:     #999999;
+  --color-text-inverse:   #f0ede8;
+  --color-text-on-accent: #ffffff;
 
-  /* ── Accent (brand blue) ── */
+  /* ── Accent ── */
   --color-accent:         #3b82f6;
   --color-accent-hover:   #2563eb;
   --color-accent-dim:     #6366f1;
@@ -58,21 +53,21 @@
   --color-error:          #ef4444;
   --color-error-subtle:   rgba(239, 68, 68, 0.1);
 
-  /* ── Projects section (intentionally always dark) ── */
-  --color-projects-bg:           #0c0c12;
-  --color-projects-card:         #13131a;
-  --color-projects-border:       rgba(255, 255, 255, 0.08);
-  --color-projects-text:         #f0ede8;
-  --color-projects-text-muted:   rgba(240, 237, 232, 0.45);
-  --color-projects-text-subtle:  rgba(240, 237, 232, 0.2);
-  --color-projects-number:       rgba(255, 255, 255, 0.04);
-  --color-projects-surface:      rgba(255, 255, 255, 0.05);
-  --color-projects-surface-border: rgba(255, 255, 255, 0.08);
-  --color-projects-visual-bg:    rgba(255, 255, 255, 0.02);
-  --color-projects-visual-border: rgba(255, 255, 255, 0.07);
-  --color-projects-dot:          rgba(255, 255, 255, 0.07);
+  /* ── Projects section (always dark) ── */
+  --color-projects-bg:              #0c0c12;
+  --color-projects-card:            #13131a;
+  --color-projects-border:          rgba(255, 255, 255, 0.08);
+  --color-projects-text:            #f0ede8;
+  --color-projects-text-muted:      rgba(240, 237, 232, 0.45);
+  --color-projects-text-subtle:     rgba(240, 237, 232, 0.2);
+  --color-projects-number:          rgba(255, 255, 255, 0.04);
+  --color-projects-surface:         rgba(255, 255, 255, 0.05);
+  --color-projects-surface-border:  rgba(255, 255, 255, 0.08);
+  --color-projects-visual-bg:       rgba(255, 255, 255, 0.02);
+  --color-projects-visual-border:   rgba(255, 255, 255, 0.07);
+  --color-projects-dot:             rgba(255, 255, 255, 0.07);
 
-  /* ── Legacy aliases (keep existing components working) ── */
+  /* ── Legacy aliases ── */
   --bg-primary:        var(--color-bg-primary);
   --bg-secondary:      var(--color-bg-secondary);
   --bg-card:           var(--color-bg-card);
@@ -107,15 +102,11 @@
 }
 
 /* ============================================================
-   DESIGN TOKENS — Dark Mode (system preference)
-   Only bg, surface, text, border, shadow change.
-   Accent and Projects stay the same.
+   DESIGN TOKENS — Dark Mode
    ============================================================ */
 
 @media (prefers-color-scheme: dark) {
   :root {
-
-    /* ── Background ── */
     --color-bg-primary:    #0f0f13;
     --color-bg-secondary:  #16161c;
     --color-bg-card:       #1a1a24;
@@ -123,33 +114,28 @@
     --color-bg-surface:    rgba(255, 255, 255, 0.05);
     --color-bg-overlay:    rgba(0, 0, 0, 0.4);
 
-    /* ── Text ── */
     --color-text-primary:   #f0ede8;
     --color-text-secondary: #a0a0b0;
     --color-text-muted:     #606070;
     --color-text-inverse:   #111111;
     --color-text-on-accent: #ffffff;
 
-    /* ── Accent (slightly lighter in dark mode for contrast) ── */
     --color-accent:        #60a5fa;
     --color-accent-hover:  #93c5fd;
     --color-accent-dim:    #818cf8;
     --color-accent-subtle: rgba(96, 165, 250, 0.1);
     --color-accent-glow:   rgba(96, 165, 250, 0.25);
 
-    /* ── Border ── */
     --color-border:        rgba(255, 255, 255, 0.07);
     --color-border-card:   rgba(255, 255, 255, 0.06);
     --color-border-hover:  rgba(96, 165, 250, 0.4);
     --color-border-focus:  rgba(96, 165, 250, 0.55);
 
-    /* ── Shadow (deeper in dark mode) ── */
     --color-shadow-sm:  0 1px 3px rgba(0,0,0,0.2),  0 1px 2px rgba(0,0,0,0.15);
     --color-shadow-md:  0 2px 16px rgba(0,0,0,0.3),  0 1px 3px rgba(0,0,0,0.2);
     --color-shadow-lg:  0 10px 36px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
     --color-shadow-xl:  0 24px 64px rgba(0,0,0,0.7), 0 8px 24px rgba(0,0,0,0.4);
 
-    /* Projects blends with dark bg in dark mode */
     --color-projects-bg:   #0a0a0f;
     --color-projects-card: #111118;
   }
@@ -162,15 +148,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
-  /* Prevent iOS font size adjustment */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-}
-
-@media (max-width: 767px) {
-  html {
-    scroll-snap-type: y proximity;
-  }
+  /* REMOVED: scroll-snap-type on mobile — was breaking the layout */
 }
 
 body {
@@ -192,7 +172,7 @@ input, textarea, select {
   font-size: max(16px, 1em);
 }
 
-/* Smooth transitions on all themed elements */
+/* Smooth transitions on themed elements */
 a, button, input, textarea, section, header, nav, footer, [class] {
   transition:
     background-color 0.4s ease,
