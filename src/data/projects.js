@@ -63,7 +63,7 @@ export const PROJECTS = [
     ],
     year: '2025',
     links: {
-      live: '',
+      live: 'https://intelliprep-3lzu.onrender.com/',
       github: 'https://github.com/devkunal2812/Intelliprep_final'
     }
   },
