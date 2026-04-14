@@ -81,7 +81,7 @@ export default function Nav() {
           </a>
 
           <a
-            href="https://drive.google.com/file/d/1_placeholder/view"
+            href="https://drive.google.com/file/d/1nPavuocxssIKbPj16-CVQ9PpECa9PqTQ/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className={styles.resumeBtn}

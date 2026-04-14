@@ -9,10 +9,10 @@ import clipsyncImg from '../assets/clipsync-preview.png'
 export const PROJECTS = [
   {
     id: 1,
-    title: 'FeudExe — Quiz Experience Platform',
+    title: 'Feud.Exe - Quiz Experience Platform',
     category: 'Frontend',
     description:
-      'Traditional quizzes feel static and boring → built an interactive quiz platform with engaging UI and smooth user flows to improve participation and user experience.',
+      'Traditional quizzes feel static and boring -> built an interactive quiz platform with engaging UI and smooth user flows to improve participation and user experience.',
     tech: ['React', 'JavaScript', 'Vercel'],
     accent: '#3b82f6',
     icon: '🧠',
@@ -32,7 +32,7 @@ export const PROJECTS = [
     title: 'Praxis Coding Platform',
     category: 'Full-Stack',
     description:
-      'Students lack a simple platform for coding practice in workshops → built a coding platform for real-time problem solving, test hosting, and future workshop scalability.',
+      'Students lack a simple platform for coding practice in workshops -> built a coding platform for real-time problem solving, test hosting, and future workshop scalability.',
     tech: ['React', 'Node.js', 'JavaScript', 'Vercel'],
     accent: '#22c55e',
     icon: '💻',
@@ -49,10 +49,10 @@ export const PROJECTS = [
   },
   {
     id: 3,
-    title: 'IntelliPrep — Smart Preparation System',
+    title: 'IntelliPrep - Smart Preparation System',
     category: 'AI / Automation',
     description:
-      'Preparing for exams and interviews is unstructured → developed a system to organize preparation workflows and streamline learning with structured logic and automation.',
+      'Preparing for exams and interviews is unstructured -> developed a system to organize preparation workflows and streamline learning with structured logic and automation.',
     tech: ['Python', 'Java', 'Logic Design'],
     accent: '#10b981',
     icon: '📚',
@@ -69,10 +69,10 @@ export const PROJECTS = [
   },
   {
     id: 4,
-    title: 'ClipSync — Clipboard Sync Tool',
+    title: 'ClipSync - Clipboard Sync Tool',
     category: 'Full-Stack',
     description:
-      'Copy-paste across devices is inefficient → built a real-time clipboard sync tool that enables seamless sharing of copied content between multiple devices.',
+      'Copy-paste across devices is inefficient -> built a real-time clipboard sync tool that enables seamless sharing of copied content between multiple devices.',
     tech: ['React', 'Node.js', 'WebSockets'],
     accent: '#f97316',
     icon: '📋',
