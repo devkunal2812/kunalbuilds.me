@@ -77,8 +77,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  background: rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   padding: 5px 14px;
   border-radius: 100px;
   margin-bottom: 28px;
@@ -144,8 +144,8 @@
   font-size: 0.72rem;
   font-weight: 600;
   color: var(--text-secondary);
-  background: rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.09);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   padding: 4px 12px;
   border-radius: 100px;
   letter-spacing: 0.02em;
@@ -336,8 +336,8 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  background: rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   padding: 5px 14px;
   border-radius: 100px;
   margin-bottom: 16px;
@@ -363,8 +363,8 @@
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-secondary);
-  background: rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.1);
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
   padding: 3px 11px;
   border-radius: 100px;
   margin-bottom: 20px;
@@ -467,15 +467,15 @@
   border-radius: 12px;
   padding: 14px;
   text-align: left;
-  background: rgba(255,255,255,0.92);
-  border: 1px solid rgba(0,0,0,0.08);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-card);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobileSkillCard.mobileSkillCardActive {
-  background: rgba(255,255,255,0.98);
+  background: var(--bg-card-hover);
   border-color: rgba(59,130,246,0.3);
   box-shadow: 
     0 4px 20px rgba(59,130,246,0.15),
@@ -492,7 +492,7 @@
   justify-content: center;
   margin-bottom: 10px;
   color: var(--text-primary);
-  background: rgba(0,0,0,0.04);
+  background: var(--bg-surface);
   transition: all 0.3s ease;
 }
 
@@ -545,7 +545,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.15);
+  background: var(--border-card);
   border: none;
   padding: 0;
   cursor: pointer;

@@ -253,7 +253,7 @@ export default function Hero() {
       </div>
 
       {/* Desktop Hero - Original design */}
-      <section className={styles.hero} id="about" ref={heroRef}>
+      <section className={styles.hero} id="hero" ref={heroRef}>
         {/* Background layers */}
         <div className={styles.bgGrid} />
         <div className={`${styles.bgOrb} ${styles.bgOrb1}`} />
