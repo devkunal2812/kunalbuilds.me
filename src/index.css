@@ -162,6 +162,9 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
+  /* Prevent iOS font size adjustment */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 @media (max-width: 767px) {
@@ -182,6 +185,11 @@ body {
   margin: 0;
   padding: 0;
   transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Prevent iOS zoom on input focus */
+input, textarea, select {
+  font-size: max(16px, 1em);
 }
 
 /* Smooth transitions on all themed elements */

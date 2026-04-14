@@ -298,3 +298,44 @@ a.infoValue:hover {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 480px) {
+  .contact {
+    padding: calc(var(--nav-h) + 24px) 0 32px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+
+  .formSection,
+  .infoCard,
+  .socialCard {
+    padding: 20px 16px;
+    border-radius: 12px;
+  }
+
+  .submitBtn {
+    padding: 13px 24px;
+    font-size: 0.9rem;
+  }
+
+  .infoIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .infoValue {
+    font-size: 0.85rem;
+    word-break: break-all;
+  }
+}

@@ -398,6 +398,10 @@
 }
 
 @media (max-width: 480px) {
-  .heading { font-size: 1.75rem; }
+  .heading { font-size: 1.6rem; }
   .ctaRow { flex-direction: column; }
+  .centerCard { padding: 24px 18px; border-radius: 16px; }
+  .designSection { padding: 48px 16px 60px; }
+  .sectionTitle { font-size: 1.8rem; }
+  .boardBtn { width: 100%; justify-content: center; padding: 12px 20px; }
 }

@@ -271,6 +271,7 @@
 }
 
 @media (max-width: 480px) {
-  .nav { padding: 0 20px; }
+  .nav { padding: 0 16px; }
   .status { display: none; }
+  .logo span:last-child { font-size: 0.88rem; }
 }
