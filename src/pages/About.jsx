@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import styles from './About.module.css'
-import { LEFT_CHIPS, RIGHT_CHIPS, DESIGNS, STATS } from '../data/about'
+import { LEFT_CHIPS, RIGHT_CHIPS, STATS } from '../data/about'
 
 function FloatChip({ label, icon, x, y, rotate, delay }) {
   return (
@@ -23,33 +23,9 @@ function FloatChip({ label, icon, x, y, rotate, delay }) {
   )
 }
 
-function DesignCard({ item, index }) {
-  return (
-    <motion.div
-      className={styles.designCard}
-      style={{ '--card-accent': item.accent }}
-      initial={{ opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      whileHover={{ y: -6 }}
-    >
-      <div className={styles.designImg}>
-        {item.image
-          ? <img src={item.image} alt={item.title} className={styles.designImgEl} />
-          : <div className={styles.designPlaceholder}><span className={styles.designPlaceholderIcon}>🎨</span></div>
-        }
-        <span className={styles.designCategory}>{item.category}</span>
-      </div>
-      <div className={styles.designBody}>
-        <h3 className={styles.designTitle}>{item.title}</h3>
-        <p className={styles.designDesc}>{item.description}</p>
-      </div>
-    </motion.div>
-  )
-}
 
 export default function About() {
+  const navigate = useNavigate()
   return (
     <div className={styles.page}>
       <div className={styles.backRow}>
@@ -120,10 +96,18 @@ export default function About() {
           <p className={styles.sectionEyebrow}>Creative Work</p>
           <h2 className={styles.sectionTitle}>UI/UX & Graphic Design</h2>
           <p className={styles.sectionSubtitle}>A selection of design work — interfaces, editorial, and branding</p>
+          <motion.button
+            className={styles.boardBtn}
+            onClick={() => navigate('/design-board')}
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <span>View Design Board</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </motion.button>
         </motion.div>
-        <div className={styles.designGrid}>
-          {DESIGNS.map((item, i) => <DesignCard key={item.id} item={item} index={i} />)}
-        </div>
       </div>
     </div>
   )

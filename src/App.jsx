@@ -6,6 +6,7 @@ import Projects from './pages/Projects'
 import Skills from './pages/Skills'
 import Contact from './pages/Contact'
 import About from './pages/About'
+import DesignBoard from './pages/DesignBoard'
 
 function Home() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<><About /><Footer /></>} />
+        <Route path="/design-board" element={<DesignBoard />} />
       </Routes>
     </>
   )
