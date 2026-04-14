@@ -1,141 +1,111 @@
-import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import styles from './About.module.css'
+import { LEFT_CHIPS, RIGHT_CHIPS, DESIGNS, STATS } from '../data/about'
 
-const DESIGNS = [
-  {
-    id: 1,
-    title: 'Portfolio UI Design',
-    description: 'Personal portfolio concept with dark theme and motion',
-    image: null,
-    tag: 'UI Design'
-  },
-  {
-    id: 2,
-    title: 'College Magazine Layout',
-    description: 'Editorial design for annual college publication',
-    image: null,
-    tag: 'Print Design'
-  },
-  {
-    id: 3,
-    title: 'Yearbook Design',
-    description: 'Full yearbook layout with consistent visual identity',
-    image: null,
-    tag: 'Graphic Design'
-  },
-  {
-    id: 4,
-    title: 'App UI Prototype',
-    description: 'Mobile-first app wireframe and high-fidelity prototype',
-    image: null,
-    tag: 'Figma'
-  },
-  {
-    id: 5,
-    title: 'Brand Identity',
-    description: 'Logo and visual system for a student-run community',
-    image: null,
-    tag: 'Branding'
-  },
-  {
-    id: 6,
-    title: 'Dashboard Concept',
-    description: 'Data-rich analytics dashboard with clean layout',
-    image: null,
-    tag: 'UI Design'
-  }
-]
+function FloatChip({ label, icon, x, y, rotate, delay }) {
+  return (
+    <motion.div
+      className={styles.chip}
+      style={{ '--cx': `${x}px`, '--cy': `${y}px`, rotate }}
+      initial={{ opacity: 0, scale: 0.7 }}
+      animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+      transition={{
+        opacity: { duration: 0.5, delay },
+        scale:   { duration: 0.5, delay },
+        y: { duration: 3.5 + delay * 0.5, repeat: Infinity, ease: 'easeInOut', delay: delay * 0.4 }
+      }}
+      whileHover={{ scale: 1.08, rotate: 0 }}
+    >
+      <span className={styles.chipIcon}>{icon}</span>
+      <span className={styles.chipLabel}>{label}</span>
+    </motion.div>
+  )
+}
 
-const FACTS = [
-  { icon: '🎓', label: 'Degree', value: 'B.Tech — Information Technology' },
-  { icon: '📍', label: 'Based in', value: 'Vadodara, Gujarat, India' },
-  { icon: '🏆', label: 'Hackathons', value: 'Top 5 in 6+ events' },
-  { icon: '🚀', label: 'Community', value: 'Builder @ P.R.A.X.I.S Club' },
-]
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  show: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }
-  })
+function DesignCard({ item, index }) {
+  return (
+    <motion.div
+      className={styles.designCard}
+      style={{ '--card-accent': item.accent }}
+      initial={{ opacity: 0, y: 32 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      whileHover={{ y: -6 }}
+    >
+      <div className={styles.designImg}>
+        {item.image
+          ? <img src={item.image} alt={item.title} className={styles.designImgEl} />
+          : <div className={styles.designPlaceholder}><span className={styles.designPlaceholderIcon}>🎨</span></div>
+        }
+        <span className={styles.designCategory}>{item.category}</span>
+      </div>
+      <div className={styles.designBody}>
+        <h3 className={styles.designTitle}>{item.title}</h3>
+        <p className={styles.designDesc}>{item.description}</p>
+      </div>
+    </motion.div>
+  )
 }
 
 export default function About() {
   return (
-    <section className={styles.about} id="about">
-
-      {/* ── Back link ── */}
+    <div className={styles.page}>
       <div className={styles.backRow}>
-        <Link to="/" className={styles.backLink}>
-          ← Back to Home
-        </Link>
+        <Link to="/" className={styles.backLink}>← Back to Home</Link>
       </div>
 
-      {/* ── Intro ── */}
-      <div className={styles.introWrap}>
-        <motion.div
-          className={styles.intro}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <motion.p className={styles.eyebrow} variants={fadeUp} custom={0}>
-            About Me
-          </motion.p>
+      {/* ── Hero scene ── */}
+      <div className={styles.scene}>
 
-          <motion.h1 className={styles.heading} variants={fadeUp} custom={1}>
-            Builder. Designer.
-            <span className={styles.headingAccent}> Problem Solver.</span>
-          </motion.h1>
+        {/* Chips are absolute inside .chipsLayer which is centered */}
+        <div className={styles.chipsLayer}>
+          {LEFT_CHIPS.map((c) => <FloatChip key={c.label} {...c} />)}
+          {RIGHT_CHIPS.map((c) => <FloatChip key={c.label} {...c} />)}
+        </div>
 
-          <motion.p className={styles.bio} variants={fadeUp} custom={2}>
-            I'm Kunal — a B.Tech IT student who builds things that actually work.
-            I sit at the intersection of engineering and design, writing code that
-            performs and crafting interfaces that feel right. Whether it's a
-            full-stack web app, an automation workflow, or a pixel-perfect UI,
-            I care about the details that most people skip.
-          </motion.p>
-
-          <motion.p className={styles.bio} variants={fadeUp} custom={3}>
-            Outside of shipping projects, I mentor at workshops, contribute to
-            open source, and organise community events through P.R.A.X.I.S Club.
-            I believe the best work happens when curiosity meets execution.
-          </motion.p>
-
-          {/* Quick facts */}
-          <motion.div className={styles.facts} variants={fadeUp} custom={4}>
-            {FACTS.map((f) => (
-              <div key={f.label} className={styles.factItem}>
-                <span className={styles.factIcon}>{f.icon}</span>
-                <div>
-                  <span className={styles.factLabel}>{f.label}</span>
-                  <span className={styles.factValue}>{f.value}</span>
+        {/* Center card — sticky so it stays in view while chips scroll */}
+        <div className={styles.centerWrap}>
+          <motion.div
+            className={styles.centerCard}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className={styles.eyebrow}>About Me</span>
+            <h1 className={styles.heading}>
+              Builder.<br />Designer.<br />
+              <span className={styles.accent}>Problem Solver.</span>
+            </h1>
+            <p className={styles.bio}>
+              I'm Kunal — a B.Tech IT student who builds things that actually work.
+              I sit at the intersection of engineering and design, writing code that
+              performs and crafting interfaces that feel right.
+            </p>
+            <p className={styles.bio}>
+              Whether it's a full-stack web app, an automation workflow, or a
+              pixel-perfect UI — I care about the details that most people skip.
+            </p>
+            <div className={styles.meta}>
+              <div className={styles.metaItem}><span>🎓</span><span>B.Tech IT — SVIT, Vasad</span></div>
+              <div className={styles.metaItem}><span>📍</span><span>Vadodara, Gujarat, India</span></div>
+            </div>
+            <div className={styles.stats}>
+              {STATS.map((s) => (
+                <div key={s.label} className={styles.statItem}>
+                  <span className={styles.statNum}>{s.value}</span>
+                  <span className={styles.statLbl}>{s.label}</span>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className={styles.ctaRow}>
+              <a href="mailto:kunal.dev.official07@gmail.com" className={styles.btnPrimary}>Let's Talk</a>
+              <a href="https://linktr.ee/Kunal_Builds" target="_blank" rel="noopener noreferrer" className={styles.btnSecondary}>Linktree ↗</a>
+            </div>
           </motion.div>
+        </div>
 
-          {/* CTA row */}
-          <motion.div className={styles.ctaRow} variants={fadeUp} custom={5}>
-            <a
-              href="mailto:kunal.dev.official07@gmail.com"
-              className={styles.btnPrimary}
-            >
-              Let's Talk
-            </a>
-            <a
-              href="https://linktr.ee/Kunal_Builds"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.btnSecondary}
-            >
-              Linktree ↗
-            </a>
-          </motion.div>
-        </motion.div>
       </div>
 
       {/* ── Design Showcase ── */}
@@ -147,41 +117,14 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className={styles.eyebrow}>Creative Work</p>
-          <h2 className={styles.designTitle}>Designs</h2>
-          <p className={styles.designSubtitle}>
-            A selection of UI, graphic, and editorial work
-          </p>
+          <p className={styles.sectionEyebrow}>Creative Work</p>
+          <h2 className={styles.sectionTitle}>UI/UX & Graphic Design</h2>
+          <p className={styles.sectionSubtitle}>A selection of design work — interfaces, editorial, and branding</p>
         </motion.div>
-
-        <div className={styles.grid}>
-          {DESIGNS.map((item, i) => (
-            <motion.div
-              key={item.id}
-              className={styles.card}
-              initial={{ opacity: 0, y: 32 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -6, scale: 1.02 }}
-            >
-              {/* Image placeholder */}
-              <div className={styles.cardImage}>
-                <div className={styles.cardImagePlaceholder}>
-                  <span className={styles.cardImageIcon}>🎨</span>
-                </div>
-                <span className={styles.cardTag}>{item.tag}</span>
-              </div>
-
-              <div className={styles.cardBody}>
-                <h3 className={styles.cardTitle}>{item.title}</h3>
-                <p className={styles.cardDesc}>{item.description}</p>
-              </div>
-            </motion.div>
-          ))}
+        <div className={styles.designGrid}>
+          {DESIGNS.map((item, i) => <DesignCard key={item.id} item={item} index={i} />)}
         </div>
       </div>
-
-    </section>
+    </div>
   )
 }
