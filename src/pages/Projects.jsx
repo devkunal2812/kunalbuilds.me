@@ -105,10 +105,20 @@ function ProjectCard({ project, index }) {
 
             <div className={styles.visualColumn}>
               <div className={styles.projectVisual}>
-                <div className={styles.visualGrid} />
-                <div className={styles.visualOrb1} style={{ background: `radial-gradient(circle, ${project.accent}28, transparent 70%)` }} />
-                <div className={styles.visualOrb2} style={{ background: `radial-gradient(circle, ${project.accent}18, transparent 70%)` }} />
-                <div className={styles.visualCorner} />
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    className={styles.projectScreenshot}
+                  />
+                ) : (
+                  <>
+                    <div className={styles.visualGrid} />
+                    <div className={styles.visualOrb1} style={{ background: `radial-gradient(circle, ${project.accent}28, transparent 70%)` }} />
+                    <div className={styles.visualOrb2} style={{ background: `radial-gradient(circle, ${project.accent}18, transparent 70%)` }} />
+                    <div className={styles.visualCorner} />
+                  </>
+                )}
                 <div className={styles.liveBadge}>
                   <span className={styles.liveDot} />
                   Live

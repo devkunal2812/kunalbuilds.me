@@ -2,6 +2,10 @@
 //  Projects Data  —  Kunal Chauhan
 // ─────────────────────────────────────────────
 
+import feudexeImg from '../assets/feudexe-preview.png'
+import praxisImg from '../assets/praxis-preview.png'
+import clipsyncImg from '../assets/clipsync-preview.png'
+
 export const PROJECTS = [
   {
     id: 1,
@@ -12,6 +16,7 @@ export const PROJECTS = [
     tech: ['React', 'JavaScript', 'Vercel'],
     accent: '#3b82f6',
     icon: '🧠',
+    image: feudexeImg,
     stats: [
       { label: 'Experience', value: 'Interactive' },
       { label: 'Focus', value: 'UI/UX' }
@@ -29,8 +34,9 @@ export const PROJECTS = [
     description:
       'Students lack a simple platform for coding practice in workshops → built a coding platform for real-time problem solving, test hosting, and future workshop scalability.',
     tech: ['React', 'Node.js', 'JavaScript', 'Vercel'],
-    accent: '#8b5cf6',
+    accent: '#22c55e',
     icon: '💻',
+    image: praxisImg,
     stats: [
       { label: 'Use Case', value: 'Workshops' },
       { label: 'Mode', value: 'Live Practice' }
@@ -50,6 +56,7 @@ export const PROJECTS = [
     tech: ['Python', 'Java', 'Logic Design'],
     accent: '#10b981',
     icon: '📚',
+    image: null,
     stats: [
       { label: 'Approach', value: 'Structured' },
       { label: 'Stage', value: 'Prototype' }
@@ -69,6 +76,7 @@ export const PROJECTS = [
     tech: ['React', 'Node.js', 'WebSockets'],
     accent: '#f97316',
     icon: '📋',
+    image: clipsyncImg,
     stats: [
       { label: 'Sync', value: 'Real-time' },
       { label: 'Devices', value: 'Multi-device' }
@@ -82,21 +90,10 @@ export const PROJECTS = [
 ]
 
 export const PROJECT_CATEGORIES = [
-  'All',
-  'Full-Stack',
-  'Frontend',
-  'AI / Automation',
-  'Backend',
-  'Mobile'
+  'All', 'Full-Stack', 'Frontend', 'AI / Automation', 'Backend', 'Mobile'
 ]
 
 export const TECH_STACK = [
-  'React',
-  'Node.js',
-  'JavaScript',
-  'Python',
-  'Java',
-  'WebSockets',
-  'Vercel',
-  'Logic Design'
+  'React', 'Node.js', 'JavaScript', 'Python', 'Java',
+  'WebSockets', 'Vercel', 'Logic Design'
 ]
