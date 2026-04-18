@@ -6,6 +6,18 @@ export default function PageLoader() {
   const [isLoading, setIsLoading] = useState(true)
   const [progress, setProgress] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(true)
+
+  // Detect user's theme preference
+  useEffect(() => {
+    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    setIsDarkMode(darkModeQuery.matches)
+
+    const handleChange = (e) => setIsDarkMode(e.matches)
+    darkModeQuery.addEventListener('change', handleChange)
+    
+    return () => darkModeQuery.removeEventListener('change', handleChange)
+  }, [])
 
   useEffect(() => {
     const MINIMUM_DURATION = 2000 // 2 seconds minimum
@@ -62,7 +74,7 @@ export default function PageLoader() {
     <AnimatePresence mode="wait">
       {isLoading && (
         <motion.div
-          className={styles.loader}
+          className={`${styles.loader} ${isDarkMode ? styles.dark : styles.light}`}
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
