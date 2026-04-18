@@ -1,0 +1,78 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#FFFFFF"/>
+  
+  <!-- Title -->
+  <text x="600" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Landing Page Wireframe</text>
+  
+  <!-- Browser Frame -->
+  <rect x="60" y="70" width="1080" height="680" rx="12" stroke="#E2E8F0" stroke-width="3" fill="#FAFAFA"/>
+  
+  <!-- Browser Header -->
+  <rect x="60" y="70" width="1080" height="50" rx="12" fill="#F1F5F9"/>
+  <circle cx="85" cy="95" r="8" fill="#EF4444"/>
+  <circle cx="110" cy="95" r="8" fill="#F59E0B"/>
+  <circle cx="135" cy="95" r="8" fill="#10B981"/>
+  <rect x="170" y="82" width="700" height="26" rx="13" fill="#E2E8F0"/>
+  <text x="190" y="100" font-family="Arial" font-size="12" fill="#94A3B8">🔒 https://yourwebsite.com</text>
+  
+  <!-- Navigation -->
+  <text x="90" y="160" font-family="Arial" font-size="18" font-weight="bold" fill="#0F172A">YourBrand</text>
+  <text x="900" y="160" font-family="Arial" font-size="14" fill="#64748B">Home</text>
+  <text x="970" y="160" font-family="Arial" font-size="14" fill="#64748B">Features</text>
+  <text x="1050" y="160" font-family="Arial" font-size="14" fill="#64748B">Pricing</text>
+  
+  <rect x="900" y="145" width="50" height="24" rx="4" stroke="#3B82F6" stroke-width="2" fill="none"/>
+  <text x="925" y="162" font-family="Arial" font-size="13" font-weight="600" fill="#3B82F6" text-anchor="middle">Login</text>
+  
+  <rect x="970" y="145" width="80" height="24" rx="4" fill="#3B82F6"/>
+  <text x="1010" y="162" font-family="Arial" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">Sign Up</text>
+  
+  <!-- Hero Section -->
+  <text x="120" y="240" font-family="Arial" font-size="36" font-weight="bold" fill="#0F172A">Build Amazing</text>
+  <text x="120" y="280" font-family="Arial" font-size="36" font-weight="bold" fill="#0F172A">Products Faster</text>
+  <text x="120" y="330" font-family="Arial" font-size="16" fill="#64748B">The complete platform for modern teams to</text>
+  <text x="120" y="355" font-family="Arial" font-size="16" fill="#64748B">design, develop, and deploy amazing products.</text>
+  
+  <rect x="120" y="390" width="160" height="50" rx="12" fill="#3B82F6"/>
+  <text x="200" y="422" font-family="Arial" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Get Started →</text>
+  
+  <rect x="300" y="390" width="160" height="50" rx="12" stroke="#0F172A" stroke-width="2" fill="none"/>
+  <text x="380" y="422" font-family="Arial" font-size="16" font-weight="600" fill="#0F172A" text-anchor="middle">Watch Demo</text>
+  
+  <!-- Hero Image Placeholder -->
+  <rect x="650" y="210" width="420" height="280" rx="16" fill="#E0E7FF"/>
+  <rect x="650" y="210" width="420" height="280" rx="16" stroke="#BFDBFE" stroke-width="2" fill="none"/>
+  <text x="860" y="360" font-family="Arial" font-size="64" text-anchor="middle">🚀</text>
+  <text x="860" y="390" font-family="Arial" font-size="14" fill="#3B82F6" text-anchor="middle">Hero Image</text>
+  
+  <!-- Features Section -->
+  <text x="600" y="550" font-family="Arial" font-size="28" font-weight="bold" fill="#0F172A" text-anchor="middle">Key Features</text>
+  
+  <rect x="120" y="580" width="280" height="140" rx="16" stroke="#E2E8F0" stroke-width="2" fill="#FFFFFF"/>
+  <text x="180" y="630" font-family="Arial" font-size="32">⚡</text>
+  <text x="230" y="630" font-family="Arial" font-size="18" font-weight="600" fill="#0F172A">Lightning Fast</text>
+  <text x="180" y="660" font-family="Arial" font-size="14" fill="#64748B">Optimized performance</text>
+  <text x="180" y="680" font-family="Arial" font-size="14" fill="#64748B">for speed and efficiency</text>
+  
+  <rect x="460" y="580" width="280" height="140" rx="16" stroke="#E2E8F0" stroke-width="2" fill="#FFFFFF"/>
+  <text x="520" y="630" font-family="Arial" font-size="32">🔒</text>
+  <text x="570" y="630" font-family="Arial" font-size="18" font-weight="600" fill="#0F172A">Secure by Default</text>
+  <text x="520" y="660" font-family="Arial" font-size="14" fill="#64748B">Enterprise-grade security</text>
+  <text x="520" y="680" font-family="Arial" font-size="14" fill="#64748B">built into every feature</text>
+  
+  <rect x="800" y="580" width="280" height="140" rx="16" stroke="#E2E8F0" stroke-width="2" fill="#FFFFFF"/>
+  <text x="860" y="630" font-family="Arial" font-size="32">🎨</text>
+  <text x="910" y="630" font-family="Arial" font-size="18" font-weight="600" fill="#0F172A">Beautiful Design</text>
+  <text x="860" y="660" font-family="Arial" font-size="14" fill="#64748B">Pixel-perfect interfaces</text>
+  <text x="860" y="680" font-family="Arial" font-size="14" fill="#64748B">that users love</text>
+  
+  <!-- Annotations -->
+  <line x1="480" y1="250" x2="630" y2="250" stroke="#3B82F6" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="630" cy="250" r="6" fill="#3B82F6"/>
+  <text x="500" y="240" font-family="Arial" font-size="12" fill="#3B82F6">Hero Section</text>
+  
+  <line x1="410" y1="650" x2="450" y2="650" stroke="#10B981" stroke-width="2" stroke-dasharray="6 6"/>
+  <circle cx="450" cy="650" r="6" fill="#10B981"/>
+  <text x="350" y="640" font-family="Arial" font-size="12" fill="#10B981">Features</text>
+</svg>

@@ -1,0 +1,153 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F8FAFC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E2E8F0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="600" y="50" font-family="Arial" font-size="24" font-weight="bold" fill="#0F172A" text-anchor="middle">Mobile App UI Design</text>
+  
+  <!-- Phone Frame 1 - Light Mode -->
+  <rect x="100" y="100" width="300" height="640" rx="40" fill="#1E293B"/>
+  <rect x="120" y="120" width="260" height="600" rx="32" fill="#FFFFFF"/>
+  
+  <!-- Notch -->
+  <rect x="190" y="120" width="120" height="28" rx="14" fill="#1E293B"/>
+  
+  <!-- Status Bar -->
+  <text x="140" y="165" font-family="Arial" font-size="12" font-weight="600" fill="#0F172A">9:41</text>
+  <text x="340" y="165" font-family="Arial" font-size="12" fill="#0F172A">📶 🔋</text>
+  
+  <!-- Header -->
+  <circle cx="155" cy="205" r="26" fill="#3B82F6"/>
+  <text x="155" y="213" font-family="Arial" font-size="18" fill="#FFFFFF" text-anchor="middle">KC</text>
+  <text x="190" y="202" font-family="Arial" font-size="15" font-weight="600" fill="#0F172A">Hello, Kunal!</text>
+  <text x="190" y="218" font-family="Arial" font-size="12" fill="#64748B">Welcome back 👋</text>
+  
+  <!-- Search Bar -->
+  <rect x="140" y="255" width="200" height="44" rx="22" fill="#F1F5F9"/>
+  <text x="165" y="282" font-family="Arial" font-size="14" fill="#94A3B8">🔍 Search...</text>
+  
+  <!-- Category Pills -->
+  <rect x="140" y="325" width="75" height="34" rx="17" fill="#3B82F6"/>
+  <text x="177" y="347" font-family="Arial" font-size="13" font-weight="600" fill="#FFFFFF" text-anchor="middle">All</text>
+  
+  <rect x="225" y="325" width="65" height="34" rx="17" fill="#E2E8F0"/>
+  <text x="257" y="347" font-family="Arial" font-size="13" fill="#64748B" text-anchor="middle">New</text>
+  
+  <rect x="300" y="325" width="60" height="34" rx="17" fill="#E2E8F0"/>
+  <text x="330" y="347" font-family="Arial" font-size="13" fill="#64748B" text-anchor="middle">Hot</text>
+  
+  <!-- Content Cards -->
+  <rect x="140" y="385" width="200" height="130" rx="16" fill="#F8FAFC"/>
+  <rect x="140" y="385" width="200" height="130" rx="16" stroke="#E2E8F0" stroke-width="2" fill="none"/>
+  <rect x="155" y="400" width="170" height="80" rx="12" fill="#E0E7FF"/>
+  <text x="240" y="445" font-family="Arial" font-size="24" fill="#3B82F6" text-anchor="middle">📱</text>
+  <text x="155" y="495" font-family="Arial" font-size="14" font-weight="600" fill="#0F172A">Mobile Design</text>
+  <text x="155" y="508" font-family="Arial" font-size="11" fill="#64748B">24 items</text>
+  
+  <rect x="140" y="535" width="200" height="130" rx="16" fill="#F8FAFC"/>
+  <rect x="140" y="535" width="200" height="130" rx="16" stroke="#E2E8F0" stroke-width="2" fill="none"/>
+  <rect x="155" y="550" width="170" height="80" rx="12" fill="#DBEAFE"/>
+  <text x="240" y="595" font-family="Arial" font-size="24" fill="#0EA5E9" text-anchor="middle">🎨</text>
+  <text x="155" y="645" font-family="Arial" font-size="14" font-weight="600" fill="#0F172A">UI Components</text>
+  <text x="155" y="658" font-family="Arial" font-size="11" fill="#64748B">18 items</text>
+  
+  <!-- Bottom Nav -->
+  <text x="165" y="695" font-family="Arial" font-size="18">🏠</text>
+  <text x="215" y="695" font-family="Arial" font-size="18" opacity="0.4">🔍</text>
+  <text x="265" y="695" font-family="Arial" font-size="18" opacity="0.4">❤️</text>
+  <text x="315" y="695" font-family="Arial" font-size="18" opacity="0.4">👤</text>
+  
+  <!-- Phone Frame 2 - Dark Mode -->
+  <rect x="450" y="100" width="300" height="640" rx="40" fill="#1E293B"/>
+  <rect x="470" y="120" width="260" height="600" rx="32" fill="#0F172A"/>
+  
+  <!-- Notch -->
+  <rect x="540" y="120" width="120" height="28" rx="14" fill="#1E293B"/>
+  
+  <!-- Status Bar -->
+  <text x="490" y="165" font-family="Arial" font-size="12" font-weight="600" fill="#F8FAFC">9:41</text>
+  <text x="690" y="165" font-family="Arial" font-size="12" fill="#F8FAFC">📶 🔋</text>
+  
+  <!-- Profile Header -->
+  <circle cx="600" cy="215" r="38" fill="#3B82F6"/>
+  <text x="600" y="225" font-family="Arial" font-size="22" fill="#FFFFFF" text-anchor="middle">KC</text>
+  <text x="600" y="270" font-family="Arial" font-size="18" font-weight="600" fill="#F8FAFC" text-anchor="middle">Kunal Chauhan</text>
+  <text x="600" y="290" font-family="Arial" font-size="13" fill="#64748B" text-anchor="middle">Product Designer</text>
+  
+  <!-- Stats -->
+  <rect x="495" y="330" width="65" height="55" rx="12" fill="#1E293B"/>
+  <rect x="495" y="330" width="65" height="55" rx="12" stroke="#334155" stroke-width="1" fill="none"/>
+  <text x="527" y="355" font-family="Arial" font-size="18" font-weight="bold" fill="#3B82F6" text-anchor="middle">24</text>
+  <text x="527" y="372" font-family="Arial" font-size="10" fill="#64748B" text-anchor="middle">Projects</text>
+  
+  <rect x="570" y="330" width="65" height="55" rx="12" fill="#1E293B"/>
+  <rect x="570" y="330" width="65" height="55" rx="12" stroke="#334155" stroke-width="1" fill="none"/>
+  <text x="602" y="355" font-family="Arial" font-size="18" font-weight="bold" fill="#10B981" text-anchor="middle">1.2K</text>
+  <text x="602" y="372" font-family="Arial" font-size="10" fill="#64748B" text-anchor="middle">Followers</text>
+  
+  <rect x="645" y="330" width="65" height="55" rx="12" fill="#1E293B"/>
+  <rect x="645" y="330" width="65" height="55" rx="12" stroke="#334155" stroke-width="1" fill="none"/>
+  <text x="677" y="355" font-family="Arial" font-size="18" font-weight="bold" fill="#F59E0B" text-anchor="middle">89</text>
+  <text x="677" y="372" font-family="Arial" font-size="10" fill="#64748B" text-anchor="middle">Following</text>
+  
+  <!-- Content Grid -->
+  <rect x="490" y="410" width="105" height="105" rx="16" fill="#1E293B"/>
+  <rect x="490" y="410" width="105" height="105" rx="16" stroke="#334155" stroke-width="1" fill="none"/>
+  <text x="542" y="470" font-family="Arial" font-size="32" text-anchor="middle">🎨</text>
+  <text x="542" y="495" font-family="Arial" font-size="11" fill="#94A3B8" text-anchor="middle">Design</text>
+  
+  <rect x="605" y="410" width="105" height="105" rx="16" fill="#1E293B"/>
+  <rect x="605" y="410" width="105" height="105" rx="16" stroke="#334155" stroke-width="1" fill="none"/>
+  <text x="657" y="470" font-family="Arial" font-size="32" text-anchor="middle">💻</text>
+  <text x="657" y="495" font-family="Arial" font-size="11" fill="#94A3B8" text-anchor="middle">Code</text>
+  
+  <rect x="490" y="525" width="105" height="105" rx="16" fill="#1E293B"/>
+  <rect x="490" y="525" width="105" height="105" rx="16" stroke="#334155" stroke-width="1" fill="none"/>
+  <text x="542" y="585" font-family="Arial" font-size="32" text-anchor="middle">📱</text>
+  <text x="542" y="610" font-family="Arial" font-size="11" fill="#94A3B8" text-anchor="middle">Mobile</text>
+  
+  <rect x="605" y="525" width="105" height="105" rx="16" fill="#1E293B"/>
+  <rect x="605" y="525" width="105" height="105" rx="16" stroke="#334155" stroke-width="1" fill="none"/>
+  <text x="657" y="585" font-family="Arial" font-size="32" text-anchor="middle">🚀</text>
+  <text x="657" y="610" font-family="Arial" font-size="11" fill="#94A3B8" text-anchor="middle">Launch</text>
+  
+  <!-- Bottom Nav -->
+  <text x="520" y="679" font-family="Arial" font-size="18">🏠</text>
+  <text x="570" y="679" font-family="Arial" font-size="18" opacity="0.4">🔍</text>
+  <text x="620" y="679" font-family="Arial" font-size="18" opacity="0.4">➕</text>
+  <text x="670" y="679" font-family="Arial" font-size="18" opacity="0.4">👤</text>
+  
+  <!-- Phone Frame 3 - Tablet -->
+  <rect x="820" y="170" width="320" height="500" rx="32" fill="#1E293B"/>
+  <rect x="835" y="185" width="290" height="470" rx="24" fill="#FFFFFF"/>
+  
+  <!-- Tablet Header -->
+  <text x="855" y="220" font-family="Arial" font-size="20" font-weight="bold" fill="#0F172A">Dashboard</text>
+  <text x="855" y="245" font-family="Arial" font-size="13" fill="#64748B">Manage your projects</text>
+  
+  <!-- Tablet Content -->
+  <rect x="855" y="275" width="250" height="100" rx="16" fill="#E0E7FF"/>
+  <rect x="855" y="275" width="250" height="100" rx="16" stroke="#BFDBFE" stroke-width="2" fill="none"/>
+  <text x="980" y="330" font-family="Arial" font-size="32" text-anchor="middle">📊</text>
+  <text x="980" y="360" font-family="Arial" font-size="14" font-weight="600" fill="#1E40AF" text-anchor="middle">Analytics</text>
+  
+  <rect x="855" y="395" width="250" height="100" rx="16" fill="#DBEAFE"/>
+  <rect x="855" y="395" width="250" height="100" rx="16" stroke="#93C5FD" stroke-width="2" fill="none"/>
+  <text x="980" y="450" font-family="Arial" font-size="32" text-anchor="middle">⚙️</text>
+  <text x="980" y="480" font-family="Arial" font-size="14" font-weight="600" fill="#0369A1" text-anchor="middle">Settings</text>
+  
+  <rect x="855" y="515" width="250" height="50" rx="25" fill="#3B82F6"/>
+  <text x="980" y="547" font-family="Arial" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">Get Started →</text>
+  
+  <!-- Decorative Elements -->
+  <circle cx="60" cy="140" r="30" fill="#3B82F6" opacity="0.1"/>
+  <circle cx="1140" cy="700" r="40" fill="#10B981" opacity="0.1"/>
+  <text x="30" y="640" font-family="Arial" font-size="40" opacity="0.1">🎨</text>
+  <text x="1120" y="140" font-family="Arial" font-size="50" opacity="0.1">✨</text>
+</svg>

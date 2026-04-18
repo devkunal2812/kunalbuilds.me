@@ -1,0 +1,145 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#FAFAFA"/>
+  
+  <!-- Title -->
+  <text x="60" y="60" font-family="Arial" font-size="32" font-weight="bold" fill="#0F172A">Component Library</text>
+  <rect x="60" y="70" width="250" height="4" rx="2" fill="#3B82F6"/>
+  <text x="60" y="100" font-family="Arial" font-size="14" fill="#64748B">Reusable UI components for modern applications</text>
+  
+  <!-- Buttons Section -->
+  <text x="60" y="150" font-family="Arial" font-size="16" font-weight="700" fill="#64748B">BUTTONS</text>
+  
+  <rect x="60" y="170" width="140" height="48" rx="12" fill="#3B82F6"/>
+  <text x="130" y="199" font-family="Arial" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">Primary</text>
+  
+  <rect x="220" y="170" width="140" height="48" rx="12" stroke="#3B82F6" stroke-width="2" fill="none"/>
+  <text x="290" y="199" font-family="Arial" font-size="15" font-weight="600" fill="#3B82F6" text-anchor="middle">Secondary</text>
+  
+  <rect x="380" y="170" width="140" height="48" rx="12" fill="#E2E8F0"/>
+  <text x="450" y="199" font-family="Arial" font-size="15" font-weight="600" fill="#94A3B8" text-anchor="middle">Disabled</text>
+  
+  <rect x="540" y="170" width="140" height="48" rx="12" fill="#10B981"/>
+  <text x="610" y="199" font-family="Arial" font-size="15" font-weight="600" fill="#FFFFFF" text-anchor="middle">Success ✓</text>
+  
+  <!-- Input Fields -->
+  <text x="60" y="270" font-family="Arial" font-size="16" font-weight="700" fill="#64748B">INPUT FIELDS</text>
+  
+  <rect x="60" y="290" width="240" height="52" rx="12" stroke="#CBD5E1" stroke-width="2" fill="#FFFFFF"/>
+  <text x="75" y="321" font-family="Arial" font-size="15" fill="#94A3B8">Enter your email...</text>
+  
+  <rect x="320" y="290" width="240" height="52" rx="12" stroke="#3B82F6" stroke-width="2" fill="#FFFFFF"/>
+  <text x="335" y="321" font-family="Arial" font-size="15" fill="#0F172A">user@example.com</text>
+  
+  <rect x="580" y="290" width="240" height="52" rx="12" stroke="#EF4444" stroke-width="2" fill="#FEF2F2"/>
+  <text x="595" y="321" font-family="Arial" font-size="15" fill="#EF4444">Invalid email</text>
+  
+  <!-- Cards -->
+  <text x="60" y="390" font-family="Arial" font-size="16" font-weight="700" fill="#64748B">CARDS</text>
+  
+  <rect x="60" y="410" width="220" height="180" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="80" y="430" width="180" height="80" rx="12" fill="#E0E7FF"/>
+  <text x="170" y="475" font-family="Arial" font-size="32" text-anchor="middle">📱</text>
+  <text x="80" y="535" font-family="Arial" font-size="16" font-weight="600" fill="#0F172A">Mobile App</text>
+  <text x="80" y="555" font-family="Arial" font-size="13" fill="#64748B">iOS & Android design</text>
+  <text x="80" y="575" font-family="Arial" font-size="12" fill="#3B82F6">Learn more →</text>
+  
+  <rect x="300" y="410" width="220" height="180" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="320" y="430" width="180" height="80" rx="12" fill="#D1FAE5"/>
+  <text x="410" y="475" font-family="Arial" font-size="32" text-anchor="middle">🎨</text>
+  <text x="320" y="535" font-family="Arial" font-size="16" font-weight="600" fill="#0F172A">UI Design</text>
+  <text x="320" y="555" font-family="Arial" font-size="13" fill="#64748B">Beautiful interfaces</text>
+  <text x="320" y="575" font-family="Arial" font-size="12" fill="#10B981">Learn more →</text>
+  
+  <rect x="540" y="410" width="220" height="180" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <rect x="560" y="430" width="180" height="80" rx="12" fill="#FEF3C7"/>
+  <text x="650" y="475" font-family="Arial" font-size="32" text-anchor="middle">⚡</text>
+  <text x="560" y="535" font-family="Arial" font-size="16" font-weight="600" fill="#0F172A">Performance</text>
+  <text x="560" y="555" font-family="Arial" font-size="13" fill="#64748B">Lightning fast</text>
+  <text x="560" y="575" font-family="Arial" font-size="12" fill="#F59E0B">Learn more →</text>
+  
+  <!-- Badges -->
+  <text x="840" y="150" font-family="Arial" font-size="16" font-weight="700" fill="#64748B">BADGES</text>
+  
+  <rect x="840" y="170" width="80" height="32" rx="16" fill="#DBEAFE"/>
+  <text x="880" y="191" font-family="Arial" font-size="13" font-weight="600" fill="#1E40AF" text-anchor="middle">New</text>
+  
+  <rect x="930" y="170" width="90" height="32" rx="16" fill="#D1FAE5"/>
+  <text x="975" y="191" font-family="Arial" font-size="13" font-weight="600" fill="#065F46" text-anchor="middle">Active</text>
+  
+  <rect x="1030" y="170" width="100" height="32" rx="16" fill="#FEE2E2"/>
+  <text x="1080" y="191" font-family="Arial" font-size="13" font-weight="600" fill="#991B1B" text-anchor="middle">Urgent</text>
+  
+  <!-- Toggle Switches -->
+  <text x="840" y="250" font-family="Arial" font-size="16" font-weight="700" fill="#64748B">TOGGLES</text>
+  
+  <rect x="840" y="270" width="60" height="32" rx="16" fill="#3B82F6"/>
+  <circle cx="872" cy="286" r="12" fill="#FFFFFF"/>
+  <text x="915" y="291" font-family="Arial" font-size="13" fill="#64748B">On</text>
+  
+  <rect x="980" y="270" width="60" height="32" rx="16" fill="#CBD5E1"/>
+  <circle cx="996" cy="286" r="12" fill="#FFFFFF"/>
+  <text x="1055" y="291" font-family="Arial" font-size="13" fill="#64748B">Off</text>
+  
+  <!-- Checkboxes & Radio -->
+  <text x="840" y="350" font-family="Arial" font-size="16" font-weight="700" fill="#64748B">SELECTION</text>
+  
+  <rect x="840" y="370" width="28" height="28" rx="8" stroke="#3B82F6" stroke-width="2" fill="#3B82F6"/>
+  <path d="M 847 378 L 854 385 L 861 372" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="880" y="389" font-family="Arial" font-size="14" fill="#64748B">Checked</text>
+  
+  <rect x="980" y="370" width="28" height="28" rx="8" stroke="#CBD5E1" stroke-width="2" fill="none"/>
+  <text x="1020" y="389" font-family="Arial" font-size="14" fill="#64748B">Unchecked</text>
+  
+  <circle cx="854" cy="430" r="14" stroke="#3B82F6" stroke-width="2" fill="#3B82F6"/>
+  <circle cx="854" cy="430" r="6" fill="#FFFFFF"/>
+  <text x="880" y="436" font-family="Arial" font-size="14" fill="#64748B">Selected</text>
+  
+  <circle cx="994" cy="430" r="14" stroke="#CBD5E1" stroke-width="2" fill="none"/>
+  <text x="1020" y="436" font-family="Arial" font-size="14" fill="#64748B">Unselected</text>
+  
+  <!-- Progress Bars -->
+  <text x="840" y="490" font-family="Arial" font-size="16" font-weight="700" fill="#64748B">PROGRESS</text>
+  
+  <rect x="840" y="510" width="320" height="10" rx="5" fill="#E2E8F0"/>
+  <rect x="840" y="510" width="192" height="10" rx="5" fill="#3B82F6"/>
+  <text x="1170" y="519" font-family="Arial" font-size="12" fill="#64748B">60%</text>
+  
+  <rect x="840" y="540" width="320" height="10" rx="5" fill="#E2E8F0"/>
+  <rect x="840" y="540" width="256" height="10" rx="5" fill="#10B981"/>
+  <text x="1170" y="549" font-family="Arial" font-size="12" fill="#64748B">80%</text>
+  
+  <rect x="840" y="570" width="320" height="10" rx="5" fill="#E2E8F0"/>
+  <rect x="840" y="570" width="128" height="10" rx="5" fill="#F59E0B"/>
+  <text x="1170" y="579" font-family="Arial" font-size="12" fill="#64748B">40%</text>
+  
+  <!-- Avatars -->
+  <text x="60" y="650" font-family="Arial" font-size="16" font-weight="700" fill="#64748B">AVATARS</text>
+  
+  <circle cx="90" cy="700" r="30" fill="#3B82F6"/>
+  <text x="90" y="710" font-family="Arial" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">KC</text>
+  
+  <circle cx="170" cy="700" r="30" fill="#10B981"/>
+  <text x="170" y="710" font-family="Arial" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">AB</text>
+  
+  <circle cx="250" cy="700" r="30" fill="#F59E0B"/>
+  <text x="250" y="710" font-family="Arial" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">XY</text>
+  
+  <circle cx="330" cy="700" r="30" fill="#8B5CF6"/>
+  <text x="330" y="710" font-family="Arial" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">PQ</text>
+  
+  <circle cx="410" cy="700" r="30" fill="#EC4899"/>
+  <text x="410" y="710" font-family="Arial" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">MN</text>
+  
+  <!-- Icons -->
+  <text x="840" y="650" font-family="Arial" font-size="16" font-weight="700" fill="#64748B">ICONS</text>
+  
+  <text x="860" y="700" font-family="Arial" font-size="32">🏠</text>
+  <text x="920" y="700" font-family="Arial" font-size="32">🔍</text>
+  <text x="980" y="700" font-family="Arial" font-size="32">❤️</text>
+  <text x="1040" y="700" font-family="Arial" font-size="32">⚙️</text>
+  <text x="1100" y="700" font-family="Arial" font-size="32">👤</text>
+  
+  <!-- Grid Lines -->
+  <line x1="800" y1="120" x2="800" y2="750" stroke="#E2E8F0" stroke-width="2"/>
+</svg>

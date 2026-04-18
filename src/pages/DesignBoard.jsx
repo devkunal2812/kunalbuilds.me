@@ -45,7 +45,15 @@ function PhotoCard({ item, index, onSelect }) {
               className={styles.photoImg}
               {...getImageProtectionProps()}
             />
-          : <div className={styles.photoPlaceholder}><span className={styles.photoPlaceholderIcon}>📷</span></div>
+          : <div className={styles.photoPlaceholder}>
+              <span className={styles.photoPlaceholderIcon}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </span>
+            </div>
         }
       </div>
       <div className={styles.stickyLabel} style={{ background: item.accent }}>
@@ -115,7 +123,11 @@ function ExpandedView({ item, onClose }) {
               />
             : (
               <div className={styles.expandedPlaceholder} style={{ '--accent': item.accent }}>
-                <span className={styles.expandedPlaceholderIcon}>🎨</span>
+                <span className={styles.expandedPlaceholderIcon}>
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                  </svg>
+                </span>
                 <span className={styles.expandedPlaceholderLabel}>{item.category}</span>
               </div>
             )

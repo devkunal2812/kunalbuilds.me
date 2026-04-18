@@ -15,7 +15,7 @@ export const PROJECTS = [
       'Traditional quizzes feel static and boring -> built an interactive quiz platform with engaging UI and smooth user flows to improve participation and user experience.',
     tech: ['React', 'JavaScript', 'Vercel'],
     accent: '#3b82f6',
-    icon: '🧠',
+    icon: '◆',
     image: feudexeImg,
     stats: [
       { label: 'Experience', value: 'Interactive' },
@@ -35,7 +35,7 @@ export const PROJECTS = [
       'Students lack a simple platform for coding practice in workshops -> built a coding platform for real-time problem solving, test hosting, and future workshop scalability.',
     tech: ['React', 'Node.js', 'JavaScript', 'Vercel'],
     accent: '#22c55e',
-    icon: '💻',
+    icon: '▸',
     image: praxisImg,
     stats: [
       { label: 'Use Case', value: 'Workshops' },
@@ -55,7 +55,7 @@ export const PROJECTS = [
       'Preparing for exams and interviews is unstructured -> developed a system to organize preparation workflows and streamline learning with structured logic and automation.',
     tech: ['Python', 'Java', 'Logic Design'],
     accent: '#10b981',
-    icon: '📚',
+    icon: '■',
     image: null,
     stats: [
       { label: 'Approach', value: 'Structured' },
@@ -75,7 +75,7 @@ export const PROJECTS = [
       'Copy-paste across devices is inefficient -> built a real-time clipboard sync tool that enables seamless sharing of copied content between multiple devices.',
     tech: ['React', 'Node.js', 'WebSockets'],
     accent: '#f97316',
-    icon: '📋',
+    icon: '●',
     image: clipsyncImg,
     stats: [
       { label: 'Sync', value: 'Real-time' },

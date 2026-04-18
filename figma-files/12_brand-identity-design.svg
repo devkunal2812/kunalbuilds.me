@@ -1,0 +1,105 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#FAFAFA"/>
+  
+  <!-- Title -->
+  <text x="600" y="60" font-family="Arial" font-size="32" font-weight="bold" fill="#0F172A" text-anchor="middle">Brand Identity System</text>
+  <text x="600" y="90" font-family="Arial" font-size="16" fill="#64748B" text-anchor="middle">Complete visual identity package</text>
+  
+  <!-- Main Logo -->
+  <circle cx="600" cy="200" r="70" fill="#3B82F6"/>
+  <path d="M 575 180 L 600 230 L 625 180" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <circle cx="600" cy="200" r="60" stroke="#FFFFFF" stroke-width="4" fill="none"/>
+  
+  <!-- Brand Name -->
+  <text x="600" y="300" font-family="Arial" font-size="28" font-weight="bold" fill="#0F172A" text-anchor="middle">PRAXIS</text>
+  <text x="600" y="325" font-family="Arial" font-size="14" fill="#64748B" text-anchor="middle">Coding Platform</text>
+  
+  <!-- Color Palette -->
+  <text x="100" y="380" font-family="Arial" font-size="20" font-weight="bold" fill="#0F172A">Color Palette</text>
+  
+  <rect x="100" y="400" width="100" height="100" rx="16" fill="#3B82F6"/>
+  <text x="150" y="460" font-family="Arial" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Primary</text>
+  <text x="150" y="520" font-family="monospace" font-size="13" fill="#64748B" text-anchor="middle">#3B82F6</text>
+  
+  <rect x="220" y="400" width="100" height="100" rx="16" fill="#0F172A"/>
+  <text x="270" y="460" font-family="Arial" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Dark</text>
+  <text x="270" y="520" font-family="monospace" font-size="13" fill="#64748B" text-anchor="middle">#0F172A</text>
+  
+  <rect x="340" y="400" width="100" height="100" rx="16" fill="#F8FAFC"/>
+  <rect x="340" y="400" width="100" height="100" rx="16" stroke="#E2E8F0" stroke-width="2" fill="none"/>
+  <text x="390" y="460" font-family="Arial" font-size="16" font-weight="600" fill="#0F172A" text-anchor="middle">Light</text>
+  <text x="390" y="520" font-family="monospace" font-size="13" fill="#64748B" text-anchor="middle">#F8FAFC</text>
+  
+  <rect x="460" y="400" width="100" height="100" rx="16" fill="#10B981"/>
+  <text x="510" y="460" font-family="Arial" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Success</text>
+  <text x="510" y="520" font-family="monospace" font-size="13" fill="#64748B" text-anchor="middle">#10B981</text>
+  
+  <rect x="580" y="400" width="100" height="100" rx="16" fill="#F59E0B"/>
+  <text x="630" y="460" font-family="Arial" font-size="16" font-weight="600" fill="#FFFFFF" text-anchor="middle">Warning</text>
+  <text x="630" y="520" font-family="monospace" font-size="13" fill="#64748B" text-anchor="middle">#F59E0B</text>
+  
+  <!-- Typography -->
+  <text x="750" y="380" font-family="Arial" font-size="20" font-weight="bold" fill="#0F172A">Typography</text>
+  
+  <text x="750" y="430" font-family="Arial" font-size="36" font-weight="bold" fill="#0F172A">Aa</text>
+  <text x="810" y="435" font-family="Arial" font-size="16" fill="#64748B">Inter Bold</text>
+  <text x="810" y="455" font-family="Arial" font-size="13" fill="#94A3B8">Headings</text>
+  
+  <text x="750" y="495" font-family="Arial" font-size="24" fill="#0F172A">Aa</text>
+  <text x="790" y="495" font-family="Arial" font-size="14" fill="#64748B">Inter Regular</text>
+  <text x="790" y="512" font-family="Arial" font-size="12" fill="#94A3B8">Body Text</text>
+  
+  <text x="750" y="545" font-family="monospace" font-size="20" fill="#0F172A">Aa</text>
+  <text x="790" y="545" font-family="Arial" font-size="14" fill="#64748B">Fira Code</text>
+  <text x="790" y="562" font-family="Arial" font-size="12" fill="#94A3B8">Code Blocks</text>
+  
+  <!-- Logo Variations -->
+  <text x="100" y="600" font-family="Arial" font-size="20" font-weight="bold" fill="#0F172A">Logo Variations</text>
+  
+  <!-- Variation 1 - Full Color -->
+  <rect x="100" y="620" width="160" height="120" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <circle cx="180" cy="670" r="28" fill="#3B82F6"/>
+  <path d="M 170 660 L 180 685 L 190 660" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="180" y="710" font-family="Arial" font-size="12" fill="#64748B" text-anchor="middle">Full Color</text>
+  
+  <!-- Variation 2 - Monochrome -->
+  <rect x="280" y="620" width="160" height="120" rx="16" fill="#0F172A"/>
+  <circle cx="360" cy="670" r="28" fill="#FFFFFF"/>
+  <path d="M 350 660 L 360 685 L 370 660" stroke="#0F172A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="360" y="710" font-family="Arial" font-size="12" fill="#FFFFFF" text-anchor="middle">Monochrome</text>
+  
+  <!-- Variation 3 - Outline -->
+  <rect x="460" y="620" width="160" height="120" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/>
+  <circle cx="540" cy="670" r="28" stroke="#3B82F6" stroke-width="4" fill="none"/>
+  <path d="M 530 660 L 540 685 L 550 660" stroke="#3B82F6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="540" y="710" font-family="Arial" font-size="12" fill="#64748B" text-anchor="middle">Outline</text>
+  
+  <!-- Variation 4 - Icon Only -->
+  <rect x="640" y="620" width="160" height="120" rx="16" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+  <circle cx="720" cy="670" r="28" fill="#3B82F6"/>
+  <path d="M 710 660 L 720 685 L 730 660" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="720" y="710" font-family="Arial" font-size="12" fill="#64748B" text-anchor="middle">Icon Only</text>
+  
+  <!-- Usage Guidelines -->
+  <text x="850" y="600" font-family="Arial" font-size="20" font-weight="bold" fill="#0F172A">Usage</text>
+  
+  <text x="850" y="635" font-family="Arial" font-size="14" fill="#64748B">✓ Use on light backgrounds</text>
+  <text x="850" y="660" font-family="Arial" font-size="14" fill="#64748B">✓ Maintain clear space</text>
+  <text x="850" y="685" font-family="Arial" font-size="14" fill="#64748B">✓ Keep proportions</text>
+  <text x="850" y="710" font-family="Arial" font-size="14" fill="#EF4444">✗ Don't distort logo</text>
+  <text x="850" y="735" font-family="Arial" font-size="14" fill="#EF4444">✗ Don't change colors</text>
+  
+  <!-- Decorative Grid -->
+  <line x1="1020" y1="620" x2="1120" y2="620" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1020" y1="645" x2="1120" y2="645" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1020" y1="670" x2="1120" y2="670" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1020" y1="695" x2="1120" y2="695" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1020" y1="720" x2="1120" y2="720" stroke="#E2E8F0" stroke-width="1"/>
+  
+  <line x1="1020" y1="620" x2="1020" y2="720" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1045" y1="620" x2="1045" y2="720" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1070" y1="620" x2="1070" y2="720" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1095" y1="620" x2="1095" y2="720" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="1120" y1="620" x2="1120" y2="720" stroke="#E2E8F0" stroke-width="1"/>
+</svg>

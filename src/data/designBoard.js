@@ -4,14 +4,19 @@
 // ---------------------------------------------------------
 
 import ui1 from '../assets/ui_1.png'
-// import ui2 from '../assets/ui_2.png'   ← add more here
+import dashboardUI from '../../figma-files/10_dashboard-ui-design.svg'
+import mobileAppUI from '../../figma-files/11_mobile-app-ui.svg'
+import brandIdentity from '../../figma-files/12_brand-identity-design.svg'
+import landingWireframe from '../../figma-files/13_landing-page-wireframe.svg'
+import socialGraphics from '../../figma-files/14_social-media-graphics.svg'
+import componentLibrary from '../../figma-files/15_component-library.svg'
 
 export const SLIDES = [
   // Slide 1 - UI / Product Work
   [
     {
       id: 1,
-      title: 'Portfolio UI Hero Saction',
+      title: 'Portfolio UI Hero Section',
       category: 'UI Design',
       image: ui1,
       accent: '#a3e635',
@@ -25,72 +30,72 @@ export const SLIDES = [
 
     {
       id: 2,
-      title: 'Praxis Coding Platform',
-      category: 'Product UI',
-      image: null,  // add: import codingPlatform from '../assets/coding-platform.png'
-      accent: '#f472b6',
+      title: 'Dashboard Analytics UI',
+      category: 'UI Design',
+      image: dashboardUI,
+      accent: '#3b82f6',
       w: 200, h: 150, top: '3%', left: '30%', rotate: 4, z: 9,
       description:
-        'Focused coding interface with clean layout, problem navigation, and minimal distractions.',
-      tools: ['Figma', 'React', 'Node.js'],
+        'Modern analytics dashboard featuring a clean sidebar navigation, real-time statistics cards, interactive chart visualizations, and an activity feed. Designed with dark mode aesthetics and data hierarchy in mind.',
+      tools: ['Figma', 'React', 'Chart.js'],
       purpose:
-        'To help students practice coding efficiently with a simple and clear UI.',
+        'To present complex data insights in an intuitive and visually appealing interface that helps users make data-driven decisions quickly.',
     },
 
     {
       id: 3,
-      title: 'ClipSync Interface',
+      title: 'Mobile App Interface',
       category: 'App UI',
-      image: null,
+      image: mobileAppUI,
       accent: '#60a5fa',
       w: 180, h: 220, top: '5%', left: '58%', rotate: -3, z: 7,
       description:
-        'Minimal UI for real-time clipboard sharing with fast and seamless interaction flow.',
-      tools: ['Figma', 'React'],
+        'Comprehensive mobile app design showcasing light mode, dark mode, and tablet variations. Features modern UI patterns including bottom navigation, card-based layouts, search functionality, and profile screens.',
+      tools: ['Figma', 'React Native', 'Tailwind'],
       purpose:
-        'To simplify cross-device text sharing with a clean interface.',
+        'To demonstrate responsive mobile design principles and create a consistent user experience across different devices and themes.',
     },
 
     {
       id: 4,
-      title: 'Landing Page Concept',
+      title: 'Landing Page Wireframe',
       category: 'Web Design',
-      image: null,
+      image: landingWireframe,
       accent: '#fbbf24',
       w: 240, h: 160, top: '38%', left: '2%', rotate: 5, z: 10,
       description:
-        'Conversion-focused landing page with strong hero section and clear call-to-actions.',
-      tools: ['Figma', 'React'],
+        'Conversion-focused landing page wireframe with browser chrome, navigation bar, hero section with CTA buttons, and feature cards. Includes annotations showing information architecture and user flow.',
+      tools: ['Figma', 'Wireframing'],
       purpose:
-        'To improve user engagement and drive sign-ups.',
+        'To plan the structure and layout before visual design, ensuring optimal user journey and conversion optimization.',
     },
 
     {
       id: 5,
-      title: 'Dashboard UI',
-      category: 'UI Design',
-      image: null,
+      title: 'Component Library',
+      category: 'Design System',
+      image: componentLibrary,
       accent: '#34d399',
       w: 200, h: 140, top: '36%', left: '35%', rotate: -4, z: 6,
       description:
-        'Clean analytics dashboard with structured data layout and visual hierarchy.',
-      tools: ['Figma'],
+        'Comprehensive UI component library featuring buttons, input fields, cards, badges, toggles, checkboxes, radio buttons, progress bars, and avatars. All components follow consistent design tokens.',
+      tools: ['Figma', 'Storybook'],
       purpose:
-        'To present complex data in a simple and readable format.',
+        'To create a reusable design system that ensures consistency across products and speeds up the design-to-development workflow.',
     },
 
     {
       id: 6,
-      title: 'Design System',
-      category: 'UI System',
-      image: null,
+      title: 'Brand Identity System',
+      category: 'Branding',
+      image: brandIdentity,
       accent: '#c084fc',
       w: 210, h: 160, top: '34%', left: '62%', rotate: 6, z: 8,
       description:
-        'Reusable component system with consistent spacing, typography, and colors.',
-      tools: ['Figma'],
+        'Complete brand identity package including primary logo, color palette with hex codes, typography system, and logo variations (full color, monochrome, outline, icon-only) for different use cases.',
+      tools: ['Figma', 'Illustrator'],
       purpose:
-        'To speed up development and maintain UI consistency.',
+        'To establish a cohesive visual identity that can be consistently applied across all brand touchpoints and marketing materials.',
     },
   ],
 
@@ -98,16 +103,16 @@ export const SLIDES = [
   [
     {
       id: 7,
-      title: 'College Magazine',
-      category: 'Editorial',
-      image: null,
+      title: 'Social Media Graphics',
+      category: 'Social Design',
+      image: socialGraphics,
       accent: '#f472b6',
       w: 200, h: 260, top: '3%', left: '2%', rotate: -5, z: 9,
       description:
-        'Complete magazine design with structured layout and strong typography.',
-      tools: ['CorelDRAW'],
+        'Collection of social media post designs for Instagram, Twitter/X banner, LinkedIn posts, and YouTube thumbnails. Features gradient backgrounds, modern typography, and platform-specific dimensions.',
+      tools: ['Figma', 'Canva', 'Photoshop'],
       purpose:
-        'To create a professional publication for students.',
+        'To maintain consistent brand presence across social platforms while adapting to each platform\'s unique format and audience expectations.',
     },
 
     {
@@ -140,30 +145,30 @@ export const SLIDES = [
 
     {
       id: 10,
-      title: 'Brand Identity',
-      category: 'Branding',
+      title: 'College Magazine',
+      category: 'Editorial',
       image: null,
       accent: '#fbbf24',
       w: 240, h: 150, top: '42%', left: '3%', rotate: 6, z: 10,
       description:
-        'Logo and visual identity system for PRAXIS Club.',
-      tools: ['Figma'],
+        'Complete magazine design with structured layout and strong typography.',
+      tools: ['CorelDRAW'],
       purpose:
-        'To create a recognizable and consistent brand.',
+        'To create a professional publication for students.',
     },
 
     {
       id: 11,
-      title: 'Social Media Creatives',
-      category: 'Graphic Design',
+      title: 'PRAXIS Brand Identity',
+      category: 'Branding',
       image: null,
       accent: '#34d399',
       w: 200, h: 160, top: '40%', left: '38%', rotate: -3, z: 6,
       description:
-        'Set of social media designs with consistent theme and layout.',
-      tools: ['Canva', 'Figma'],
+        'Logo and visual identity system for PRAXIS coding platform club.',
+      tools: ['Figma'],
       purpose:
-        'To maintain visual consistency across platforms.',
+        'To create a recognizable and consistent brand for the coding community.',
     },
   ],
 

@@ -193,7 +193,11 @@ export default function About() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className={styles.designBoardIcon}>🎨</span>
+            <span className={styles.designBoardIcon}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+              </svg>
+            </span>
             <span>Design Board</span>
             <motion.span 
               className={styles.designBoardHint}
