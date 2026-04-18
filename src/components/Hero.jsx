@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import SystemCore from './SystemCore'
 import { SKILL_CARDS } from '../data/skills'
 import profilePhoto from '../assets/profile_photo.jpeg'
@@ -86,6 +87,38 @@ export default function Hero() {
     return () => clearTimeout(t)
   }, [])
 
+  // Text reveal animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.3,
+      },
+    },
+  }
+
+  const wordVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 20,
+      filter: 'blur(8px)',
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: 'blur(0px)',
+      transition: {
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  }
+
+  const headlineText = "Where Design Meets Intelligent Engineering"
+  const words = headlineText.split(' ')
+
   return (
     <>
       <div className={styles.mobileOnly}>
@@ -99,41 +132,95 @@ export default function Hero() {
         <div className={`${styles.bgOrb} ${styles.bgOrb3}`} />
 
         <div className={styles.heroText} ref={textRef}>
-          <div className={styles.badge}>
+          <motion.div 
+            className={styles.badge}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <span className={styles.badgePulse} />
             Full-Stack Engineer &amp; Product Designer
-          </div>
+          </motion.div>
 
-          <h1 className={styles.headline}>
-            Where Design<br />
-            Meets{' '}
-            <span className={styles.headlineGradient}>Intelligent</span>
-            <br />Engineering
-          </h1>
+          <motion.h1 
+            className={styles.headline}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {words.map((word, index) => (
+              <motion.span
+                key={index}
+                variants={wordVariants}
+                style={{ display: 'inline-block', marginRight: '0.3em' }}
+                className={
+                  word === 'Intelligent' ? styles.headlineGradient : ''
+                }
+              >
+                {word === 'Design' || word === 'Meets' || word === 'Engineering' ? (
+                  <>
+                    {word}
+                    <br />
+                  </>
+                ) : (
+                  word
+                )}
+              </motion.span>
+            ))}
+          </motion.h1>
 
-          <p className={styles.sub}>
+          <motion.p 
+            className={styles.sub}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+          >
             I craft high-performance web apps blending design precision with modern
             engineering — from pixel-perfect UI to scalable backend systems.
-          </p>
+          </motion.p>
 
-          <div className={styles.chips}>
-            {['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind', 'Figma', 'AI Tools'].map((t) => (
-              <span key={t} className={styles.chip}>{t}</span>
+          <motion.div 
+            className={styles.chips}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+          >
+            {['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind', 'Figma', 'AI Tools'].map((t, i) => (
+              <motion.span 
+                key={t} 
+                className={styles.chip}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 1.4 + (i * 0.05) }}
+              >
+                {t}
+              </motion.span>
             ))}
-          </div>
+          </motion.div>
 
-          <div className={styles.stats}>
+          <motion.div 
+            className={styles.stats}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 1.8 }}
+          >
             {[
               { value: '3+',  label: 'Years Experience' },
               { value: '20+', label: 'Projects Shipped' },
               { value: '10+', label: 'Happy Clients' },
-            ].map((s) => (
-              <div key={s.label} className={styles.stat}>
+            ].map((s, i) => (
+              <motion.div 
+                key={s.label} 
+                className={styles.stat}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: 1.8 + (i * 0.1) }}
+              >
                 <span className={styles.statValue}>{s.value}</span>
                 <span className={styles.statLabel}>{s.label}</span>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         <SystemCore heroRef={heroRef} />

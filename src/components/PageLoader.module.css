@@ -1,0 +1,176 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 50%, #e8f0f8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  will-change: opacity;
+  /* Prevent flicker */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.loaderContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+.logoWrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 10px 40px rgba(59, 130, 246, 0.4),
+    0 0 0 8px rgba(255, 255, 255, 0.1),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.logo::before {
+  content: '';
+  position: absolute;
+  inset: -50%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.logoDot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: white;
+  top: 20%;
+  right: 20%;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.logoText {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.05em;
+  position: relative;
+  z-index: 1;
+}
+
+.progressContainer {
+  width: 200px;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  border-radius: 100px;
+  animation: gradientMove 2s ease infinite;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  will-change: width;
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.loadingText {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Particles */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  transform-origin: center;
+  transform: 
+    rotate(var(--angle)) 
+    translateX(120px) 
+    translateY(-50%);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+
+@media (max-width: 768px) {
+  .logoWrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .logoText {
+    font-size: 2rem;
+  }
+
+  .progressContainer {
+    width: 160px;
+  }
+
+  .loadingText {
+    font-size: 0.8rem;
+  }
+
+  .particle {
+    transform: 
+      rotate(var(--angle)) 
+      translateX(80px) 
+      translateY(-50%);
+  }
+}

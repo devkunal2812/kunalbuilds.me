@@ -1,0 +1,516 @@
+/* ─── OVERLAY ─────────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, #0a0a0a 0%, #000000 100%);
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* ─── CANVASES ────────────────────────────────────────────────── */
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-style: preserve-3d;
+  filter: contrast(1.1) brightness(1.05);
+}
+
+/* ─── VIGNETTE ────────────────────────────────────────────────── */
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(
+      ellipse at center,
+      transparent 0%,
+      transparent 30%,
+      rgba(0, 0, 0, 0.5) 70%,
+      rgba(0, 0, 0, 0.95) 100%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(20, 20, 40, 0.1) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: multiply;
+}
+
+/* ─── CRACK / ENERGY OVERLAY ──────────────────────────────────── */
+.crackOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(255, 180, 80, 0.25) 0%,
+      rgba(255, 140, 50, 0.15) 25%,
+      rgba(232, 168, 56, 0.08) 50%,
+      transparent 75%
+    );
+  transition: opacity 0.5s ease;
+  filter: blur(40px);
+  mix-blend-mode: screen;
+  animation: energyPulse 2s ease-in-out infinite;
+}
+
+@keyframes energyPulse {
+  0%, 100% { transform: scale(1); filter: blur(40px) brightness(1); }
+  50% { transform: scale(1.05); filter: blur(50px) brightness(1.2); }
+}
+
+/* ─── SLING RING PORTAL ───────────────────────────────────────── */
+.portal {
+  position: absolute;
+  left: 8%;
+  top: 50%;
+  transform: translateY(-50%) translateZ(50px);
+  width: clamp(80px, 14vw, 160px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  opacity: 0;
+  background: conic-gradient(
+    from 0deg,
+    #ff6b00,
+    #ffd700,
+    #ff8c00,
+    #ff6b00,
+    #8b4513,
+    #ff6b00
+  );
+  animation: portalSpin 4s linear infinite;
+  box-shadow:
+    0 0 60px rgba(255, 140, 0, 0.8),
+    0 0 120px rgba(255, 140, 0, 0.4),
+    0 0 180px rgba(255, 100, 0, 0.2),
+    inset 0 0 40px rgba(0, 0, 0, 0.8),
+    inset 0 0 80px rgba(255, 140, 0, 0.3);
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 1.5s ease, transform 1.5s ease;
+  filter: drop-shadow(0 10px 30px rgba(255, 140, 0, 0.5));
+  transform-style: preserve-3d;
+}
+
+.portal::before {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 140, 0, 0.15) 0%,
+    transparent 70%
+  );
+  animation: portalGlow 2s ease-in-out infinite;
+}
+
+.portal::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(0, 0, 0, 0.4) 0%,
+    #000 50%
+  );
+  box-shadow: 
+    inset 0 0 30px rgba(255, 140, 0, 0.3),
+    inset 0 0 60px rgba(0, 0, 0, 0.9);
+  transform: translateZ(-10px);
+}
+
+@keyframes portalSpin {
+  to { transform: translateY(-50%) translateZ(50px) rotate(360deg); }
+}
+
+@keyframes portalGlow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* ─── INFINITY GAUNTLET ───────────────────────────────────────── */
+.gauntlet {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%) translateZ(80px) rotateY(-15deg);
+  width: clamp(120px, 20vw, 220px);
+  opacity: 0;
+  z-index: 5;
+  pointer-events: none;
+  filter: 
+    drop-shadow(0 20px 40px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 0 30px rgba(232, 168, 56, 0.6))
+    drop-shadow(0 0 60px rgba(232, 168, 56, 0.3));
+  transition: 
+    opacity 2s ease,
+    transform 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+  animation: gauntletFloat 6s ease-in-out infinite;
+}
+
+@keyframes gauntletFloat {
+  0%, 100% { 
+    transform: translateY(-50%) translateZ(80px) rotateY(-15deg) translateY(0px);
+  }
+  50% { 
+    transform: translateY(-50%) translateZ(80px) rotateY(-15deg) translateY(-10px);
+  }
+}
+
+/* ─── INFINITY STONES HUD ─────────────────────────────────────── */
+.stoneHud {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(100px);
+  display: flex;
+  gap: 14px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
+}
+
+.stone {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  opacity: 0.12;
+  position: relative;
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    inset 0 0 10px rgba(0, 0, 0, 0.8);
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-style: preserve-3d;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+.stone::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 4px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.stone::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 8px;
+  background: radial-gradient(
+    circle,
+    var(--stone-color) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.8s ease;
+}
+
+.stoneActive {
+  opacity: 1;
+  box-shadow:
+    0 0 20px var(--stone-color),
+    0 0 40px var(--stone-color),
+    0 0 60px var(--stone-color),
+    0 0 0 2px rgba(255, 255, 255, 0.4),
+    inset 0 0 20px var(--stone-color),
+    inset 0 2px 4px rgba(255, 255, 255, 0.5),
+    0 8px 16px rgba(0, 0, 0, 0.6);
+  transform: scale(1.25) translateY(-4px) translateZ(20px);
+  animation: stonePulse 2s ease-in-out infinite;
+}
+
+.stoneActive::before {
+  opacity: 1;
+}
+
+.stoneActive::after {
+  opacity: 0.6;
+}
+
+@keyframes stonePulse {
+  0%, 100% { 
+    box-shadow:
+      0 0 20px var(--stone-color),
+      0 0 40px var(--stone-color),
+      0 0 60px var(--stone-color),
+      0 0 0 2px rgba(255, 255, 255, 0.4),
+      inset 0 0 20px var(--stone-color),
+      inset 0 2px 4px rgba(255, 255, 255, 0.5),
+      0 8px 16px rgba(0, 0, 0, 0.6);
+  }
+  50% { 
+    box-shadow:
+      0 0 30px var(--stone-color),
+      0 0 60px var(--stone-color),
+      0 0 90px var(--stone-color),
+      0 0 0 2px rgba(255, 255, 255, 0.6),
+      inset 0 0 30px var(--stone-color),
+      inset 0 2px 4px rgba(255, 255, 255, 0.7),
+      0 12px 24px rgba(0, 0, 0, 0.8);
+  }
+}
+
+/* ─── TEXT STAGE ──────────────────────────────────────────────── */
+.textStage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 22px;
+  pointer-events: none;
+  z-index: 8;
+}
+
+/* Shared text base */
+.emptyText,
+.hopeText,
+.comebackText {
+  opacity: 0;
+  transform: translateY(40px) translateZ(50px);
+  transition:
+    opacity 2s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 2s cubic-bezier(0.22, 1, 0.36, 1);
+  text-align: center;
+  padding: 0 40px;
+  letter-spacing: 0.05em;
+  will-change: opacity, transform;
+  transform-style: preserve-3d;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Empty state */
+.emptyText {
+  font-size: clamp(1.8rem, 4.5vw, 3.6rem);
+  font-weight: 200;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  text-shadow: 
+    0 0 60px rgba(255, 255, 255, 0.25),
+    0 0 120px rgba(255, 255, 255, 0.1),
+    0 4px 8px rgba(0, 0, 0, 0.8);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  max-width: 750px;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.9));
+}
+
+/* Emotional phase */
+.hopeText {
+  font-size: clamp(1.2rem, 3vw, 2.4rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 
+    0 0 40px rgba(255, 255, 255, 0.2),
+    0 0 80px rgba(255, 255, 255, 0.1),
+    0 4px 12px rgba(0, 0, 0, 0.9);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  max-width: 850px;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.8));
+}
+
+.hopeTextGold {
+  color: #ffd700;
+  text-shadow: 
+    0 0 50px rgba(255, 215, 0, 0.6),
+    0 0 100px rgba(232, 168, 56, 0.4),
+    0 0 150px rgba(232, 168, 56, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.9);
+  filter: drop-shadow(0 8px 24px rgba(232, 168, 56, 0.5));
+}
+
+/* Comeback */
+.comebackText {
+  font-size: clamp(2.8rem, 7.5vw, 6.5rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #e0f2fe 15%,
+    #93c5fd 30%,
+    #3b82f6 45%,
+    #8b5cf6 60%,
+    #e8a838 80%,
+    #ffd700 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease-in-out infinite;
+  filter:
+    drop-shadow(0 0 30px rgba(59, 130, 246, 0.9))
+    drop-shadow(0 0 60px rgba(139, 92, 246, 0.6))
+    drop-shadow(0 0 90px rgba(232, 168, 56, 0.4))
+    drop-shadow(0 8px 32px rgba(0, 0, 0, 0.9));
+  max-width: 950px;
+  text-shadow: 
+    0 0 80px rgba(59, 130, 246, 0.5),
+    0 0 120px rgba(139, 92, 246, 0.3);
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ─── PROGRESS BAR ────────────────────────────────────────────── */
+.progressBar {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(80px);
+  width: 220px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 12;
+  box-shadow: 
+    0 0 10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(0, 0, 0, 0.8);
+  transform-style: preserve-3d;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, 
+    #e8a838 0%,
+    #ffd700 50%,
+    #ffed4e 100%
+  );
+  border-radius: 2px;
+  transition: width 0.1s linear;
+  box-shadow: 
+    0 0 15px rgba(232, 168, 56, 0.8),
+    0 0 30px rgba(255, 215, 0, 0.4);
+  position: relative;
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 100%
+  );
+  animation: progressShine 2s linear infinite;
+}
+
+@keyframes progressShine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ─── INTERACTION BLOCKER ─────────────────────────────────────── */
+.blocker {
+  position: absolute;
+  inset: 0;
+  pointer-events: all;
+  cursor: wait;
+  z-index: 20;
+}
+
+/* ─── MOBILE ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .emptyText,
+  .hopeText,
+  .comebackText {
+    padding: 0 28px;
+    transform: translateY(30px) translateZ(30px);
+  }
+
+  .gauntlet {
+    right: 3%;
+    width: clamp(100px, 24vw, 150px);
+    transform: translateY(-50%) translateZ(50px) rotateY(-12deg);
+  }
+
+  .portal {
+    left: 4%;
+    width: clamp(70px, 18vw, 120px);
+    transform: translateY(-50%) translateZ(30px);
+  }
+
+  .stone {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .stoneHud {
+    gap: 12px;
+    bottom: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  .textStage { gap: 18px; }
+
+  .gauntlet  { 
+    width: clamp(80px, 28vw, 120px);
+    filter: 
+      drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8))
+      drop-shadow(0 0 20px rgba(232, 168, 56, 0.5));
+  }
+  
+  .portal    { 
+    width: clamp(60px, 20vw, 90px);
+    box-shadow:
+      0 0 40px rgba(255, 140, 0, 0.6),
+      0 0 80px rgba(255, 140, 0, 0.3);
+  }
+
+  .stone     { width: 20px; height: 20px; }
+  .stoneHud  { gap: 10px; bottom: 40px; }
+  
+  .emptyText,
+  .hopeText,
+  .comebackText {
+    padding: 0 20px;
+  }
+  
+  .comebackText {
+    font-size: clamp(2.2rem, 8vw, 4.5rem);
+  }
+}
+
+/* ─── PERF ────────────────────────────────────────────────────── */
+.overlay * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

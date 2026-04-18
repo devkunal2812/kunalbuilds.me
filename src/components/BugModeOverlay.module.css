@@ -1,0 +1,70 @@
+.glitchOverlay {
+  position: fixed;
+  inset: 0;
+  background: #ff0000;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 99998;
+}
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 99997;
+}
+
+.bugContainer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+.bug {
+  position: absolute;
+  font-size: 3rem;
+  filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.8));
+  will-change: transform;
+}
+
+.bugText {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #ff0000;
+  text-shadow: 
+    0 0 20px rgba(255, 0, 0, 0.8),
+    0 0 40px rgba(255, 0, 0, 0.6),
+    3px 3px 0 rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 100000;
+  letter-spacing: 0.05em;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .bug {
+    font-size: 2rem;
+  }
+  
+  .bugText {
+    font-size: 1.2rem;
+    white-space: normal;
+    max-width: 80vw;
+    line-height: 1.2;
+  }
+}

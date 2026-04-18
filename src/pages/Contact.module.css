@@ -2,9 +2,9 @@
   min-height: 100vh;
   width: 100%;
   max-width: 100%;
-  padding: calc(var(--nav-h) + 80px) 0 80px;
-  background: var(--bg-primary);
-  overflow-x: hidden;
+  padding: calc(var(--nav-h) + 40px) 0 60px;
+  background: var(--color-bg-primary);
+  overflow: visible;
 }
 
 .container {
@@ -16,7 +16,7 @@
 
 .header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 }
 
 .title {
@@ -61,26 +61,41 @@
 .formGroup {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  position: relative;
+  margin-top: 24px;
 }
 
 .label {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: 0.02em;
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+  pointer-events: none;
+  transform-origin: left center;
+  transition: all 0.2s ease;
+  background: var(--bg-card);
+  padding: 0 4px;
+  z-index: 1;
+}
+
+.labelFloating {
+  transform: translateY(-24px) scale(0.85);
+  color: var(--accent);
 }
 
 .input,
 .textarea {
   width: 100%;
-  padding: 12px 16px;
+  padding: 14px 16px;
   font-size: 0.95rem;
   color: var(--text-primary);
   background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
   font-family: inherit;
 }
 
@@ -88,12 +103,15 @@
 .textarea:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+  box-shadow: 
+    0 0 0 4px rgba(59,130,246,0.1),
+    0 4px 12px rgba(59,130,246,0.15);
+  transform: translateY(-1px);
 }
 
 .textarea {
   resize: vertical;
-  min-height: 120px;
+  min-height: 140px;
 }
 
 .submitBtn {

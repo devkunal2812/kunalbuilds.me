@@ -24,6 +24,7 @@
   color: var(--color-text-muted);
   text-decoration: none;
   transition: color 0.2s;
+  cursor: pointer;
 }
 .backLink:hover { color: var(--color-accent); }
 
@@ -39,6 +40,32 @@
   overflow: visible;
 }
 
+/* Custom cursor */
+.customCursor {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+  animation: cursorPulse 2s ease-in-out infinite;
+  mix-blend-mode: difference;
+}
+
+@keyframes cursorPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 1;
+  }
+}
+
 /* ── Chips layer — zero-size anchor at exact scene center ── */
 .chipsLayer {
   position: absolute;
@@ -49,11 +76,17 @@
   pointer-events: none;
 }
 
-/* ── Floating chip ── */
-.chip {
+/* ── Chip wrapper for tooltip positioning ── */
+.chipWrapper {
   position: absolute;
   left: var(--cx, 0px);
   top:  var(--cy, 0px);
+  pointer-events: all;
+}
+
+/* ── Floating chip ── */
+.chip {
+  position: relative;
   transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
@@ -66,13 +99,17 @@
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   white-space: nowrap;
-  cursor: default;
+  cursor: pointer;
   z-index: 5;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .chip:hover {
-  box-shadow: var(--color-shadow-lg);
+  box-shadow: 
+    var(--color-shadow-lg),
+    0 0 0 2px rgba(59, 130, 246, 0.2);
+  border-color: var(--color-border-hover);
+  background: var(--color-bg-card);
   z-index: 10;
 }
 
@@ -88,6 +125,44 @@
   color: var(--color-text-primary);
   letter-spacing: 0.01em;
   line-height: 1;
+}
+
+/* ── Chip tooltip ── */
+.chipTooltip {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-card);
+  border-radius: 10px;
+  padding: 10px 16px;
+  box-shadow: var(--color-shadow-lg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.tooltipText {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.tooltipArrow {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: var(--color-bg-card);
+  border-left: 1px solid var(--color-border-card);
+  border-top: 1px solid var(--color-border-card);
 }
 
 /* ── Center card — sits in normal flex flow, centered ── */
@@ -108,6 +183,18 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  cursor: auto;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.centerCard:hover {
+  box-shadow: 
+    var(--color-shadow-xl),
+    0 0 0 1px rgba(59, 130, 246, 0.1);
+}
+
+.centerCard * {
+  cursor: auto;
 }
 
 .eyebrow {
@@ -223,6 +310,72 @@
   border: 1px solid var(--color-border);
 }
 .btnSecondary:hover { border-color: var(--color-border-hover); transform: translateY(-1px); }
+
+/* Floating Design Board Button */
+.designBoardFloat {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.designBoardBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  border: none;
+  border-radius: 8px 0 0 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 
+    -4px 0 16px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.designBoardBtn:hover {
+  background: var(--color-accent);
+  color: white;
+  padding-right: 28px;
+  box-shadow: 
+    -8px 0 24px rgba(59, 130, 246, 0.3),
+    0 0 0 1px rgba(59, 130, 246, 0.2);
+}
+
+.designBoardIcon {
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+/* Design Board hint on hover */
+.designBoardHint {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-card);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  box-shadow: var(--color-shadow-md);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: none;
+  writing-mode: horizontal-tb;
+}
 
 /* ============================================
    Design Showcase
@@ -395,6 +548,26 @@
   .designSection { padding: 60px 20px 80px; }
   .designGrid { grid-template-columns: 1fr; gap: 14px; }
   .designHeader { margin-bottom: 36px; }
+  
+  /* Move Design Board button to bottom on mobile */
+  .designBoardFloat {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    top: auto;
+    transform: none;
+  }
+  
+  .designBoardBtn {
+    writing-mode: horizontal-tb;
+    border-radius: 12px;
+    padding: 12px 20px;
+    flex-direction: row;
+  }
+  
+  .designBoardIcon {
+    transform: none;
+  }
 }
 
 @media (max-width: 480px) {

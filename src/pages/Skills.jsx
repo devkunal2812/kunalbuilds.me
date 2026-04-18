@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useMotionValue, useAnimationFrame } from 'framer-motion'
 import { SKILL_CARDS } from '../data/skills'
 import styles from './Skills.module.css'
@@ -12,7 +12,6 @@ const EXPERIENCE_ITEMS = [
     icon: '🎤',
     iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`
   },
-
   {
     id: 2,
     event: 'D3 Workshop',
@@ -21,7 +20,6 @@ const EXPERIENCE_ITEMS = [
     icon: '🎤',
     iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>`
   },
-
   {
     id: 3,
     event: 'Tech Community Activities',
@@ -30,7 +28,6 @@ const EXPERIENCE_ITEMS = [
     icon: '👥',
     iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`
   },
-
   {
     id: 4,
     event: 'Tech Heist: Break the Code',
@@ -39,7 +36,6 @@ const EXPERIENCE_ITEMS = [
     icon: '👑',
     iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l5 5 5-5 5 5 5-5v13H2z"/></svg>`
   },
-
   {
     id: 5,
     event: 'Event Hosting & Coordination',
@@ -48,7 +44,6 @@ const EXPERIENCE_ITEMS = [
     icon: '🎯',
     iconSvg: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="6"/></svg>`
   },
-
   {
     id: 6,
     event: 'Tech Meetup',
@@ -62,6 +57,7 @@ const EXPERIENCE_ITEMS = [
 function TickerRow({ items, speed = 30, reverse = false, type = 'skill' }) {
   const [isPaused, setIsPaused] = useState(false)
   const [hoveredItem, setHoveredItem] = useState(null)
+  const [tappedItem, setTappedItem] = useState(null)
   const x = useMotionValue(0)
   const trackRef = useRef(null)
 
@@ -94,6 +90,20 @@ function TickerRow({ items, speed = 30, reverse = false, type = 'skill' }) {
     }
   })
 
+  const handleInteraction = (itemKey, isEnter) => {
+    if (isEnter) {
+      setIsPaused(true)
+      setHoveredItem(itemKey)
+    } else {
+      setIsPaused(false)
+      setHoveredItem(null)
+    }
+  }
+
+  const handleTap = (itemKey) => {
+    setTappedItem(tappedItem === itemKey ? null : itemKey)
+  }
+
   return (
     <div className={styles.tickerRow}>
       {/* Gradient fades */}
@@ -108,20 +118,17 @@ function TickerRow({ items, speed = 30, reverse = false, type = 'skill' }) {
         {duplicatedItems.map((item, index) => {
           const itemKey = `${item.id}-${index}`
           const isHovered = hoveredItem === itemKey
+          const isTapped = tappedItem === itemKey
 
           return (
             <div key={itemKey} className={styles.tickerItemWrapper}>
               <motion.div
-                className={`${styles.tickerItem} ${type === 'experience' ? styles.experienceItem : ''} ${isHovered ? styles.tickerItemHovered : ''}`}
-                onMouseEnter={() => {
-                  setIsPaused(true)
-                  setHoveredItem(itemKey)
-                }}
-                onMouseLeave={() => {
-                  setIsPaused(false)
-                  setHoveredItem(null)
-                }}
+                className={`${styles.tickerItem} ${type === 'experience' ? styles.experienceItem : ''} ${isHovered || isTapped ? styles.tickerItemHovered : ''}`}
+                onMouseEnter={() => handleInteraction(itemKey, true)}
+                onMouseLeave={() => handleInteraction(itemKey, false)}
+                onTap={() => handleTap(itemKey)}
                 whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.98 }}
                 transition={{ duration: 0.2 }}
               >
                 {type === 'skill' ? (
@@ -156,9 +163,9 @@ function TickerRow({ items, speed = 30, reverse = false, type = 'skill' }) {
                 )}
               </motion.div>
 
-              {/* Detail card on hover - outside ticker item */}
+              {/* Detail card on hover/tap - outside ticker item */}
               <AnimatePresence>
-                {isHovered && (
+                {(isHovered || isTapped) && (
                   <motion.div
                     className={styles.detailCard}
                     initial={{ opacity: 0, y: 10, scale: 0.9 }}

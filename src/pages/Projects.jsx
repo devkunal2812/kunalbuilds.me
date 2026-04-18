@@ -3,28 +3,40 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import styles from './Projects.module.css'
 import { PROJECTS } from '../data/projects'
 
-function ProjectCard({ project, index }) {
+function ProjectCard({ project, index, totalProjects }) {
   const ref = useRef(null)
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start 95%', 'start 20%']
+    offset: ['start end', 'start 100px']
   })
 
-  const y = useTransform(scrollYProgress, [0, 1], [60, 0])
-  const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1])
-  const scale = useTransform(scrollYProgress, [0, 1], [0.96, 1])
+  // Scale down cards as they stack
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 0.5, 1],
+    [0.95, 1, 0.96]
+  )
+
+  // Fade in
+  const opacity = useTransform(
+    scrollYProgress,
+    [0, 0.3, 1],
+    [0, 1, 1]
+  )
 
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={styles.cardSlot}
-      style={{ zIndex: index + 1 }}
+      className={styles.projectCard}
+      style={{ 
+        scale,
+        opacity,
+        '--accent': project.accent,
+        '--card-index': index,
+        zIndex: totalProjects - index,
+      }}
     >
-      <motion.div
-        className={styles.projectCard}
-        style={{ y, opacity, scale, '--accent': project.accent }}
-      >
         <div className={styles.accentLine} />
         <div className={styles.cardInner}>
 
@@ -128,8 +140,7 @@ function ProjectCard({ project, index }) {
           </div>
 
         </div>
-      </motion.div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -164,6 +175,7 @@ export default function Projects() {
             key={project.id}
             project={project}
             index={index}
+            totalProjects={PROJECTS.length}
           />
         ))}
       </div>

@@ -53,9 +53,18 @@ export default function Contact() {
     message: ''
   })
   const [status, setStatus] = useState('') // '' | 'sending' | 'success' | 'error'
+  const [focusedField, setFocusedField] = useState(null)
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleFocus = (fieldName) => {
+    setFocusedField(fieldName)
+  }
+
+  const handleBlur = () => {
+    setFocusedField(null)
   }
 
   const handleSubmit = async (e) => {
@@ -72,11 +81,15 @@ export default function Contact() {
       if (res.ok) {
         setStatus('success')
         setFormData({ name: '', email: '', message: '' })
+        // Reset success message after 5 seconds
+        setTimeout(() => setStatus(''), 5000)
       } else {
         setStatus('error')
+        setTimeout(() => setStatus(''), 5000)
       }
     } catch {
       setStatus('error')
+      setTimeout(() => setStatus(''), 5000)
     }
   }
 
@@ -109,47 +122,107 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <form className={styles.form} onSubmit={handleSubmit}>
-              <div className={styles.formGroup}>
-                <label htmlFor="name" className={styles.label}>Name</label>
-                <input
+              <motion.div 
+                className={styles.formGroup}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+              >
+                <motion.label 
+                  htmlFor="name" 
+                  className={`${styles.label} ${focusedField === 'name' || formData.name ? styles.labelFloating : ''}`}
+                  animate={{
+                    y: focusedField === 'name' || formData.name ? -24 : 0,
+                    scale: focusedField === 'name' || formData.name ? 0.85 : 1,
+                    color: focusedField === 'name' ? 'var(--accent)' : 'var(--text-secondary)',
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Name
+                </motion.label>
+                <motion.input
                   type="text"
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  onFocus={() => handleFocus('name')}
+                  onBlur={handleBlur}
                   className={styles.input}
-                  placeholder="Your name"
                   required
+                  whileFocus={{ scale: 1.01 }}
+                  transition={{ duration: 0.2 }}
                 />
-              </div>
+              </motion.div>
 
-              <div className={styles.formGroup}>
-                <label htmlFor="email" className={styles.label}>Email</label>
-                <input
+              <motion.div 
+                className={styles.formGroup}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+              >
+                <motion.label 
+                  htmlFor="email" 
+                  className={`${styles.label} ${focusedField === 'email' || formData.email ? styles.labelFloating : ''}`}
+                  animate={{
+                    y: focusedField === 'email' || formData.email ? -24 : 0,
+                    scale: focusedField === 'email' || formData.email ? 0.85 : 1,
+                    color: focusedField === 'email' ? 'var(--accent)' : 'var(--text-secondary)',
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Email
+                </motion.label>
+                <motion.input
                   type="email"
                   id="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  onFocus={() => handleFocus('email')}
+                  onBlur={handleBlur}
                   className={styles.input}
-                  placeholder="your.email@example.com"
                   required
+                  whileFocus={{ scale: 1.01 }}
+                  transition={{ duration: 0.2 }}
                 />
-              </div>
+              </motion.div>
 
-              <div className={styles.formGroup}>
-                <label htmlFor="message" className={styles.label}>Message</label>
-                <textarea
+              <motion.div 
+                className={styles.formGroup}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.5 }}
+              >
+                <motion.label 
+                  htmlFor="message" 
+                  className={`${styles.label} ${focusedField === 'message' || formData.message ? styles.labelFloating : ''}`}
+                  animate={{
+                    y: focusedField === 'message' || formData.message ? -24 : 0,
+                    scale: focusedField === 'message' || formData.message ? 0.85 : 1,
+                    color: focusedField === 'message' ? 'var(--accent)' : 'var(--text-secondary)',
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Message
+                </motion.label>
+                <motion.textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  onFocus={() => handleFocus('message')}
+                  onBlur={handleBlur}
                   className={styles.textarea}
-                  placeholder="Tell me about your idea or project..."
                   rows="6"
                   required
+                  whileFocus={{ scale: 1.01 }}
+                  transition={{ duration: 0.2 }}
                 />
-              </div>
+              </motion.div>
 
               <motion.button
                 type="submit"
@@ -157,31 +230,46 @@ export default function Contact() {
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={status === 'sending' || status === 'success'}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.6 }}
               >
-                {status === 'sending'
-                  ? 'Sending...'
-                  : status === 'success'
-                  ? 'Sent! ✓'
-                  : 'Send Message'}
+                <span className={styles.btnText}>
+                  {status === 'sending'
+                    ? 'Sending...'
+                    : status === 'success'
+                    ? 'Sent! ✓'
+                    : 'Send Message'}
+                </span>
+                {status === 'sending' && (
+                  <motion.span
+                    className={styles.btnLoader}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                  />
+                )}
               </motion.button>
 
               {status === 'success' && (
                 <motion.p
                   className={styles.successMessage}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
                 >
-                  Thanks! I'll get back to you soon.
+                  ✨ Thanks! I'll get back to you soon.
                 </motion.p>
               )}
 
               {status === 'error' && (
                 <motion.p
                   className={styles.errorMessage}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
                 >
-                  Something went wrong. Please try again or email me directly.
+                  ⚠️ Something went wrong. Please try again or email me directly.
                 </motion.p>
               )}
             </form>

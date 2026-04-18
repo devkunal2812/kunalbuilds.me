@@ -60,6 +60,77 @@
   z-index: 10;
 }
 
+/* Stacked diamond layers */
+.diamondStack {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  z-index: 1;
+}
+
+.diamondLayer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(135deg, 
+    rgba(255, 200, 150, 0.25) 0%, 
+    rgba(255, 180, 120, 0.2) 50%,
+    rgba(255, 220, 180, 0.15) 100%
+  );
+  border: 1.5px solid rgba(255, 200, 150, 0.3);
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  box-shadow: 
+    0 8px 32px rgba(255, 180, 120, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transform-origin: center center;
+  opacity: 0;
+  animation: stackIn 0.8s ease-out forwards;
+}
+
+.layer1 {
+  transform: translate(-50%, -50%) rotateZ(45deg) translateZ(0px);
+  animation-delay: 0.2s;
+}
+
+.layer2 {
+  transform: translate(-50%, -50%) rotateZ(45deg) translateZ(-15px);
+  animation-delay: 0.4s;
+  width: 150px;
+  height: 150px;
+  opacity: 0.85;
+}
+
+.layer3 {
+  transform: translate(-50%, -50%) rotateZ(45deg) translateZ(-30px);
+  animation-delay: 0.6s;
+  width: 160px;
+  height: 160px;
+  opacity: 0.7;
+}
+
+@keyframes stackIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotateZ(45deg) translateZ(-50px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotateZ(45deg) translateZ(var(--z-offset, 0px)) scale(1);
+  }
+}
+
+.layer1 { --z-offset: 0px; }
+.layer2 { --z-offset: -15px; }
+.layer3 { --z-offset: -30px; }
+
 .coreGlow {
   position: absolute;
   border-radius: 50%;
