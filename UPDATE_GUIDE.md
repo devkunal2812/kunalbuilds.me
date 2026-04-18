@@ -28,9 +28,36 @@ This guide shows you how to update different parts of your portfolio website.
 ### 3. Update About Page
 
 **File**: `src/data/about.js`
-- **Bio**: Update the `bio` array with your story
-- **Interests**: Update the `interests` array
-- **Tools**: Update the `tools` array with your tech stack
+- **Floating Chips**: Update `LEFT_CHIPS` and `RIGHT_CHIPS` arrays with your skills
+- **Stats**: Update the `STATS` array with your numbers
+- **Meta Info**: Update location, education, etc.
+
+**File**: `src/data/aboutSections.js`
+- **Timeline**: Update `TIMELINE_DATA` with your journey
+  ```javascript
+  {
+    year: '2024',
+    title: 'Your Achievement',
+    description: 'What you did',
+    icon: '🚀'
+  }
+  ```
+- **Gallery**: Update `GALLERY_DATA` with your photos
+  - Add images to `src/assets/` folder
+  - Update image paths in the array
+- **Fun Facts**: Update `FUN_FACTS_DATA` with your personality
+  ```javascript
+  {
+    icon: '☕',
+    title: 'Your Trait',
+    description: 'Fun description'
+  }
+  ```
+
+**File**: `src/pages/About.jsx`
+- **Bio Text**: Lines ~150-160 - Update your introduction
+- **Location**: Line ~170 - Update your location
+- **Resume**: Line ~220 - Update resume download link
 
 ### 4. Update Projects
 

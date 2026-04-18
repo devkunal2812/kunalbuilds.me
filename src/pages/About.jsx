@@ -3,6 +3,8 @@ import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from
 import { useState, useEffect } from 'react'
 import styles from './About.module.css'
 import { LEFT_CHIPS, RIGHT_CHIPS, STATS } from '../data/about'
+import AnimatedCounter from '../components/AnimatedCounter'
+import ExplorePanel from '../components/ExplorePanel'
 
 function FloatChip({ label, icon, x, y, rotate, delay, mouseX, mouseY, depth = 1, description }) {
   const [showTooltip, setShowTooltip] = useState(false)
@@ -102,26 +104,8 @@ function FloatChip({ label, icon, x, y, rotate, delay, mouseX, mouseY, depth = 1
 }
 
 function CountUpStat({ value, label, delay }) {
-  const [count, setCount] = useState(0)
-  const target = parseInt(value)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      let current = 0
-      const increment = target / 30
-      const interval = setInterval(() => {
-        current += increment
-        if (current >= target) {
-          setCount(target)
-          clearInterval(interval)
-        } else {
-          setCount(Math.floor(current))
-        }
-      }, 30)
-      return () => clearInterval(interval)
-    }, delay)
-    return () => clearTimeout(timer)
-  }, [target, delay])
+  const numValue = parseInt(value)
+  const hasSuffix = value.includes('+')
 
   return (
     <motion.div 
@@ -130,7 +114,9 @@ function CountUpStat({ value, label, delay }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay }}
     >
-      <span className={styles.statNum}>{count}{value.includes('+') ? '+' : ''}</span>
+      <span className={styles.statNum}>
+        <AnimatedCounter end={numValue} duration={2000} suffix={hasSuffix ? '+' : ''} />
+      </span>
       <span className={styles.statLbl}>{label}</span>
     </motion.div>
   )
@@ -139,6 +125,7 @@ function CountUpStat({ value, label, delay }) {
 export default function About() {
   const navigate = useNavigate()
   const [cardEntered, setCardEntered] = useState(false)
+  const [isExplorePanelOpen, setIsExplorePanelOpen] = useState(false)
   
   // Mouse position tracking
   const mouseX = useMotionValue(0)
@@ -180,34 +167,41 @@ export default function About() {
       {/* ── Hero scene ── */}
       <div className={styles.scene}>
 
-        {/* Floating Design Board Button */}
+        {/* Floating Explore Button */}
         <motion.div 
-          className={styles.designBoardFloat}
+          className={styles.exploreFloat}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 1 }}
         >
           <motion.button
-            className={styles.designBoardBtn}
-            onClick={() => navigate('/design-board')}
+            className={styles.exploreBtn}
+            onClick={() => setIsExplorePanelOpen(true)}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className={styles.designBoardIcon}>
+            <span className={styles.exploreIcon}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 16v-4M12 8h.01"/>
               </svg>
             </span>
-            <span>Design Board</span>
+            <span>Explore</span>
             <motion.span 
-              className={styles.designBoardHint}
+              className={styles.exploreHint}
               initial={{ opacity: 0, x: -10 }}
               whileHover={{ opacity: 1, x: 0 }}
             >
-              View my work →
+              Discover more →
             </motion.span>
           </motion.button>
         </motion.div>
+
+        {/* Explore Panel */}
+        <ExplorePanel 
+          isOpen={isExplorePanelOpen} 
+          onClose={() => setIsExplorePanelOpen(false)} 
+        />
 
         {/* Chips layer with focus pull effect */}
         <motion.div 
@@ -327,6 +321,52 @@ export default function About() {
                 whileTap={{ scale: 0.98 }}
               >
                 Linktree ↗
+              </motion.a>
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div 
+              className={styles.actionButtons}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6 }}
+            >
+              <motion.button
+                className={styles.actionBtn}
+                onClick={() => navigate('/timeline')}
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className={styles.actionIcon}>📅</span>
+                <span>Timeline</span>
+              </motion.button>
+              <motion.button
+                className={styles.actionBtn}
+                onClick={() => navigate('/gallery')}
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className={styles.actionIcon}>📸</span>
+                <span>Gallery</span>
+              </motion.button>
+              <motion.button
+                className={styles.actionBtn}
+                onClick={() => navigate('/fun-facts')}
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className={styles.actionIcon}>✨</span>
+                <span>Fun Facts</span>
+              </motion.button>
+              <motion.a
+                href="/resume.pdf"
+                download
+                className={styles.actionBtn}
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className={styles.actionIcon}>📄</span>
+                <span>Resume</span>
               </motion.a>
             </motion.div>
           </motion.div>

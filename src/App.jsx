@@ -9,6 +9,11 @@ import Skills from './pages/Skills'
 import Contact from './pages/Contact'
 import About from './pages/About'
 import DesignBoard from './pages/DesignBoard'
+import Timeline from './pages/Timeline'
+import Gallery from './pages/Gallery'
+import FunFacts from './pages/FunFacts'
+import Resume from './pages/Resume'
+import Achievements from './pages/Achievements'
 import PageLoader from './components/PageLoader'
 import PageTransition from './components/PageTransition'
 import BugModeOverlay from './components/BugModeOverlay'
@@ -43,6 +48,51 @@ function AboutPage() {
 
 function DesignBoardPage() {
   return <DesignBoard />
+}
+
+function TimelinePage() {
+  return (
+    <PageTransition>
+      <Timeline />
+      <Footer />
+    </PageTransition>
+  )
+}
+
+function GalleryPage() {
+  return (
+    <PageTransition>
+      <Gallery />
+      <Footer />
+    </PageTransition>
+  )
+}
+
+function FunFactsPage() {
+  return (
+    <PageTransition>
+      <FunFacts />
+      <Footer />
+    </PageTransition>
+  )
+}
+
+function ResumePage() {
+  return (
+    <PageTransition>
+      <Resume />
+      <Footer />
+    </PageTransition>
+  )
+}
+
+function AchievementsPage() {
+  return (
+    <PageTransition>
+      <Achievements />
+      <Footer />
+    </PageTransition>
+  )
 }
 
 export default function App() {
@@ -87,6 +137,11 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/design-board" element={<DesignBoardPage />} />
+          <Route path="/timeline" element={<TimelinePage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/fun-facts" element={<FunFactsPage />} />
+          <Route path="/resume" element={<ResumePage />} />
+          <Route path="/achievements" element={<AchievementsPage />} />
         </Routes>
       </AnimatePresence>
     </>
