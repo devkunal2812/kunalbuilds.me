@@ -26,41 +26,8 @@ function MobileHero() {
               {...getImageProtectionProps()}
             />
           </div>
-          
-          {/* Orbiting Circles */}
-          <div className={styles.orbitingCircles}>
-            {/* Inner orbit - faster */}
-            <div className={`${styles.orbitRing} ${styles.orbitRingInner}`}>
-              <div className={`${styles.orbitIcon} ${styles.orbitIcon1}`}>
-                <span>⚛️</span>
-              </div>
-              <div className={`${styles.orbitIcon} ${styles.orbitIcon2}`}>
-                <span>🎨</span>
-              </div>
-            </div>
-            
-            {/* Middle orbit - medium speed */}
-            <div className={`${styles.orbitRing} ${styles.orbitRingMiddle}`}>
-              <div className={`${styles.orbitIcon} ${styles.orbitIcon3}`}>
-                <span>💻</span>
-              </div>
-              <div className={`${styles.orbitIcon} ${styles.orbitIcon4}`}>
-                <span>🚀</span>
-              </div>
-              <div className={`${styles.orbitIcon} ${styles.orbitIcon5}`}>
-                <span>⚡</span>
-              </div>
-            </div>
-            
-            {/* Outer orbit - slower */}
-            <div className={`${styles.orbitRing} ${styles.orbitRingOuter}`}>
-              <div className={`${styles.orbitIcon} ${styles.orbitIcon6}`}>
-                <span>🎯</span>
-              </div>
-              <div className={`${styles.orbitIcon} ${styles.orbitIcon7}`}>
-                <span>✨</span>
-              </div>
-            </div>
+          <div className={styles.mobileOrbitRing}>
+            <span className={styles.mobileOrbitDot} />
           </div>
         </div>
 
