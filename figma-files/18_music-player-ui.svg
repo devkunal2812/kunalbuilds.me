@@ -1,0 +1,64 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with gradient -->
+  <defs>
+    <linearGradient id="musicBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#EC4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#musicBg)"/>
+  
+  <!-- Main Player Card -->
+  <rect x="300" y="100" width="600" height="600" rx="32" fill="#FFFFFF" opacity="0.95"/>
+  
+  <!-- Album Art -->
+  <rect x="375" y="180" width="450" height="280" rx="24" fill="#1E293B"/>
+  <text x="600" y="340" font-family="Arial" font-size="120" text-anchor="middle">🎵</text>
+  
+  <!-- Song Info -->
+  <text x="600" y="510" font-family="Arial" font-size="32" font-weight="bold" fill="#0F172A" text-anchor="middle">Summer Vibes</text>
+  <text x="600" y="545" font-family="Arial" font-size="18" fill="#64748B" text-anchor="middle">The Weeknd • After Hours</text>
+  
+  <!-- Progress Bar -->
+  <rect x="350" y="580" width="500" height="6" rx="3" fill="#E2E8F0"/>
+  <rect x="350" y="580" width="300" height="6" rx="3" fill="#8B5CF6"/>
+  <circle cx="650" cy="583" r="10" fill="#8B5CF6"/>
+  
+  <!-- Time -->
+  <text x="350" y="610" font-family="Arial" font-size="14" fill="#64748B">2:34</text>
+  <text x="850" y="610" font-family="Arial" font-size="14" fill="#64748B" text-anchor="end">4:12</text>
+  
+  <!-- Controls -->
+  <text x="420" y="660" font-family="Arial" font-size="28" fill="#64748B">🔀</text>
+  <text x="500" y="660" font-family="Arial" font-size="32" fill="#0F172A">⏮</text>
+  
+  <circle cx="600" cy="645" r="40" fill="#8B5CF6"/>
+  <text x="600" y="660" font-family="Arial" font-size="32" fill="#FFFFFF" text-anchor="middle">▶</text>
+  
+  <text x="700" y="660" font-family="Arial" font-size="32" fill="#0F172A">⏭</text>
+  <text x="780" y="660" font-family="Arial" font-size="28" fill="#64748B">🔁</text>
+  
+  <!-- Volume -->
+  <text x="150" y="400" font-family="Arial" font-size="24" fill="#FFFFFF">🔊</text>
+  <rect x="150" y="450" width="60" height="200" rx="30" fill="#FFFFFF" opacity="0.3"/>
+  <rect x="150" y="530" width="60" height="120" rx="30" fill="#FFFFFF"/>
+  
+  <!-- Playlist -->
+  <text x="1000" y="150" font-family="Arial" font-size="20" font-weight="bold" fill="#FFFFFF">Up Next</text>
+  
+  <rect x="950" y="180" width="200" height="70" rx="16" fill="#FFFFFF" opacity="0.9"/>
+  <text x="970" y="210" font-family="Arial" font-size="14" font-weight="600" fill="#0F172A">Blinding Lights</text>
+  <text x="970" y="230" font-family="Arial" font-size="12" fill="#64748B">The Weeknd</text>
+  <text x="970" y="245" font-family="Arial" font-size="11" fill="#8B5CF6">3:20</text>
+  
+  <rect x="950" y="265" width="200" height="70" rx="16" fill="#FFFFFF" opacity="0.8"/>
+  <text x="970" y="295" font-family="Arial" font-size="14" font-weight="600" fill="#0F172A">Save Your Tears</text>
+  <text x="970" y="315" font-family="Arial" font-size="12" fill="#64748B">The Weeknd</text>
+  <text x="970" y="330" font-family="Arial" font-size="11" fill="#8B5CF6">3:35</text>
+  
+  <rect x="950" y="350" width="200" height="70" rx="16" fill="#FFFFFF" opacity="0.7"/>
+  <text x="970" y="380" font-family="Arial" font-size="14" font-weight="600" fill="#0F172A">Starboy</text>
+  <text x="970" y="400" font-family="Arial" font-size="12" fill="#64748B">The Weeknd</text>
+  <text x="970" y="415" font-family="Arial" font-size="11" fill="#8B5CF6">3:50</text>
+</svg>
