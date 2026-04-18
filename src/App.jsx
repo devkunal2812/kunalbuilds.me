@@ -21,11 +21,13 @@ import { initializeGlobalProtection } from './utils/contentProtection'
 function Home() {
   return (
     <PageTransition>
-      <Hero />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer />
+      <main id="main-content">
+        <Hero />
+        <Projects />
+        <Skills />
+        <Contact />
+        <Footer />
+      </main>
     </PageTransition>
   )
 }
@@ -72,6 +74,9 @@ export default function App() {
 
   return (
     <>
+      <a href="#main-content" className="skip-to-content">
+        Skip to main content
+      </a>
       {showLoader && <PageLoader />}
       <ScrollProgress />
       <BugModeOverlay isActive={isBugMode} />
