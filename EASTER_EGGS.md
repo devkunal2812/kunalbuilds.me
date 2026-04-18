@@ -25,10 +25,10 @@ A glitch effect that makes the page look "buggy" for 3 seconds.
 - The letters don't need to be typed quickly, just in sequence
 
 ### Mobile
-- **Trigger**: Triple tap anywhere on the screen quickly (within 500ms between taps)
-- Don't tap on buttons, links, or input fields
+- **Trigger**: Touch the screen with 4 fingers simultaneously
+- This avoids conflict with the piano effect on skill cards
 - You'll feel a vibration pattern when it triggers (if your device supports haptic feedback)
-- Tap 3 times in quick succession
+- Works anywhere on the page (except on buttons/links)
 
 ## 🎹 Piano Sounds (Mobile Only)
 
