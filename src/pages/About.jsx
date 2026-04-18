@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import styles from './About.module.css'
 import { LEFT_CHIPS, RIGHT_CHIPS, STATS } from '../data/about'
 import AnimatedCounter from '../components/AnimatedCounter'
-import ExplorePanel from '../components/ExplorePanel'
+import { useExplorePanel } from '../App'
 
 function FloatChip({ label, icon, x, y, rotate, delay, mouseX, mouseY, depth = 1, description }) {
   const [showTooltip, setShowTooltip] = useState(false)
@@ -125,7 +125,7 @@ function CountUpStat({ value, label, delay }) {
 export default function About() {
   const navigate = useNavigate()
   const [cardEntered, setCardEntered] = useState(false)
-  const [isExplorePanelOpen, setIsExplorePanelOpen] = useState(false)
+  const { openExplorePanel } = useExplorePanel()
   
   // Mouse position tracking
   const mouseX = useMotionValue(0)
@@ -176,7 +176,11 @@ export default function About() {
         >
           <motion.button
             className={styles.exploreBtn}
-            onClick={() => setIsExplorePanelOpen(true)}
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              openExplorePanel()
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -196,12 +200,6 @@ export default function About() {
             </motion.span>
           </motion.button>
         </motion.div>
-
-        {/* Explore Panel */}
-        <ExplorePanel 
-          isOpen={isExplorePanelOpen} 
-          onClose={() => setIsExplorePanelOpen(false)} 
-        />
 
         {/* Chips layer with focus pull effect */}
         <motion.div 
@@ -321,52 +319,6 @@ export default function About() {
                 whileTap={{ scale: 0.98 }}
               >
                 Linktree ↗
-              </motion.a>
-            </motion.div>
-
-            {/* Action Buttons */}
-            <motion.div 
-              className={styles.actionButtons}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6 }}
-            >
-              <motion.button
-                className={styles.actionBtn}
-                onClick={() => navigate('/timeline')}
-                whileHover={{ scale: 1.03, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className={styles.actionIcon}>📅</span>
-                <span>Timeline</span>
-              </motion.button>
-              <motion.button
-                className={styles.actionBtn}
-                onClick={() => navigate('/gallery')}
-                whileHover={{ scale: 1.03, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className={styles.actionIcon}>📸</span>
-                <span>Gallery</span>
-              </motion.button>
-              <motion.button
-                className={styles.actionBtn}
-                onClick={() => navigate('/fun-facts')}
-                whileHover={{ scale: 1.03, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className={styles.actionIcon}>✨</span>
-                <span>Fun Facts</span>
-              </motion.button>
-              <motion.a
-                href="/resume.pdf"
-                download
-                className={styles.actionBtn}
-                whileHover={{ scale: 1.03, y: -1 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className={styles.actionIcon}>📄</span>
-                <span>Resume</span>
               </motion.a>
             </motion.div>
           </motion.div>

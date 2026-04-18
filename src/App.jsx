@@ -1,6 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createContext, useContext } from 'react'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
@@ -19,9 +19,21 @@ import PageTransition from './components/PageTransition'
 import BugModeOverlay from './components/BugModeOverlay'
 import AvgCinematic from './components/AvgCinematic'
 import ScrollProgress from './components/ScrollProgress'
+import ExplorePanel from './components/ExplorePanel'
 import { useBugMode } from './hooks/useBugMode'
 import { useAvgTrigger } from './hooks/useAvgTrigger'
 import { initializeGlobalProtection } from './utils/contentProtection'
+
+// Create context for Explore Panel
+const ExplorePanelContext = createContext()
+
+export const useExplorePanel = () => {
+  const context = useContext(ExplorePanelContext)
+  if (!context) {
+    throw new Error('useExplorePanel must be used within ExplorePanelProvider')
+  }
+  return context
+}
 
 function Home() {
   return (
@@ -98,6 +110,7 @@ function AchievementsPage() {
 export default function App() {
   const location = useLocation()
   const [showLoader, setShowLoader] = useState(true)
+  const [isExplorePanelOpen, setIsExplorePanelOpen] = useState(false)
   const { isBugMode } = useBugMode()
   const { isCinematicActive, onCinematicComplete } = useAvgTrigger({ keyword: 'avg' })
   
@@ -122,8 +135,18 @@ export default function App() {
     return cleanup
   }, [])
 
+  const openExplorePanel = () => {
+    // Scroll to top instantly
+    window.scrollTo({ top: 0, behavior: 'instant' })
+    setIsExplorePanelOpen(true)
+  }
+
+  const closeExplorePanel = () => {
+    setIsExplorePanelOpen(false)
+  }
+
   return (
-    <>
+    <ExplorePanelContext.Provider value={{ openExplorePanel, closeExplorePanel }}>
       <a href="#main-content" className="skip-to-content">
         Skip to main content
       </a>
@@ -132,6 +155,10 @@ export default function App() {
       <BugModeOverlay isActive={isBugMode} />
       {isCinematicActive && <AvgCinematic isActive={isCinematicActive} onComplete={onCinematicComplete} />}
       {!isDesignBoard && <Nav />}
+      
+      {/* Explore Panel at root level */}
+      <ExplorePanel isOpen={isExplorePanelOpen} onClose={closeExplorePanel} />
+      
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
@@ -144,6 +171,6 @@ export default function App() {
           <Route path="/achievements" element={<AchievementsPage />} />
         </Routes>
       </AnimatePresence>
-    </>
+    </ExplorePanelContext.Provider>
   )
 }
