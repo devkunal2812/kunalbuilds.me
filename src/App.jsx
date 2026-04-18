@@ -66,7 +66,7 @@ export default function App() {
     <>
       {showLoader && <PageLoader />}
       <BugModeOverlay isActive={isBugMode} />
-      <AvgCinematic isActive={isCinematicActive} onComplete={onCinematicComplete} />
+      {isCinematicActive && <AvgCinematic isActive={isCinematicActive} onComplete={onCinematicComplete} />}
       {!isDesignBoard && <Nav />}
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
