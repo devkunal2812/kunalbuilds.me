@@ -13,6 +13,7 @@ import PageLoader from './components/PageLoader'
 import PageTransition from './components/PageTransition'
 import BugModeOverlay from './components/BugModeOverlay'
 import AvgCinematic from './components/AvgCinematic'
+import ScrollProgress from './components/ScrollProgress'
 import { useBugMode } from './hooks/useBugMode'
 import { useAvgTrigger } from './hooks/useAvgTrigger'
 import { initializeGlobalProtection } from './utils/contentProtection'
@@ -72,6 +73,7 @@ export default function App() {
   return (
     <>
       {showLoader && <PageLoader />}
+      <ScrollProgress />
       <BugModeOverlay isActive={isBugMode} />
       {isCinematicActive && <AvgCinematic isActive={isCinematicActive} onComplete={onCinematicComplete} />}
       {!isDesignBoard && <Nav />}
