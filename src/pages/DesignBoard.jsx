@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './DesignBoard.module.css'
@@ -51,6 +51,27 @@ function PhotoCard({ item, index, onSelect }) {
 
 // Expanded split-screen view
 function ExpandedView({ item, onClose }) {
+  const touchStartY = useRef(0)
+  const touchEndY = useRef(0)
+  const minSwipeDistance = 80
+
+  const handleTouchStart = (e) => {
+    touchStartY.current = e.touches[0].clientY
+  }
+
+  const handleTouchMove = (e) => {
+    touchEndY.current = e.touches[0].clientY
+  }
+
+  const handleTouchEnd = () => {
+    const distance = touchStartY.current - touchEndY.current
+    const isDownSwipe = distance < -minSwipeDistance
+
+    if (isDownSwipe) {
+      onClose()
+    }
+  }
+
   return (
     <motion.div
       className={styles.expandedOverlay}
@@ -67,6 +88,9 @@ function ExpandedView({ item, onClose }) {
         exit={{ scale: 0.94, y: 20 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         onClick={(e) => e.stopPropagation()}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         {/* Left - enlarged image */}
         <motion.div
@@ -75,6 +99,7 @@ function ExpandedView({ item, onClose }) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.45, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
         >
+          <div className={styles.swipeIndicator} />
           {item.image
             ? <img src={item.image} alt={item.title} className={styles.expandedImg} />
             : (
@@ -138,6 +163,11 @@ export default function DesignBoard() {
   const navigate = useNavigate()
   const total = SLIDES.length
 
+  // Touch gesture handling
+  const touchStartX = useRef(0)
+  const touchEndX = useRef(0)
+  const minSwipeDistance = 50
+
   const prev = useCallback(() => {
     if (selected) return
     setDirection(-1)
@@ -150,6 +180,45 @@ export default function DesignBoard() {
     setSlide((s) => (s + 1) % total)
   }, [total, selected])
 
+  const handleTouchStart = (e) => {
+    if (selected) return
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchMove = (e) => {
+    if (selected) return
+    touchEndX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    if (selected) return
+    const distance = touchStartX.current - touchEndX.current
+    const isLeftSwipe = distance > minSwipeDistance
+    const isRightSwipe = distance < -minSwipeDistance
+
+    if (isLeftSwipe) {
+      next()
+    } else if (isRightSwipe) {
+      prev()
+    }
+  }
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selected) {
+        if (e.key === 'Escape') setSelected(null)
+        return
+      }
+      if (e.key === 'ArrowLeft') prev()
+      if (e.key === 'ArrowRight') next()
+      if (e.key === 'Escape') navigate(-1)
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [prev, next, selected, navigate])
+
   return (
     <div className={styles.overlay}>
 
@@ -161,7 +230,12 @@ export default function DesignBoard() {
       </button>
 
       {/* The board - background never changes */}
-      <div className={styles.board}>
+      <div 
+        className={styles.board}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <DotGrid />
 
         <div className={styles.boardTitle}>
