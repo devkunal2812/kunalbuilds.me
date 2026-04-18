@@ -3,7 +3,8 @@ import { useState, useCallback, useRef, useEffect } from 'react'
 /**
  * useAvgTrigger
  *
- * Watches for the keyword "avg" typed anywhere on the page and fires the cinematic.
+ * Desktop: Type "avg" anywhere on the page
+ * Mobile: Long press (hold for 2 seconds) anywhere on the screen
  *
  * Usage:
  *   const { isCinematicActive, onCinematicComplete } = useAvgTrigger()
@@ -13,8 +14,11 @@ export function useAvgTrigger({ keyword = 'avg', onComplete } = {}) {
   const [isCinematicActive, setActive] = useState(false)
   const firedRef = useRef(false)
   const bufferRef = useRef('')
+  const longPressTimerRef = useRef(null)
+  const touchStartTimeRef = useRef(0)
 
   useEffect(() => {
+    // Desktop: Keyboard trigger
     const handleKeyPress = (e) => {
       if (firedRef.current) return
       
@@ -32,8 +36,63 @@ export function useAvgTrigger({ keyword = 'avg', onComplete } = {}) {
       }
     }
 
+    // Mobile: Long press trigger (2 seconds)
+    const handleTouchStart = (e) => {
+      if (firedRef.current) return
+      
+      // Ignore if touching input/textarea or interactive elements
+      const target = e.target
+      if (
+        target.tagName === 'INPUT' || 
+        target.tagName === 'TEXTAREA' ||
+        target.tagName === 'BUTTON' ||
+        target.tagName === 'A' ||
+        target.closest('button') ||
+        target.closest('a')
+      ) return
+
+      touchStartTimeRef.current = Date.now()
+      
+      longPressTimerRef.current = setTimeout(() => {
+        firedRef.current = true
+        setActive(true)
+        
+        // Haptic feedback if available
+        if (navigator.vibrate) {
+          navigator.vibrate([50, 100, 50])
+        }
+      }, 2000) // 2 second long press
+    }
+
+    const handleTouchEnd = () => {
+      if (longPressTimerRef.current) {
+        clearTimeout(longPressTimerRef.current)
+        longPressTimerRef.current = null
+      }
+    }
+
+    const handleTouchMove = () => {
+      // Cancel long press if finger moves
+      if (longPressTimerRef.current) {
+        clearTimeout(longPressTimerRef.current)
+        longPressTimerRef.current = null
+      }
+    }
+
     window.addEventListener('keypress', handleKeyPress)
-    return () => window.removeEventListener('keypress', handleKeyPress)
+    window.addEventListener('touchstart', handleTouchStart, { passive: true })
+    window.addEventListener('touchend', handleTouchEnd, { passive: true })
+    window.addEventListener('touchmove', handleTouchMove, { passive: true })
+    
+    return () => {
+      window.removeEventListener('keypress', handleKeyPress)
+      window.removeEventListener('touchstart', handleTouchStart)
+      window.removeEventListener('touchend', handleTouchEnd)
+      window.removeEventListener('touchmove', handleTouchMove)
+      if (longPressTimerRef.current) {
+        clearTimeout(longPressTimerRef.current)
+      }
+    }
   }, [keyword])
 
   const onCinematicComplete = useCallback(() => {
