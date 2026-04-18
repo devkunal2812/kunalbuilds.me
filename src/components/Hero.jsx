@@ -5,6 +5,7 @@ import { SKILL_CARDS } from '../data/skills'
 import profilePhoto from '../assets/profile_photo.jpeg'
 import styles from './Hero.module.css'
 import { getImageProtectionProps } from '../utils/contentProtection'
+import pianoSound from '../utils/pianoSound'
 
 function MobileHero() {
   return (
@@ -55,12 +56,20 @@ function MobileHero() {
 
       {/* Skills Grid — completely static, no interaction */}
       <div className={styles.mobileSkillsSection}>
-        <p className={styles.mobileSkillsLabel}>Explore Skills</p>
+        <p 
+          className={styles.mobileSkillsLabel}
+          onClick={() => pianoSound.playExploreMelody()}
+          style={{ cursor: 'pointer' }}
+        >
+          Explore Skills
+        </p>
         <div className={styles.mobileSkillGrid}>
-          {SKILL_CARDS.map((skill) => (
+          {SKILL_CARDS.map((skill, index) => (
             <div
               key={skill.id}
               className={styles.mobileSkillCard}
+              onClick={() => pianoSound.playSkillSound(index)}
+              style={{ cursor: 'pointer' }}
             >
               <div
                 className={styles.mobileSkillIcon}
