@@ -15,6 +15,7 @@ import BugModeOverlay from './components/BugModeOverlay'
 import AvgCinematic from './components/AvgCinematic'
 import { useBugMode } from './hooks/useBugMode'
 import { useAvgTrigger } from './hooks/useAvgTrigger'
+import { initializeGlobalProtection } from './utils/contentProtection'
 
 function Home() {
   return (
@@ -60,6 +61,12 @@ export default function App() {
       // Hide loader after 2.5 seconds (2s + 0.4s delay + 0.1s buffer)
       setTimeout(() => setShowLoader(false), 2500)
     }
+  }, [])
+
+  // Initialize global content protection
+  useEffect(() => {
+    const cleanup = initializeGlobalProtection()
+    return cleanup
   }, [])
 
   return (

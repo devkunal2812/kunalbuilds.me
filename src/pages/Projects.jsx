@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import styles from './Projects.module.css'
 import { PROJECTS } from '../data/projects'
+import { getImageProtectionProps } from '../utils/contentProtection'
 
 function ProjectCard({ project, index, totalProjects }) {
   const ref = useRef(null)
@@ -122,6 +123,7 @@ function ProjectCard({ project, index, totalProjects }) {
                     src={project.image}
                     alt={`${project.title} screenshot`}
                     className={styles.projectScreenshot}
+                    {...getImageProtectionProps()}
                   />
                 ) : (
                   <>

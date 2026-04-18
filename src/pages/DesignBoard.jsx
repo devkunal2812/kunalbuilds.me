@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './DesignBoard.module.css'
 import { SLIDES } from '../data/designBoard'
+import { getImageProtectionProps } from '../utils/contentProtection'
 
 function DotGrid() {
   return (
@@ -38,7 +39,12 @@ function PhotoCard({ item, index, onSelect }) {
     >
       <div className={styles.photoArea} style={{ height: item.h }}>
         {item.image
-          ? <img src={item.image} alt={item.title} className={styles.photoImg} />
+          ? <img 
+              src={item.image} 
+              alt={item.title} 
+              className={styles.photoImg}
+              {...getImageProtectionProps()}
+            />
           : <div className={styles.photoPlaceholder}><span className={styles.photoPlaceholderIcon}>📷</span></div>
         }
       </div>
@@ -101,7 +107,12 @@ function ExpandedView({ item, onClose }) {
         >
           <div className={styles.swipeIndicator} />
           {item.image
-            ? <img src={item.image} alt={item.title} className={styles.expandedImg} />
+            ? <img 
+                src={item.image} 
+                alt={item.title} 
+                className={styles.expandedImg}
+                {...getImageProtectionProps()}
+              />
             : (
               <div className={styles.expandedPlaceholder} style={{ '--accent': item.accent }}>
                 <span className={styles.expandedPlaceholderIcon}>🎨</span>

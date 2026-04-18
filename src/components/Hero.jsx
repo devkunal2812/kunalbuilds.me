@@ -4,6 +4,7 @@ import SystemCore from './SystemCore'
 import { SKILL_CARDS } from '../data/skills'
 import profilePhoto from '../assets/profile_photo.jpeg'
 import styles from './Hero.module.css'
+import { getImageProtectionProps } from '../utils/contentProtection'
 
 function MobileHero() {
   return (
@@ -17,7 +18,12 @@ function MobileHero() {
         <div className={styles.mobileAvatarWrapper}>
           <div className={styles.mobileAvatarGlow} />
           <div className={styles.mobileAvatar}>
-            <img src={profilePhoto} alt="Kunal" className={styles.mobileAvatarImg} />
+            <img 
+              src={profilePhoto} 
+              alt="Kunal" 
+              className={styles.mobileAvatarImg}
+              {...getImageProtectionProps()}
+            />
           </div>
           <div className={styles.mobileOrbitRing}>
             <span className={styles.mobileOrbitDot} />
