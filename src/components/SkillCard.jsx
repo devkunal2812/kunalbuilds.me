@@ -18,7 +18,7 @@ export default function SkillCard({ position, delay, floatDur, iconVariant, icon
         </div>
       </div>
 
-      {/* Mobile pill — hidden on desktop via CSS */}
+      {/* Mobile pill - hidden on desktop via CSS */}
       <div className={`${styles.mobilePill}`} data-mobile-pill>
         <span className={`${styles.pillIcon} ${styles[iconVariant]}`}
           dangerouslySetInnerHTML={{ __html: icon }}

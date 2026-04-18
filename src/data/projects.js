@@ -1,6 +1,6 @@
-// ─────────────────────────────────────────────
-//  Projects Data  —  Kunal Chauhan
-// ─────────────────────────────────────────────
+// ---------------------------------------------------------
+//  Projects Data  -  Kunal Chauhan
+// ---------------------------------------------------------
 
 import feudexeImg from '../assets/feudexe-preview.png'
 import praxisImg from '../assets/praxis-preview.png'

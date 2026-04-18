@@ -1,13 +1,13 @@
-// ─────────────────────────────────────────────
-// Design Board Data — Kunal Chauhan
+// ---------------------------------------------------------
+// Design Board Data - Kunal Chauhan
 // To add images: import them below and use the variable
-// ─────────────────────────────────────────────
+// ---------------------------------------------------------
 
 import ui1 from '../assets/ui_1.png'
 // import ui2 from '../assets/ui_2.png'   ← add more here
 
 export const SLIDES = [
-  // Slide 1 — UI / Product Work
+  // Slide 1 - UI / Product Work
   [
     {
       id: 1,
@@ -94,7 +94,7 @@ export const SLIDES = [
     },
   ],
 
-  // 🟪 Slide 2 — Graphic / Print Work
+  // Slide 2 - Graphic / Print Work
   [
     {
       id: 7,
@@ -167,7 +167,7 @@ export const SLIDES = [
     },
   ],
 
-  // 🟨 Slide 3 — Motion / Interaction
+  // Slide 3 - Motion / Interaction
   [
     {
       id: 12,

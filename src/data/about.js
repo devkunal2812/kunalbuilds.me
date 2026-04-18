@@ -1,11 +1,11 @@
-// ─────────────────────────────────────────────
-//  About Page Data — Kunal Chauhan
+// ---------------------------------------------------------
+//  About Page Data - Kunal Chauhan
 //  x = horizontal offset from scene center (px)
 //  y = vertical offset from scene center (px)
 //  3 columns per side
-// ─────────────────────────────────────────────
+// ---------------------------------------------------------
 
-// LEFT — Technical + Builder Side
+// LEFT - Technical + Builder Side
 export const LEFT_CHIPS = [
   // Near column (x = -350)
   { label: 'React',          icon: '⚛️', x: -350, y: -280, rotate: -8, delay: 0.0, description: 'Built 8+ projects with React' },
@@ -28,7 +28,7 @@ export const LEFT_CHIPS = [
   { label: 'VS Code',        icon: '💙', x: -635, y:  160, rotate: -7, delay: 0.8, description: 'Primary development IDE' },
 ]
 
-// RIGHT — Creative + Tools + Identity Side
+// RIGHT - Creative + Tools + Identity Side
 export const RIGHT_CHIPS = [
   // Near column (x = +245)
   { label: 'UI/UX',          icon: '🎨', x:  245, y: -280, rotate: -6, delay: 0.3, description: 'Designed 6+ interfaces' },

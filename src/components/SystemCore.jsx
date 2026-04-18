@@ -80,7 +80,7 @@ export default function SystemCore({ heroRef }) {
           <div className={`${styles.coreRing} ${styles.ring2}`} />
           <div className={`${styles.coreRing} ${styles.ring3}`} />
           <div className={styles.faceFrame}>
-            <img src={profilePhoto} alt="Kunal — Profile" className={styles.faceImg} />
+            <img src={profilePhoto} alt="Kunal - Profile" className={styles.faceImg} />
           </div>
           <div className={styles.coreLabel}>KUNAL</div>
         </div>
@@ -90,7 +90,7 @@ export default function SystemCore({ heroRef }) {
         ))}
       </div>
 
-      {/* Mobile pill scroll strip — pills inside are shown/hidden via CSS */}
+      {/* Mobile pill scroll strip - pills inside are shown/hidden via CSS */}
       <div className={styles.mobilePillRow}>
         {SKILL_CARDS.map((card) => (
           <SkillCard key={`m-${card.id}`} {...card} />
@@ -100,7 +100,7 @@ export default function SystemCore({ heroRef }) {
   )
 }
 
-// 6 paths: tl, tr, l, r, bl, br — all converge to center (300,300)
+// 6 paths: tl, tr, l, r, bl, br - all converge to center (300,300)
 const PATHS = [
   { id: 'p-tl', d: 'M 95 110 C 160 190, 230 250, 300 300', gradId: 'lg-tl' },
   { id: 'p-tr', d: 'M 505 110 C 440 190, 370 250, 300 300', gradId: 'lg-tr' },

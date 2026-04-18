@@ -68,7 +68,7 @@ function ExpandedView({ item, onClose }) {
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Left — enlarged image */}
+        {/* Left - enlarged image */}
         <motion.div
           className={styles.expandedLeft}
           initial={{ opacity: 0, x: -40 }}
@@ -87,7 +87,7 @@ function ExpandedView({ item, onClose }) {
           <div className={styles.expandedAccentBar} style={{ background: item.accent }} />
         </motion.div>
 
-        {/* Right — detail panel */}
+        {/* Right - detail panel */}
         <motion.div
           className={styles.expandedRight}
           initial={{ opacity: 0, x: 40 }}
@@ -160,7 +160,7 @@ export default function DesignBoard() {
         </svg>
       </button>
 
-      {/* The board — background never changes */}
+      {/* The board - background never changes */}
       <div className={styles.board}>
         <DotGrid />
 
@@ -216,7 +216,7 @@ export default function DesignBoard() {
         </svg>
       </button>
 
-      {/* Expanded view — renders on top of board */}
+      {/* Expanded view - renders on top of board */}
       <AnimatePresence>
         {selected && (
           <ExpandedView item={selected} onClose={() => setSelected(null)} />
