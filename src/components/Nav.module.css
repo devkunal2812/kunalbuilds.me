@@ -107,6 +107,20 @@
   box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
+/* Dark mode styles for resume button */
+@media (prefers-color-scheme: dark) {
+  .resumeBtn {
+    color: #0a0a0a;
+    background: linear-gradient(135deg, #f0f0f0 0%, #ffffff 100%);
+    box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+  }
+
+  .resumeBtn:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    box-shadow: 0 6px 20px rgba(255,255,255,0.15);
+  }
+}
+
 .drawerResume {
   display: flex;
   align-items: center;
@@ -126,6 +140,22 @@
 .drawerResume:hover {
   background: var(--color-text-primary);
   color: var(--color-bg-primary);
+}
+
+/* Dark mode styles for drawer resume button */
+@media (prefers-color-scheme: dark) {
+  .drawerResume {
+    color: #0a0a0a;
+    background: linear-gradient(135deg, #f0f0f0 0%, #ffffff 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(255,255,255,0.08);
+  }
+
+  .drawerResume:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    color: #0a0a0a;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.12);
+  }
 }
 
 .status {
