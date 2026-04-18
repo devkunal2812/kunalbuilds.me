@@ -1,0 +1,183 @@
+/* Base skeleton with shimmer animation */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.04) 0%,
+    rgba(0, 0, 0, 0.08) 50%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.1) 50%,
+      rgba(255, 255, 255, 0.05) 100%
+    );
+    background-size: 200% 100%;
+  }
+}
+
+/* Skeleton text */
+.skeletonText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Skeleton card */
+.skeletonCard {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skeletonCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Project skeleton */
+.projectSkeleton {
+  background: var(--bg-card);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.projectSkeletonContent {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.projectSkeletonTags {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Skill skeleton */
+.skillSkeleton {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+/* Hero skeleton */
+.heroSkeleton {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.heroSkeletonContent {
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+}
+
+.heroSkeletonChips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+/* About skeleton */
+.aboutSkeleton {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.aboutSkeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin-top: 40px;
+}
+
+/* Design board skeleton */
+.designBoardSkeleton {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px;
+}
+
+.designCardSkeleton {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Fade out animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  animation: fadeOut 0.3s ease-out forwards;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .aboutSkeletonGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .heroSkeletonContent {
+    padding: 20px;
+  }
+
+  .designBoardSkeleton {
+    padding: 20px;
+  }
+}
