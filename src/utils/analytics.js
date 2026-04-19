@@ -67,7 +67,7 @@ export function getReferrer() {
 // Send analytics data to backend
 async function sendAnalytics(data) {
   try {
-    // TODO: Replace with your actual backend URL
+    // API endpoint (same domain - Vercel serverless function)
     const API_URL = '/api/analytics'
     
     await fetch(API_URL, {
