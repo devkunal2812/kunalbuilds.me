@@ -5,28 +5,40 @@
 
 export const TIMELINE_DATA = [
   {
+    year: '2026',
+    title: 'Building in Public',
+    description: 'Shipping interactive web experiences and experimenting with motion design',
+    icon: 'rocket'
+  },
+  {
+    year: '2025',
+    title: 'Multiple Projects Launched',
+    description: 'Built Feud.Exe, ClipSync, and IntelliPrep - focusing on real-world problems',
+    icon: 'layers'
+  },
+  {
     year: '2024',
     title: 'Founded PRAXIS',
-    description: 'Built a coding platform for students to practice and compete',
-    icon: '🚀'
+    description: 'Created a coding platform for workshops and student practice',
+    icon: 'code'
+  },
+  {
+    year: '2024',
+    title: 'First Hackathon Win',
+    description: 'Won college hackathon with an AI-powered project management tool',
+    icon: 'trophy'
   },
   {
     year: '2023',
     title: 'Started B.Tech IT',
-    description: 'Joined SVIT, Vasad - diving deep into software engineering',
-    icon: '🎓'
-  },
-  {
-    year: '2023',
-    title: 'First Hackathon Win',
-    description: 'Won college hackathon with an AI-powered project',
-    icon: '🏆'
+    description: 'Joined SVIT, Vasad - diving into software engineering and design',
+    icon: 'graduation-cap'
   },
   {
     year: '2022',
-    title: 'Started Coding',
-    description: 'Fell in love with web development and UI design',
-    icon: '💻'
+    title: 'Discovered Web Development',
+    description: 'Started learning React and fell in love with building interfaces',
+    icon: 'sparkles'
   }
 ]
 

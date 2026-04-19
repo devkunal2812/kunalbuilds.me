@@ -1,0 +1,10 @@
+# Don't upload these to Vercel
+node_modules
+.env
+.env.local
+.env.production
+*.log
+.DS_Store
+README.md
+SETUP_INSTRUCTIONS.md
+VERCEL_DEPLOYMENT.md

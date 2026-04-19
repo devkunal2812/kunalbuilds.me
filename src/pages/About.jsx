@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import styles from './About.module.css'
 import { LEFT_CHIPS, RIGHT_CHIPS, STATS } from '../data/about'
 import AnimatedCounter from '../components/AnimatedCounter'
-import { useExplorePanel } from '../App'
 
 function FloatChip({ label, icon, x, y, rotate, delay, mouseX, mouseY, depth = 1, description }) {
   const [showTooltip, setShowTooltip] = useState(false)
@@ -125,7 +124,6 @@ function CountUpStat({ value, label, delay }) {
 export default function About() {
   const navigate = useNavigate()
   const [cardEntered, setCardEntered] = useState(false)
-  const { openExplorePanel } = useExplorePanel()
   
   // Mouse position tracking
   const mouseX = useMotionValue(0)
@@ -166,40 +164,6 @@ export default function About() {
 
       {/* ── Hero scene ── */}
       <div className={styles.scene}>
-
-        {/* Floating Explore Button */}
-        <motion.div 
-          className={styles.exploreFloat}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
-        >
-          <motion.button
-            className={styles.exploreBtn}
-            onClick={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              openExplorePanel()
-            }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className={styles.exploreIcon}>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 16v-4M12 8h.01"/>
-              </svg>
-            </span>
-            <span>Explore</span>
-            <motion.span 
-              className={styles.exploreHint}
-              initial={{ opacity: 0, x: -10 }}
-              whileHover={{ opacity: 1, x: 0 }}
-            >
-              Discover more →
-            </motion.span>
-          </motion.button>
-        </motion.div>
 
         {/* Chips layer with focus pull effect */}
         <motion.div 

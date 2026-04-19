@@ -24,7 +24,7 @@ export default function FunFacts() {
   return (
     <div className={styles.page}>
       <div className={styles.backRow}>
-        <Link to="/about" className={styles.backLink}>← Back to About</Link>
+        <Link to="/" className={styles.backLink}>← Back to Home</Link>
       </div>
 
       <div className={styles.container}>

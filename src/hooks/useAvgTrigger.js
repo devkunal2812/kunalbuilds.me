@@ -1,21 +1,36 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 /**
  * useAvgTrigger
  *
  * Desktop: Type "avg" anywhere on the page
  * Mobile: Long press (hold for 2 seconds) anywhere on the screen
+ * Redirects to /secret/avg page
  *
  * Usage:
- *   const { isCinematicActive, onCinematicComplete } = useAvgTrigger()
- *   {isCinematicActive && <AvgCinematic isActive onComplete={onCinematicComplete} />}
+ *   useAvgTrigger()
  */
-export function useAvgTrigger({ keyword = 'avg', onComplete } = {}) {
-  const [isCinematicActive, setActive] = useState(false)
+export function useAvgTrigger({ keyword = 'avg' } = {}) {
+  const navigate = useNavigate()
   const firedRef = useRef(false)
   const bufferRef = useRef('')
   const longPressTimerRef = useRef(null)
   const touchStartTimeRef = useRef(0)
+
+  const triggerAvg = useCallback(() => {
+    if (firedRef.current) return
+    
+    firedRef.current = true
+    
+    // Haptic feedback if available
+    if (navigator.vibrate) {
+      navigator.vibrate([50, 100, 50])
+    }
+    
+    // Navigate to AVG easter egg page
+    navigate('/secret/avg')
+  }, [navigate])
 
   useEffect(() => {
     // Desktop: Keyboard trigger
@@ -30,8 +45,12 @@ export function useAvgTrigger({ keyword = 'avg', onComplete } = {}) {
 
       // Check if buffer matches keyword
       if (bufferRef.current === keyword.toLowerCase()) {
-        firedRef.current = true
-        setActive(true)
+        triggerAvg()
+        bufferRef.current = ''
+      }
+      
+      // Clear buffer if "bug" is typed (to avoid conflict)
+      if (bufferRef.current.includes('bug')) {
         bufferRef.current = ''
       }
     }
@@ -54,13 +73,7 @@ export function useAvgTrigger({ keyword = 'avg', onComplete } = {}) {
       touchStartTimeRef.current = Date.now()
       
       longPressTimerRef.current = setTimeout(() => {
-        firedRef.current = true
-        setActive(true)
-        
-        // Haptic feedback if available
-        if (navigator.vibrate) {
-          navigator.vibrate([50, 100, 50])
-        }
+        triggerAvg()
       }, 2000) // 2 second long press
     }
 
@@ -93,19 +106,7 @@ export function useAvgTrigger({ keyword = 'avg', onComplete } = {}) {
         clearTimeout(longPressTimerRef.current)
       }
     }
-  }, [keyword])
+  }, [keyword, triggerAvg])
 
-  const onCinematicComplete = useCallback(() => {
-    setActive(false)
-    firedRef.current = false
-    onComplete?.()
-  }, [onComplete])
-
-  const resetTrigger = useCallback(() => {
-    firedRef.current = false
-    setActive(false)
-    bufferRef.current = ''
-  }, [])
-
-  return { isCinematicActive, onCinematicComplete, resetTrigger }
+  return { triggerAvg }
 }

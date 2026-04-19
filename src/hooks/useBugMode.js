@@ -1,27 +1,25 @@
 import { useState, useEffect, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 /**
  * Bug Mode - Secret Easter Egg
  * Desktop: Type "bug" anywhere
  * Mobile: 4-finger tap anywhere on the screen (avoids conflict with piano effect)
+ * Redirects to /secret/bug page
  */
 export function useBugMode() {
-  const [isBugMode, setIsBugMode] = useState(false)
+  const navigate = useNavigate()
   const [keySequence, setKeySequence] = useState('')
 
   const triggerBugMode = useCallback(() => {
-    setIsBugMode(true)
-    
     // Haptic feedback if available
     if (navigator.vibrate) {
       navigator.vibrate([30, 50, 30, 50, 30])
     }
     
-    // Auto-disable after 3 seconds
-    setTimeout(() => {
-      setIsBugMode(false)
-    }, 3000)
-  }, [])
+    // Navigate to bug easter egg page
+    navigate('/secret/bug')
+  }, [navigate])
 
   useEffect(() => {
     // Desktop: Keyboard trigger
@@ -66,5 +64,5 @@ export function useBugMode() {
     }
   }, [keySequence, triggerBugMode])
 
-  return { isBugMode, triggerBugMode }
+  return { triggerBugMode }
 }

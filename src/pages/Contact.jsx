@@ -131,10 +131,10 @@ export default function Contact() {
         {/* Header */}
         <motion.div
           className={styles.header}
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.4 }}
         >
           <h2 className={styles.title}>Get In Touch</h2>
           <p className={styles.subtitle}>
@@ -147,18 +147,18 @@ export default function Contact() {
           {/* Contact Form */}
           <motion.div
             className={styles.formSection}
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
             <form className={styles.form} onSubmit={handleSubmit}>
               <motion.div 
                 className={styles.formGroup}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.3 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.3, delay: 0.15 }}
               >
                 <motion.label 
                   htmlFor="name" 
@@ -189,10 +189,10 @@ export default function Contact() {
 
               <motion.div 
                 className={styles.formGroup}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.4 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.3, delay: 0.2 }}
               >
                 <motion.label 
                   htmlFor="email" 
@@ -223,10 +223,10 @@ export default function Contact() {
 
               <motion.div 
                 className={styles.formGroup}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.5 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.3, delay: 0.25 }}
               >
                 <motion.label 
                   htmlFor="message" 
@@ -261,10 +261,10 @@ export default function Contact() {
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={status === 'sending' || status === 'success'}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.6 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.3, delay: 0.3 }}
               >
                 <span className={styles.btnText}>
                   {status === 'sending'
@@ -309,10 +309,10 @@ export default function Contact() {
           {/* Info Section */}
           <motion.div
             className={styles.infoSection}
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.4, delay: 0.15 }}
           >
             {/* Contact Info */}
             <div className={styles.infoCard}>
@@ -322,10 +322,10 @@ export default function Contact() {
                   <motion.div
                     key={item.label}
                     className={styles.infoItem}
-                    initial={{ opacity: 0, x: 20 }}
+                    initial={{ opacity: 0, x: 10 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.3, delay: 0.2 + index * 0.05 }}
                   >
                     <span className={styles.infoIcon}>{item.icon}</span>
                     <div className={styles.infoContent}>
@@ -359,10 +359,10 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={styles.socialLink}
-                    initial={{ opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.6 + index * 0.1 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.25, delay: 0.3 + index * 0.05 }}
                     whileHover={{ scale: 1.04, y: -2 }}
                     whileTap={{ scale: 0.96 }}
                   >
@@ -376,10 +376,10 @@ export default function Contact() {
             {/* Availability */}
             <motion.div
               className={styles.availability}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.8 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.3, delay: 0.4 }}
             >
               <span className={styles.availabilityDot} />
               <span className={styles.availabilityText}>
