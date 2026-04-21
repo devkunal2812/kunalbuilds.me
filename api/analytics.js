@@ -52,6 +52,14 @@ module.exports = async (req, res) => {
   }
 
   try {
+    // Check if MONGODB_URI is configured
+    if (!process.env.MONGODB_URI) {
+      return res.status(500).json({ 
+        success: false,
+        error: 'MONGODB_URI not configured in environment variables'
+      })
+    }
+
     // Connect to database
     await connectToDatabase()
 
