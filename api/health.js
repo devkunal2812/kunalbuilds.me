@@ -15,32 +15,48 @@ module.exports = async (req, res) => {
     return res.status(200).end()
   }
 
-  const health = {
-    status: 'ok',
-    timestamp: new Date().toISOString(),
-    environment: {
-      mongodbConfigured: !!process.env.MONGODB_URI,
-      nodeVersion: process.version
+  try {
+    const health = {
+      status: 'ok',
+      timestamp: new Date().toISOString(),
+      environment: {
+        mongodbConfigured: !!process.env.MONGODB_URI,
+        nodeVersion: process.version
+      }
     }
-  }
 
-  // Try to connect to MongoDB
-  if (process.env.MONGODB_URI) {
-    try {
-      await mongoose.connect(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        serverSelectionTimeoutMS: 5000
-      })
-      health.mongodb = 'connected'
-      await mongoose.connection.close()
-    } catch (error) {
-      health.mongodb = 'error'
-      health.mongodbError = error.message
+    // Try to connect to MongoDB
+    if (process.env.MONGODB_URI) {
+      try {
+        // Close any existing connections first
+        if (mongoose.connection.readyState !== 0) {
+          await mongoose.connection.close()
+        }
+        
+        await mongoose.connect(process.env.MONGODB_URI, {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+          serverSelectionTimeoutMS: 5000
+        })
+        health.mongodb = 'connected'
+        health.mongodbState = mongoose.connection.readyState
+        await mongoose.connection.close()
+      } catch (error) {
+        health.mongodb = 'error'
+        health.mongodbError = error.message
+        health.mongodbState = mongoose.connection.readyState
+      }
+    } else {
+      health.mongodb = 'not configured'
+      health.message = 'Please add MONGODB_URI to Vercel environment variables'
     }
-  } else {
-    health.mongodb = 'not configured'
-  }
 
-  return res.json(health)
+    return res.status(200).json(health)
+  } catch (error) {
+    return res.status(500).json({
+      status: 'error',
+      error: error.message,
+      timestamp: new Date().toISOString()
+    })
+  }
 }
