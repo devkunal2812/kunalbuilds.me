@@ -20,6 +20,7 @@ import AvgCinematic from './components/AvgCinematic'
 import ScrollProgress from './components/ScrollProgress'
 import ExplorePanel from './components/ExplorePanel'
 import ExploreButton from './components/ExploreButton'
+import ChatBot from './components/ChatBot'
 import { useBugMode } from './hooks/useBugMode'
 import { useAvgTrigger } from './hooks/useAvgTrigger'
 import { useAnalytics } from './hooks/useAnalytics'
@@ -182,6 +183,9 @@ export default function App() {
       
       {/* Global Explore Button */}
       {showExploreButton && <ExploreButton />}
+      
+      {/* AI ChatBot */}
+      {showExploreButton && <ChatBot />}
       
       {/* Explore Panel at root level */}
       <ExplorePanel isOpen={isExplorePanelOpen} onClose={closeExplorePanel} />
