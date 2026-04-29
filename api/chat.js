@@ -3,16 +3,7 @@
 //  RAG-powered chatbot for portfolio questions
 // ---------------------------------------------------------
 
-let GoogleGenerativeAI
-try {
-  const gemini = require('@google/generative-ai')
-  GoogleGenerativeAI = gemini.GoogleGenerativeAI
-} catch (error) {
-  console.error('Failed to load @google/generative-ai:', error)
-}
-
-// Initialize Gemini
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+import { GoogleGenerativeAI } from '@google/generative-ai'
 
 // Portfolio content (embedded directly for simplicity)
 const portfolioKnowledge = `
@@ -47,7 +38,7 @@ CONTACT:
 Available for freelance projects, full-time opportunities, and collaborations. Currently available for work and open to new opportunities.
 `
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
@@ -68,14 +59,6 @@ module.exports = async (req, res) => {
       return res.status(400).json({ 
         success: false,
         error: 'Valid message is required' 
-      })
-    }
-
-    // Check if library loaded
-    if (!GoogleGenerativeAI) {
-      return res.status(500).json({
-        success: false,
-        error: 'AI library not available. Please contact the site owner.'
       })
     }
 
