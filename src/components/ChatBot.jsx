@@ -61,6 +61,11 @@ export default function ChatBot() {
         })
       })
 
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        throw new Error(errorData.error || `Server error: ${response.status}`)
+      }
+
       const data = await response.json()
 
       if (data.success) {
@@ -73,9 +78,22 @@ export default function ChatBot() {
       }
     } catch (error) {
       console.error('Chat error:', error)
+      
+      let errorMessage = "Sorry, I'm having trouble connecting right now. "
+      
+      if (error.message.includes('API key')) {
+        errorMessage += "The AI service needs to be configured. Please contact the site owner."
+      } else if (error.message.includes('quota')) {
+        errorMessage += "The AI service is temporarily unavailable. Please try again later."
+      } else if (error.message.includes('not available')) {
+        errorMessage += "The AI service is being set up. Please check back soon!"
+      } else {
+        errorMessage += "Please try again in a moment! 🔄"
+      }
+      
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: "Sorry, I'm having trouble connecting right now. Please try again in a moment! 🔄"
+        content: errorMessage
       }])
     } finally {
       setIsLoading(false)

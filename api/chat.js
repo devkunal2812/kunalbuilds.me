@@ -3,7 +3,13 @@
 //  RAG-powered chatbot for portfolio questions
 // ---------------------------------------------------------
 
-const { GoogleGenerativeAI } = require('@google/generative-ai')
+let GoogleGenerativeAI
+try {
+  const gemini = require('@google/generative-ai')
+  GoogleGenerativeAI = gemini.GoogleGenerativeAI
+} catch (error) {
+  console.error('Failed to load @google/generative-ai:', error)
+}
 
 // Initialize Gemini
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
@@ -65,17 +71,28 @@ module.exports = async (req, res) => {
       })
     }
 
+    // Check if library loaded
+    if (!GoogleGenerativeAI) {
+      return res.status(500).json({
+        success: false,
+        error: 'AI library not available. Please contact the site owner.'
+      })
+    }
+
     // Check API key
     if (!process.env.GEMINI_API_KEY) {
       return res.status(500).json({
         success: false,
-        error: 'Gemini API key not configured'
+        error: 'API key not configured. Please contact the site owner.'
       })
     }
 
+    // Initialize Gemini
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+
     // Initialize model
     const model = genAI.getGenerativeModel({ 
-      model: 'gemini-pro',
+      model: 'gemini-1.5-flash',
       generationConfig: {
         temperature: 0.7,
         maxOutputTokens: 300,
