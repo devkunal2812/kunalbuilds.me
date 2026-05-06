@@ -103,8 +103,8 @@ export const ACHIEVEMENTS_DATA = [
 ]
 
 export const ACHIEVEMENT_STATS = [
-  { icon: 'brand-github', value: '36+', label: 'GitHub repos' },
+  { icon: 'brand-github', value: '50+', label: 'GitHub repos' },
   { icon: 'briefcase', value: '3', label: 'Internships' },
   { icon: 'rocket', value: '8+', label: 'Shipped projects' },
-  { icon: 'users', value: '2', label: 'Leadership roles' },
+  { icon: 'users', value: '10+', label: 'Leadership roles' },
 ]

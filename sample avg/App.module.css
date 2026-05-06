@@ -1,68 +1,64 @@
 .app {
   min-height: 100vh;
-  background: #0a0a0f;
+  background: #07080f;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Georgia', serif;
 }
 
 .center {
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
-.title {
-  font-size: clamp(1.4rem, 3vw, 2.2rem);
+.hint {
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
-.title span {
+.hint strong {
   color: #e8a838;
   font-style: italic;
-  font-weight: 600;
 }
 
 .input {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(232, 168, 56, 0.3);
-  border-radius: 8px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(232,168,56,0.28);
+  border-radius: 6px;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-family: 'Georgia', serif;
-  letter-spacing: 0.12em;
-  padding: 14px 28px;
-  width: 280px;
+  letter-spacing: 0.14em;
+  padding: 14px 30px;
+  width: 240px;
   text-align: center;
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.input::placeholder {
-  color: rgba(255, 255, 255, 0.2);
-  font-style: italic;
-}
-
+.input::placeholder { color: rgba(255,255,255,0.18); font-style: italic; }
 .input:focus {
-  border-color: rgba(232, 168, 56, 0.7);
-  box-shadow: 0 0 20px rgba(232, 168, 56, 0.1);
+  border-color: rgba(232,168,56,0.65);
+  box-shadow: 0 0 18px rgba(232,168,56,0.09);
 }
 
-.message {
-  font-size: 1rem;
+.afterMsg {
+  font-family: 'Georgia', serif;
+  font-size: 0.95rem;
   font-style: italic;
   color: #e8a838;
-  letter-spacing: 0.05em;
-  animation: fadeIn 1.5s ease forwards;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  animation: fadeUp 1.4s ease forwards;
 }
 
-@keyframes fadeIn {
+@keyframes fadeUp {
   from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0);    }
+  to   { opacity: 1; transform: translateY(0); }
 }

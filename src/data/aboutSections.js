@@ -87,27 +87,27 @@ export const TIMELINE_DATA = [
 
 export const GALLERY_DATA = [
   {
-    image: '/path/to/image1.jpg',
+    image: '/src/assets/profile_photo.jpeg', // Replace with your actual image path
     caption: 'Hackathon 2024'
   },
   {
-    image: '/path/to/image2.jpg',
-    caption: 'College Event'
+    image: '/src/assets/profile_photo.jpeg', // Replace with your actual image path
+    caption: 'PRAXIS Club Event'
   },
   {
-    image: '/path/to/image3.jpg',
+    image: '/src/assets/profile_photo.jpeg', // Replace with your actual image path
     caption: 'Project Demo'
   },
   {
-    image: '/path/to/image4.jpg',
+    image: '/src/assets/profile_photo.jpeg', // Replace with your actual image path
     caption: 'Team Photo'
   },
   {
-    image: '/path/to/image5.jpg',
-    caption: 'Workshop'
+    image: '/src/assets/profile_photo.jpeg', // Replace with your actual image path
+    caption: 'Workshop at SVIT'
   },
   {
-    image: '/path/to/image6.jpg',
+    image: '/src/assets/profile_photo.jpeg', // Replace with your actual image path
     caption: 'Coding Session'
   }
 ]
