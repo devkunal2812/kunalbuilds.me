@@ -6,15 +6,15 @@
 export const TIMELINE_DATA = [
   {
     year: '2026',
-    title: 'Head of Web Development — P.R.A.X.I.S Club',
-    description: 'Leading all web initiatives for PRAXIS Club. Organized PRIMORIS — the club\'s first flagship tech event. Shipped Praxis Coding Platform with real-time problem solving and test hosting.',
+    title: 'Head of Web Development - P.R.A.X.I.S Club',
+    description: 'Leading all web initiatives for PRAXIS Club. Organized PRIMORIS - the club\'s first flagship tech event. Shipped Praxis Coding Platform with real-time problem solving and test hosting.',
     icon: 'code',
     tags: ['React', 'Node.js', 'WebSockets', 'Team Management'],
     badge: 'Web Dev Lead'
   },
   {
     year: '2026',
-    title: 'Event Manager — Growi Tech',
+    title: 'Event Manager - Growi Tech',
     description: 'Organized and executed TRAE – MiniMax, a fast-paced AI-powered tech event in Vadodara. Managed event flow, multiple rounds, and a full room of builders and innovators.',
     icon: 'calendar-event',
     tags: ['Event Management', 'AI Events', 'Community'],
@@ -22,7 +22,7 @@ export const TIMELINE_DATA = [
   },
   {
     year: '2025',
-    title: 'Internship Trainee — Infosys Springboard',
+    title: 'Internship Trainee - Infosys Springboard',
     description: 'Trained in Artificial Intelligence and Machine Learning through Infosys Springboard\'s structured internship program. Applied AI fundamentals to practical problems.',
     icon: 'rocket',
     tags: ['AI', 'Machine Learning', 'Infosys'],
@@ -31,7 +31,7 @@ export const TIMELINE_DATA = [
   {
     year: '2025',
     title: 'Multiple Projects Shipped',
-    description: 'Launched Feud.Exe (quiz platform), ClipSync (clipboard sync), IntelliPrep (AI prep), intro-spark-creator-bot (AI portfolio generator), and DataStructures.dev — live on Vercel.',
+    description: 'Launched Feud.Exe (quiz platform), ClipSync (clipboard sync), IntelliPrep (AI prep), intro-spark-creator-bot (AI portfolio generator), and DataStructures.dev - live on Vercel.',
     icon: 'layers',
     tags: ['TypeScript', 'React', 'Vite', 'Tailwind', 'shadcn/ui'],
     badge: 'Shipped',
@@ -42,7 +42,7 @@ export const TIMELINE_DATA = [
   },
   {
     year: '2024',
-    title: 'Web Development Intern — VaultofCodes',
+    title: 'Web Development Intern - VaultofCodes',
     description: 'Worked on real-world front-end and back-end projects under VaultofCodes Training & Internship Program, strengthening collaboration and production code skills.',
     icon: 'briefcase',
     tags: ['HTML/CSS', 'JavaScript', 'Full-Stack'],
@@ -50,7 +50,7 @@ export const TIMELINE_DATA = [
   },
   {
     year: '2024',
-    title: 'Code Unnati — Python, Data Analysis & AI',
+    title: 'Code Unnati - Python, Data Analysis & AI',
     description: 'SAP Foundation Course covering Python, Pandas, NumPy, and SAP AI. Built capstone "SkillMatch – Talent Explorer", a Streamlit app matching users to careers based on skills.',
     icon: 'brain',
     tags: ['Python', 'Streamlit', 'Pandas', 'NumPy', 'SAP AI'],
@@ -62,14 +62,14 @@ export const TIMELINE_DATA = [
   {
     year: '2024',
     title: 'Prakash 2024 Tech Event Organizer',
-    description: 'Co-organized Tech Heist — SVIT\'s annual fest — handling logistics, registration, and participant management.',
+    description: 'Co-organized Tech Heist - SVIT\'s annual fest - handling logistics, registration, and participant management.',
     icon: 'calendar',
     tags: ['Event Management', 'Logistics', 'Team Coordination'],
     badge: 'Organizer'
   },
   {
     year: '2023',
-    title: 'Started B.Tech IT — SVIT, Vasad',
+    title: 'Started B.Tech IT - SVIT, Vasad',
     description: 'Joined Sarvajanik Vidyalaya Institute of Technology, Vasad. Deep focus on software engineering, data structures, and system design fundamentals.',
     icon: 'graduation-cap',
     tags: ['B.Tech IT', 'DSA', 'System Design'],

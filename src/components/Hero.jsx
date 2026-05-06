@@ -54,7 +54,7 @@ function MobileHero() {
 
       <div className={styles.mobileDivider} />
 
-      {/* Skills Grid — completely static, no interaction */}
+      {/* Skills Grid - completely static, no interaction */}
       <div className={styles.mobileSkillsSection}>
         <p 
           className={styles.mobileSkillsLabel}
@@ -191,7 +191,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 1.2 }}
           >
             I craft high-performance web apps blending design precision with modern
-            engineering — from pixel-perfect UI to scalable backend systems.
+            engineering - from pixel-perfect UI to scalable backend systems.
           </motion.p>
 
           <motion.div 

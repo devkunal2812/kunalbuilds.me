@@ -230,7 +230,7 @@ export default function About() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.9 }}
             >
-              I'm Kunal — a B.Tech IT student who builds things that actually work.
+              I'm Kunal - a B.Tech IT student who builds things that actually work.
               I sit at the intersection of engineering and design, writing code that
               performs and crafting interfaces that feel right.
             </motion.p>
@@ -241,7 +241,7 @@ export default function About() {
               transition={{ delay: 1.0 }}
             >
               Whether it's a full-stack web app, an automation workflow, or a
-              pixel-perfect UI — I care about the details that most people skip.
+              pixel-perfect UI - I care about the details that most people skip.
             </motion.p>
 
             <motion.div 
@@ -250,7 +250,7 @@ export default function About() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.1 }}
             >
-              <div className={styles.metaItem}><span>🎓</span><span>B.Tech IT — SVIT, Vasad</span></div>
+              <div className={styles.metaItem}><span>🎓</span><span>B.Tech IT - SVIT, Vasad</span></div>
               <div className={styles.metaItem}><span>📍</span><span>Vadodara, Gujarat, India</span></div>
             </motion.div>
 
