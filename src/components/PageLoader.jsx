@@ -105,47 +105,6 @@ export default function PageLoader() {
           >
             {/* K Logo with animated drawing */}
             <div className={styles.logoContainer}>
-              {/* LED dot with glow rings */}
-              <motion.div className={styles.ledDot}>
-                <motion.div 
-                  className={styles.ledCore}
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    opacity: [1, 0.7, 1],
-                  }}
-                  transition={{
-                    duration: 2.2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <motion.div 
-                  className={styles.ledRing1}
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.4, 0.1, 0.4],
-                  }}
-                  transition={{
-                    duration: 2.2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <motion.div 
-                  className={styles.ledRing2}
-                  animate={{
-                    scale: [1, 1.7, 1],
-                    opacity: [0.2, 0.05, 0.2],
-                  }}
-                  transition={{
-                    duration: 2.2,
-                    delay: 0.1,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-              </motion.div>
-
               {/* K Letter SVG */}
               <svg 
                 className={styles.kLogo} 
@@ -155,7 +114,7 @@ export default function PageLoader() {
                 {/* Vertical spine */}
                 <motion.line
                   x1="50" y1="20" x2="50" y2="200"
-                  stroke="#e6eef8"
+                  stroke="#ffffff"
                   strokeWidth="18"
                   strokeLinecap="round"
                   initial={{ pathLength: 0 }}
@@ -170,7 +129,7 @@ export default function PageLoader() {
                 {/* Upper arm */}
                 <motion.line
                   x1="56" y1="108" x2="170" y2="30"
-                  stroke="#e6eef8"
+                  stroke="#ffffff"
                   strokeWidth="15"
                   strokeLinecap="round"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -185,7 +144,7 @@ export default function PageLoader() {
                 {/* Lower arm */}
                 <motion.line
                   x1="56" y1="118" x2="175" y2="195"
-                  stroke="#e6eef8"
+                  stroke="#ffffff"
                   strokeWidth="15"
                   strokeLinecap="round"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -200,7 +159,7 @@ export default function PageLoader() {
                 {/* Mint accent notch */}
                 <motion.rect
                   x="54" y="110" width="8" height="10" rx="2"
-                  fill="#63d2ac"
+                  fill="#ffffff"
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ 
@@ -214,7 +173,7 @@ export default function PageLoader() {
                 {/* Mint accent square at upper arm */}
                 <motion.rect
                   x="160" y="20" width="14" height="14" rx="3"
-                  fill="#63d2ac"
+                  fill="#ffffff"
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ 
@@ -259,25 +218,15 @@ export default function PageLoader() {
                 />
               </motion.div>
 
-              {/* Particle spray effect */}
+              {/* Particle spray effect - static */}
               <div className={styles.particleSpray}>
                 {[...Array(30)].map((_, i) => (
-                  <motion.div
+                  <div
                     key={i}
                     className={styles.particle}
                     style={{
                       '--angle': `${(360 / 30) * i}deg`,
                       '--distance': `${80 + Math.random() * 60}px`,
-                    }}
-                    animate={{
-                      scale: [0, 1.5, 0],
-                      opacity: [0, 0.8, 0],
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      repeat: Infinity,
-                      delay: 1.5 + (i * 0.05),
-                      ease: "easeOut"
                     }}
                   />
                 ))}

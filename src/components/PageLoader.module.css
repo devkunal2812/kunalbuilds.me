@@ -9,16 +9,11 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: radial-gradient(
-    ellipse at center,
-    #0d1117 0%,
-    #0a0e14 50%,
-    #000000 100%
-  );
+  background: #000000;
 }
 
 /* ═══════════════════════════════════════════════════════════════ */
-/* ANIMATED GRID BACKGROUND                                        */
+/* ANIMATED GRID BACKGROUND - Static particles                    */
 /* ═══════════════════════════════════════════════════════════════ */
 .gridBackground {
   position: absolute;
@@ -28,10 +23,10 @@
 
 .gridDot {
   position: absolute;
-  width: 3px;
-  height: 3px;
+  width: 2px;
+  height: 2px;
   border-radius: 50%;
-  background: #3c5064;
+  background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
 }
 
@@ -60,50 +55,11 @@
   justify-content: center;
 }
 
-/* LED Dot above K */
-.ledDot {
-  position: absolute;
-  top: 0;
-  left: 50px;
-  width: 18px;
-  height: 18px;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
-.ledCore {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: #63d2ac;
-  box-shadow: 
-    0 0 20px rgba(99, 210, 172, 0.8),
-    0 0 40px rgba(99, 210, 172, 0.4),
-    inset 0 0 10px rgba(255, 255, 255, 0.3);
-  filter: blur(0.5px);
-}
-
-.ledRing1 {
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  border: 2px solid #63d2ac;
-  box-shadow: 0 0 15px rgba(99, 210, 172, 0.6);
-}
-
-.ledRing2 {
-  position: absolute;
-  inset: -16px;
-  border-radius: 50%;
-  border: 1px solid #63d2ac;
-  box-shadow: 0 0 20px rgba(99, 210, 172, 0.4);
-}
-
 /* K Logo SVG */
 .kLogo {
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 0 20px rgba(230, 238, 248, 0.3));
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
 }
 
 /* Accent underbar */
@@ -114,10 +70,10 @@
   transform: translateX(-50%);
   height: 14px;
   border-radius: 7px;
-  background: #63d2ac;
+  background: #ffffff;
   box-shadow: 
-    0 0 20px rgba(99, 210, 172, 0.6),
-    0 0 40px rgba(99, 210, 172, 0.3);
+    0 0 20px rgba(255, 255, 255, 0.6),
+    0 0 40px rgba(255, 255, 255, 0.3);
   overflow: hidden;
 }
 
@@ -127,14 +83,14 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(127, 255, 212, 0.8) 50%,
+    rgba(255, 255, 255, 0.8) 50%,
     transparent 100%
   );
   width: 50%;
 }
 
 /* ═══════════════════════════════════════════════════════════════ */
-/* PARTICLE SPRAY EFFECT                                           */
+/* PARTICLE SPRAY EFFECT - Static particles                       */
 /* ═══════════════════════════════════════════════════════════════ */
 .particleSpray {
   position: absolute;
@@ -146,15 +102,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(99, 210, 172, 0.9) 0%,
-    rgba(99, 210, 172, 0.4) 100%
-  );
-  box-shadow: 0 0 10px rgba(99, 210, 172, 0.8);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
   transform: 
     rotate(var(--angle)) 
     translateX(var(--distance, 100px))
@@ -174,14 +126,14 @@
 
 .brandName {
   font-weight: 300;
-  color: #e6eef8;
-  text-shadow: 0 0 20px rgba(230, 238, 248, 0.3);
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .brandAction {
   font-weight: 500;
-  color: #63d2ac;
-  text-shadow: 0 0 20px rgba(99, 210, 172, 0.5);
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
 /* ═══════════════════════════════════════════════════════════════ */
@@ -212,16 +164,11 @@
   left: 0;
   top: 0;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    #63d2ac 0%,
-    #7fffd4 50%,
-    #63d2ac 100%
-  );
+  background: #ffffff;
   border-radius: 4px;
   box-shadow:
-    0 0 20px rgba(99, 210, 172, 0.8),
-    0 0 40px rgba(99, 210, 172, 0.4);
+    0 0 20px rgba(255, 255, 255, 0.8),
+    0 0 40px rgba(255, 255, 255, 0.4);
   transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -248,11 +195,7 @@
   left: 0;
   top: -2px;
   height: calc(100% + 4px);
-  background: linear-gradient(
-    90deg,
-    rgba(99, 210, 172, 0.5) 0%,
-    rgba(127, 255, 212, 0.5) 100%
-  );
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 6px;
   filter: blur(8px);
   opacity: 0.8;
@@ -264,8 +207,8 @@
   font-weight: 600;
   font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
   letter-spacing: 0.05em;
-  color: rgba(255, 255, 255, 0.7);
-  text-shadow: 0 0 10px rgba(99, 210, 172, 0.4);
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 /* ═══════════════════════════════════════════════════════════════ */
@@ -284,7 +227,7 @@
   letter-spacing: 0.03em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 0 20px rgba(99, 210, 172, 0.3);
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 .loadingDots {
@@ -298,8 +241,8 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #63d2ac, #7fffd4);
-  box-shadow: 0 0 10px rgba(99, 210, 172, 0.8);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 /* ═══════════════════════════════════════════════════════════════ */
@@ -327,12 +270,12 @@
 .borderFrame {
   position: absolute;
   inset: 20px;
-  border: 2.5px solid #63d2ac;
+  border: 2.5px solid rgba(255, 255, 255, 0.2);
   border-radius: 40px;
   pointer-events: none;
   box-shadow: 
-    inset 0 0 30px rgba(99, 210, 172, 0.1),
-    0 0 30px rgba(99, 210, 172, 0.1);
+    inset 0 0 30px rgba(255, 255, 255, 0.05),
+    0 0 30px rgba(255, 255, 255, 0.05);
 }
 
 /* ═══════════════════════════════════════════════════════════════ */
