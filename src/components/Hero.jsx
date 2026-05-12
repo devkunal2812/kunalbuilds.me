@@ -33,16 +33,16 @@ function MobileHero() {
 
         <div className={styles.mobileBadge}>
           <span className={styles.mobileBadgePulse} />
-          Full-Stack Engineer &amp; Product Designer
+          Full-Stack Developer &amp; UI/UX Designer
         </div>
 
         <h1 className={styles.mobileName}>Kunal Chauhan</h1>
 
         <div className={styles.mobileStats}>
           {[
-            { value: '3+',  label: 'Years Exp.' },
-            { value: '20+', label: 'Projects' },
-            { value: '10+', label: 'Clients' },
+            { value: '50+',  label: 'Projects' },
+            { value: '15+', label: 'Clients' },
+            { value: '3+', label: 'Years' },
           ].map((s) => (
             <div key={s.label} className={styles.mobileStat}>
               <span className={styles.mobileStatValue}>{s.value}</span>
@@ -131,7 +131,7 @@ export default function Hero() {
     },
   }
 
-  const headlineText = "Where Design Meets Intelligent Engineering"
+  const headlineText = "Hi, I'm Kunal - Building Digital Experiences That Matter"
   const words = headlineText.split(' ')
 
   return (
@@ -154,7 +154,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <span className={styles.badgePulse} />
-            Full-Stack Engineer &amp; Product Designer
+            Full-Stack Developer &amp; UI/UX Designer
           </motion.div>
 
           <motion.h1 
@@ -163,25 +163,21 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            {words.map((word, index) => (
-              <motion.span
-                key={index}
-                variants={wordVariants}
-                style={{ display: 'inline-block', marginRight: '0.3em' }}
-                className={
-                  word === 'Intelligent' ? styles.headlineGradient : ''
-                }
-              >
-                {word === 'Design' || word === 'Meets' || word === 'Engineering' ? (
-                  <>
-                    {word}
-                    <br />
-                  </>
-                ) : (
-                  word
-                )}
-              </motion.span>
-            ))}
+            {words.map((word, index) => {
+              // Apply accent color to "Kunal" only
+              const isAccent = word === 'Kunal'
+              
+              return (
+                <motion.span
+                  key={index}
+                  variants={wordVariants}
+                  style={{ display: 'inline-block', marginRight: '0.3em' }}
+                  className={isAccent ? styles.headlineAccent : ''}
+                >
+                  {word}
+                </motion.span>
+              )
+            })}
           </motion.h1>
 
           <motion.p 
@@ -190,8 +186,9 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            I craft high-performance web apps blending design precision with modern
-            engineering - from pixel-perfect UI to scalable backend systems.
+            Transforming ideas into elegant, high-performance web applications. 
+            I combine clean code with intuitive design to create digital solutions 
+            that users love and businesses trust.
           </motion.p>
 
           <motion.div 
@@ -200,7 +197,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.4 }}
           >
-            {['React', 'Next.js', 'TypeScript', 'Node.js', 'Tailwind', 'Figma', 'AI Tools'].map((t, i) => (
+            {['React', 'TypeScript', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Figma', 'REST APIs'].map((t, i) => (
               <motion.span 
                 key={t} 
                 className={styles.chip}
@@ -220,9 +217,9 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 1.8 }}
           >
             {[
-              { value: '3+',  label: 'Years Experience' },
-              { value: '20+', label: 'Projects Shipped' },
-              { value: '10+', label: 'Happy Clients' },
+              { value: '50+',  label: 'Projects Completed' },
+              { value: '15+', label: 'Happy Clients' },
+              { value: '3+', label: 'Years Experience' },
             ].map((s, i) => (
               <motion.div 
                 key={s.label} 
