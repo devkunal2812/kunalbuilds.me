@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import styles from './Footer.module.css'
 
 const SOCIAL = [
@@ -8,10 +9,50 @@ const SOCIAL = [
 ]
 
 export default function Footer() {
+  const [showButton, setShowButton] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button when scrolled down 300px
+      setShowButton(window.scrollY > 300)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
-        <p className={styles.copy}>© 2026 Kunal's Build</p>
+        {/* Back to Top Button */}
+        <button
+          className={`${styles.backToTop} ${showButton ? styles.backToTopVisible : ''}`}
+          onClick={scrollToTop}
+          aria-label="Back to top"
+        >
+          <svg 
+            width="20" 
+            height="20" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+          <span>Back to Top</span>
+        </button>
+
+        <p className={styles.copy}>© {new Date().getFullYear()} Kunal Builds</p>
 
         <div className={styles.links}>
           {SOCIAL.map((s) => (
@@ -28,7 +69,7 @@ export default function Footer() {
         </div>
 
         <p className={styles.tagline}>
-          Designed & built by Kunal Chauhan
+          Crafted with passion by Kunal Chauhan - Turning ideas into reality
         </p>
       </div>
     </footer>
