@@ -6,7 +6,7 @@ export default function PageLoader() {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    const MINIMUM_DURATION = 3500
+    const MINIMUM_DURATION = 5000 // Increased from 3500ms to 5000ms (5 seconds)
     const startTime = Date.now()
 
     const checkMinimumDuration = () => {

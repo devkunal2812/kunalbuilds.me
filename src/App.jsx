@@ -155,8 +155,8 @@ export default function App() {
       setShowLoader(false)
     } else {
       sessionStorage.setItem('hasLoaded', 'true')
-      // Hide loader after 4 seconds (3.5s + 0.6s delay + buffer)
-      setTimeout(() => setShowLoader(false), 4200)
+      // Hide loader after 5.6 seconds (5s + 0.6s fade out)
+      setTimeout(() => setShowLoader(false), 5600)
     }
   }, [])
 
