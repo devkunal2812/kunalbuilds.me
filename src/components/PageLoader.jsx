@@ -8,12 +8,12 @@ export default function PageLoader() {
   const [isComplete, setIsComplete] = useState(false)
 
   useEffect(() => {
-    const MINIMUM_DURATION = 2000
-    const FADE_OUT_DELAY = 400
+    const MINIMUM_DURATION = 3500 // Increased from 2000ms to 3500ms
+    const FADE_OUT_DELAY = 600 // Increased from 400ms to 600ms
     const startTime = Date.now()
     let contentReady = false
 
-    // Progress animation
+    // Progress animation - slower
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -22,7 +22,7 @@ export default function PageLoader() {
           setIsComplete(true)
           return 100
         }
-        return prev + 5
+        return prev + 2.5 // Reduced from 5 to 2.5 for slower progress
       })
     }, 100)
 
@@ -161,8 +161,8 @@ export default function PageLoader() {
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
                   transition={{ 
-                    duration: 0.7, 
-                    delay: 0.2,
+                    duration: 1.2, 
+                    delay: 0.5,
                     ease: [0.34, 1.56, 0.64, 1]
                   }}
                 />
@@ -176,8 +176,8 @@ export default function PageLoader() {
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
                   transition={{ 
-                    duration: 0.5, 
-                    delay: 0.7,
+                    duration: 0.8, 
+                    delay: 1.5,
                     ease: [0.34, 1.56, 0.64, 1]
                   }}
                 />
@@ -191,8 +191,8 @@ export default function PageLoader() {
                   initial={{ pathLength: 0, opacity: 0 }}
                   animate={{ pathLength: 1, opacity: 1 }}
                   transition={{ 
-                    duration: 0.5, 
-                    delay: 0.95,
+                    duration: 0.8, 
+                    delay: 2.1,
                     ease: [0.34, 1.56, 0.64, 1]
                   }}
                 />
@@ -204,8 +204,8 @@ export default function PageLoader() {
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ 
-                    duration: 0.3, 
-                    delay: 1.3,
+                    duration: 0.4, 
+                    delay: 2.7,
                     type: "spring",
                     stiffness: 200
                   }}
@@ -218,8 +218,8 @@ export default function PageLoader() {
                   initial={{ scale: 0, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ 
-                    duration: 0.4, 
-                    delay: 1.4,
+                    duration: 0.5, 
+                    delay: 2.9,
                     type: "spring",
                     stiffness: 200
                   }}
