@@ -1,0 +1,262 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Enhanced background gradient with depth -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e14"/>
+      <stop offset="50%" style="stop-color:#0d1117"/>
+      <stop offset="100%" style="stop-color:#121820"/>
+    </linearGradient>
+    
+    <!-- Radial gradient for depth effect -->
+    <radialGradient id="depthGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#1a2332;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#0a0e14;stop-opacity:0"/>
+    </radialGradient>
+    
+    <!-- Enhanced glow filter for K letter -->
+    <filter id="letterGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur1"/>
+      <feGaussianBlur stdDeviation="8" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Intense LED glow -->
+    <filter id="ledGlow" x="-300%" y="-300%" width="700%" height="700%">
+      <feGaussianBlur stdDeviation="6" result="blur1"/>
+      <feGaussianBlur stdDeviation="12" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Accent glow -->
+    <filter id="accentGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Shimmer gradient for underbar -->
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#63d2ac;stop-opacity:0.8"/>
+      <stop offset="50%" style="stop-color:#7fffd4;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#63d2ac;stop-opacity:0.8"/>
+      <animate attributeName="x1" values="-100%;200%" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="0%;300%" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+    </linearGradient>
+    
+    <!-- Clip to rounded square -->
+    <clipPath id="roundedClip">
+      <rect x="0" y="0" width="512" height="512" rx="90" ry="90"/>
+    </clipPath>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="512" height="512" rx="90" ry="90" fill="url(#bgGrad)"/>
+  
+  <!-- Depth layer -->
+  <circle cx="256" cy="256" r="300" fill="url(#depthGrad)" clip-path="url(#roundedClip)"/>
+  
+  <!-- Enhanced grid dots with fade-in animation -->
+  <g opacity="0" clip-path="url(#roundedClip)">
+    <circle cx="88" cy="88" r="2.5" fill="#3c5064"/>
+    <circle cx="132" cy="88" r="2.5" fill="#3c5064"/>
+    <circle cx="256" cy="88" r="2.5" fill="#3c5064"/>
+    <circle cx="380" cy="88" r="2.5" fill="#3c5064"/>
+    <circle cx="424" cy="88" r="2.5" fill="#3c5064"/>
+    
+    <circle cx="88" cy="132" r="2.5" fill="#3c5064"/>
+    <circle cx="424" cy="132" r="2.5" fill="#3c5064"/>
+    
+    <circle cx="66" cy="200" r="2.5" fill="#3c5064"/>
+    <circle cx="446" cy="200" r="2.5" fill="#3c5064"/>
+    
+    <circle cx="66" cy="256" r="2.5" fill="#3c5064"/>
+    <circle cx="446" cy="256" r="2.5" fill="#3c5064"/>
+    
+    <circle cx="66" cy="312" r="2.5" fill="#3c5064"/>
+    <circle cx="446" cy="312" r="2.5" fill="#3c5064"/>
+    
+    <circle cx="88" cy="380" r="2.5" fill="#3c5064"/>
+    <circle cx="424" cy="380" r="2.5" fill="#3c5064"/>
+    
+    <circle cx="88" cy="424" r="2.5" fill="#3c5064"/>
+    <circle cx="132" cy="424" r="2.5" fill="#3c5064"/>
+    <circle cx="256" cy="424" r="2.5" fill="#3c5064"/>
+    <circle cx="380" cy="424" r="2.5" fill="#3c5064"/>
+    <circle cx="424" cy="424" r="2.5" fill="#3c5064"/>
+    
+    <animate attributeName="opacity" from="0" to="0.15" dur="0.8s" begin="0s" fill="freeze"/>
+  </g>
+  
+  <!-- Corner accent dots (animated) -->
+  <g opacity="0">
+    <circle cx="88" cy="88" r="4" fill="#63d2ac" opacity="0.3"/>
+    <circle cx="424" cy="88" r="4" fill="#63d2ac" opacity="0.3"/>
+    <circle cx="88" cy="424" r="4" fill="#63d2ac" opacity="0.3"/>
+    <circle cx="424" cy="424" r="4" fill="#63d2ac" opacity="0.3"/>
+    <animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="1.6s" fill="freeze"/>
+  </g>
+  
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- K LETTER — Enhanced stroke animation               -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  
+  <!-- Vertical spine with glow -->
+  <line x1="210" y1="146" x2="210" y2="366" 
+        stroke="#e6eef8" stroke-width="36" stroke-linecap="round"
+        filter="url(#letterGlow)">
+    <animate attributeName="stroke-dasharray" 
+             from="0 220" to="220 0" 
+             dur="0.7s" begin="0.2s" fill="freeze" 
+             calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+    <set attributeName="stroke-dasharray" to="0 220" begin="0s"/>
+  </line>
+  
+  <!-- Upper arm with enhanced animation -->
+  <path d="M 225 248 L 393 148" 
+        stroke="#e6eef8" stroke-width="29" stroke-linecap="round"
+        fill="none" opacity="0" filter="url(#letterGlow)">
+    <animate attributeName="opacity" from="0" to="1" dur="0.05s" begin="0.7s" fill="freeze"/>
+    <animate attributeName="stroke-dasharray" 
+             from="0 200" to="200 0" 
+             dur="0.5s" begin="0.7s" fill="freeze" 
+             calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+    <set attributeName="stroke-dasharray" to="0 200" begin="0s"/>
+  </path>
+  
+  <!-- Lower arm with enhanced animation -->
+  <path d="M 225 270 L 398 368" 
+        stroke="#e6eef8" stroke-width="29" stroke-linecap="round"
+        fill="none" opacity="0" filter="url(#letterGlow)">
+    <animate attributeName="opacity" from="0" to="1" dur="0.05s" begin="0.95s" fill="freeze"/>
+    <animate attributeName="stroke-dasharray" 
+             from="0 200" to="200 0" 
+             dur="0.5s" begin="0.95s" fill="freeze" 
+             calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+    <set attributeName="stroke-dasharray" to="0 200" begin="0s"/>
+  </path>
+  
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ACCENT ELEMENTS — Enhanced with better animations  -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  
+  <!-- Mint notch fill between arms with pop effect -->
+  <rect x="219" y="251" width="14" height="16" rx="4" 
+        fill="#63d2ac" opacity="0" filter="url(#accentGlow)">
+    <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.3s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="scale" 
+                      from="0" to="1" 
+                      dur="0.4s" begin="1.3s" fill="freeze"
+                      additive="sum"/>
+  </rect>
+  
+  <!-- Mint square at upper arm tip with enhanced pulse -->
+  <rect x="378" y="133" width="24" height="24" rx="6" 
+        fill="#63d2ac" opacity="0" filter="url(#accentGlow)">
+    <animate attributeName="opacity" from="0" to="1" dur="0.3s" begin="1.4s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="scale" 
+                      from="0" to="1" 
+                      dur="0.5s" begin="1.4s" fill="freeze"
+                      additive="sum"/>
+    <!-- Enhanced pulse animation -->
+    <animate attributeName="opacity" 
+             values="1;0.5;1" 
+             dur="2.5s" begin="2s" repeatCount="indefinite"
+             calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+  </rect>
+  
+  <!-- Accent underbar with shimmer effect -->
+  <rect x="161" y="402" width="195" height="14" rx="7" 
+        fill="url(#shimmer)" opacity="0" filter="url(#accentGlow)">
+    <animate attributeName="width" from="0" to="195" dur="0.5s" begin="1.5s" fill="freeze" 
+             calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+    <animate attributeName="opacity" from="0" to="1" dur="0.2s" begin="1.5s" fill="freeze"/>
+  </rect>
+  
+  <!-- LED dot above spine with enhanced glow -->
+  <circle cx="210" cy="112" r="9" fill="#63d2ac" opacity="0" filter="url(#ledGlow)">
+    <animate attributeName="opacity" from="0" to="1" dur="0.4s" begin="1.6s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="scale" 
+                      from="0" to="1" 
+                      dur="0.5s" begin="1.6s" fill="freeze"
+                      additive="sum"/>
+    <!-- Enhanced breathing glow -->
+    <animate attributeName="r" 
+             values="9;13;9" 
+             dur="2.2s" begin="2.2s" repeatCount="indefinite" 
+             calcMode="spline" keySplines="0.4 0 0.6 1;0.4 0 0.6 1"/>
+    <animate attributeName="opacity" 
+             values="1;0.6;1" 
+             dur="2.2s" begin="2.2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- LED glow rings (multiple layers) -->
+  <circle cx="210" cy="112" r="18" fill="none" stroke="#63d2ac" stroke-width="2" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.4" dur="0.4s" begin="1.6s" fill="freeze"/>
+    <animate attributeName="r" 
+             values="18;26;18" 
+             dur="2.2s" begin="2.2s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" 
+             values="0.4;0.1;0.4" 
+             dur="2.2s" begin="2.2s" repeatCount="indefinite"/>
+  </circle>
+  
+  <circle cx="210" cy="112" r="24" fill="none" stroke="#63d2ac" stroke-width="1" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.2" dur="0.4s" begin="1.6s" fill="freeze"/>
+    <animate attributeName="r" 
+             values="24;34;24" 
+             dur="2.2s" begin="2.3s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" 
+             values="0.2;0.05;0.2" 
+             dur="2.2s" begin="2.3s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- KUNAL BUILDS wordmark with enhanced animation -->
+  <text x="256" y="462" text-anchor="middle"
+        font-family="'SF Mono', 'Fira Code', 'Consolas', 'Monaco', monospace"
+        font-size="26" letter-spacing="7"
+        fill="#e6eef8" opacity="0">
+    <tspan font-weight="300">KUNAL</tspan>
+    <tspan fill="#63d2ac" font-weight="500"> BUILDS</tspan>
+    <animate attributeName="opacity" 
+             from="0" to="0.75" 
+             dur="0.6s" begin="1.7s" fill="freeze" 
+             calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+  </text>
+  
+  <!-- Thin mint border with fade-in -->
+  <rect x="14" y="14" width="484" height="484" rx="78" ry="78"
+        fill="none" stroke="#63d2ac" stroke-width="2.5" opacity="0">
+    <animate attributeName="opacity" from="0" to="0.22" dur="0.6s" begin="1.8s" fill="freeze"/>
+  </rect>
+  
+  <!-- Enhanced scan line effect -->
+  <rect x="0" y="0" width="512" height="12" rx="0" 
+        fill="url(#shimmer)" opacity="0" clip-path="url(#roundedClip)">
+    <animate attributeName="y" from="-12" to="512" dur="1s" begin="0s" fill="remove"/>
+    <animate attributeName="opacity" 
+             values="0;0.12;0.12;0" 
+             keyTimes="0;0.05;0.9;1" 
+             dur="1s" begin="0s" fill="remove"/>
+  </rect>
+  
+  <!-- Secondary scan line (delayed) -->
+  <rect x="0" y="0" width="512" height="6" rx="0" 
+        fill="#7fffd4" opacity="0" clip-path="url(#roundedClip)">
+    <animate attributeName="y" from="-6" to="512" dur="0.8s" begin="0.15s" fill="remove"/>
+    <animate attributeName="opacity" 
+             values="0;0.08;0.08;0" 
+             keyTimes="0;0.05;0.9;1" 
+             dur="0.8s" begin="0.15s" fill="remove"/>
+  </rect>
+</svg>

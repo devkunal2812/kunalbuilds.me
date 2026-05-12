@@ -6,27 +6,14 @@ export default function PageLoader() {
   const [isLoading, setIsLoading] = useState(true)
   const [progress, setProgress] = useState(0)
   const [isComplete, setIsComplete] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(true)
-
-  // Detect user's theme preference
-  useEffect(() => {
-    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)')
-    setIsDarkMode(darkModeQuery.matches)
-
-    const handleChange = (e) => setIsDarkMode(e.matches)
-    darkModeQuery.addEventListener('change', handleChange)
-    
-    return () => darkModeQuery.removeEventListener('change', handleChange)
-  }, [])
 
   useEffect(() => {
-    const MINIMUM_DURATION = 2000 // 2 seconds minimum
-    const FADE_OUT_DELAY = 400 // Additional delay before fade starts
+    const MINIMUM_DURATION = 2000
+    const FADE_OUT_DELAY = 400
     const startTime = Date.now()
     let contentReady = false
 
-    // Simulate loading progress - faster for 2 second experience
-    // 5% every 100ms = 20 intervals × 100ms = 2000ms = 2 seconds
+    // Progress animation
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
@@ -35,28 +22,24 @@ export default function PageLoader() {
           setIsComplete(true)
           return 100
         }
-        // Faster progress: 5% every 100ms
         return prev + 5
       })
     }, 100)
 
-    // Check if minimum duration has passed
+    // Check minimum duration
     const checkMinimumDuration = () => {
       const elapsed = Date.now() - startTime
       const remaining = MINIMUM_DURATION - elapsed
 
       if (remaining > 0) {
-        // Wait for minimum duration to complete
         setTimeout(() => {
           setTimeout(() => setIsLoading(false), FADE_OUT_DELAY)
         }, remaining)
       } else {
-        // Minimum duration already passed
         setTimeout(() => setIsLoading(false), FADE_OUT_DELAY)
       }
     }
 
-    // When content is ready, check minimum duration
     const readyCheck = setInterval(() => {
       if (contentReady) {
         clearInterval(readyCheck)
@@ -74,7 +57,7 @@ export default function PageLoader() {
     <AnimatePresence mode="wait">
       {isLoading && (
         <motion.div
-          className={`${styles.loader} ${isDarkMode ? styles.dark : styles.light}`}
+          className={styles.loader}
           initial={{ opacity: 1 }}
           exit={{ 
             opacity: 0,
@@ -84,6 +67,31 @@ export default function PageLoader() {
             }
           }}
         >
+          {/* Animated grid background */}
+          <div className={styles.gridBackground}>
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className={styles.gridDot}
+                style={{
+                  left: `${(i % 5) * 25}%`,
+                  top: `${Math.floor(i / 5) * 25}%`,
+                }}
+                animate={{
+                  opacity: [0.1, 0.3, 0.1],
+                  scale: [1, 1.2, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.1,
+                  ease: "easeInOut"
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Main content */}
           <motion.div
             className={styles.loaderContent}
             initial={{ scale: 0.8, opacity: 0 }}
@@ -95,66 +103,203 @@ export default function PageLoader() {
             }}
             transition={{ duration: 0.5 }}
           >
-            {/* Premium animated logo */}
-            <motion.div
-              className={styles.logoWrapper}
-              animate={isComplete ? {
-                scale: [1, 1.2, 1],
-                rotateY: [0, 360],
-              } : {
-                rotateY: [0, 360],
-              }}
-              transition={isComplete ? {
-                duration: 0.6,
-                ease: [0.34, 1.56, 0.64, 1]
-              } : {
-                duration: 2,
-                repeat: Infinity,
-                ease: "linear"
-              }}
-            >
-              <div className={styles.logo}>
+            {/* K Logo with animated drawing */}
+            <div className={styles.logoContainer}>
+              {/* LED dot with glow rings */}
+              <motion.div className={styles.ledDot}>
                 <motion.div 
-                  className={styles.logoRing}
+                  className={styles.ledCore}
                   animate={{
-                    rotate: [0, -360],
-                    scale: [1, 1.1, 1],
+                    scale: [1, 1.3, 1],
+                    opacity: [1, 0.7, 1],
                   }}
                   transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                />
-                <motion.div 
-                  className={styles.logoRingInner}
-                  animate={{
-                    rotate: [0, 360],
-                    scale: [1, 0.95, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                />
-                <span className={styles.logoText}>K</span>
-                <motion.div
-                  className={styles.logoPulse}
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
+                    duration: 2.2,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
                 />
+                <motion.div 
+                  className={styles.ledRing1}
+                  animate={{
+                    scale: [1, 1.5, 1],
+                    opacity: [0.4, 0.1, 0.4],
+                  }}
+                  transition={{
+                    duration: 2.2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <motion.div 
+                  className={styles.ledRing2}
+                  animate={{
+                    scale: [1, 1.7, 1],
+                    opacity: [0.2, 0.05, 0.2],
+                  }}
+                  transition={{
+                    duration: 2.2,
+                    delay: 0.1,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+              </motion.div>
+
+              {/* K Letter SVG */}
+              <svg 
+                className={styles.kLogo} 
+                viewBox="0 0 200 220" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                {/* Vertical spine */}
+                <motion.line
+                  x1="50" y1="20" x2="50" y2="200"
+                  stroke="#e6eef8"
+                  strokeWidth="18"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ 
+                    duration: 0.7, 
+                    delay: 0.2,
+                    ease: [0.34, 1.56, 0.64, 1]
+                  }}
+                />
+                
+                {/* Upper arm */}
+                <motion.line
+                  x1="56" y1="108" x2="170" y2="30"
+                  stroke="#e6eef8"
+                  strokeWidth="15"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.7,
+                    ease: [0.34, 1.56, 0.64, 1]
+                  }}
+                />
+                
+                {/* Lower arm */}
+                <motion.line
+                  x1="56" y1="118" x2="175" y2="195"
+                  stroke="#e6eef8"
+                  strokeWidth="15"
+                  strokeLinecap="round"
+                  initial={{ pathLength: 0, opacity: 0 }}
+                  animate={{ pathLength: 1, opacity: 1 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: 0.95,
+                    ease: [0.34, 1.56, 0.64, 1]
+                  }}
+                />
+                
+                {/* Mint accent notch */}
+                <motion.rect
+                  x="54" y="110" width="8" height="10" rx="2"
+                  fill="#63d2ac"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ 
+                    duration: 0.3, 
+                    delay: 1.3,
+                    type: "spring",
+                    stiffness: 200
+                  }}
+                />
+                
+                {/* Mint accent square at upper arm */}
+                <motion.rect
+                  x="160" y="20" width="14" height="14" rx="3"
+                  fill="#63d2ac"
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: 1.4,
+                    type: "spring",
+                    stiffness: 200
+                  }}
+                >
+                  <animate
+                    attributeName="opacity"
+                    values="1;0.5;1"
+                    dur="2.5s"
+                    begin="2s"
+                    repeatCount="indefinite"
+                  />
+                </motion.rect>
+              </svg>
+
+              {/* Accent underbar */}
+              <motion.div 
+                className={styles.accentBar}
+                initial={{ width: 0, opacity: 0 }}
+                animate={{ width: '100%', opacity: 1 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 1.5,
+                  ease: [0.34, 1.56, 0.64, 1]
+                }}
+              >
+                <motion.div 
+                  className={styles.shimmer}
+                  animate={{
+                    x: ['-100%', '200%'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    delay: 2,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+              </motion.div>
+
+              {/* Particle spray effect */}
+              <div className={styles.particleSpray}>
+                {[...Array(30)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className={styles.particle}
+                    style={{
+                      '--angle': `${(360 / 30) * i}deg`,
+                      '--distance': `${80 + Math.random() * 60}px`,
+                    }}
+                    animate={{
+                      scale: [0, 1.5, 0],
+                      opacity: [0, 0.8, 0],
+                    }}
+                    transition={{
+                      duration: 2.5,
+                      repeat: Infinity,
+                      delay: 1.5 + (i * 0.05),
+                      ease: "easeOut"
+                    }}
+                  />
+                ))}
               </div>
+            </div>
+
+            {/* KUNAL BUILDS text */}
+            <motion.div 
+              className={styles.brandText}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 0.75, y: 0 }}
+              transition={{ 
+                duration: 0.6, 
+                delay: 1.7,
+                ease: [0.34, 1.56, 0.64, 1]
+              }}
+            >
+              <span className={styles.brandName}>KUNAL</span>
+              <span className={styles.brandAction}> BUILDS</span>
             </motion.div>
 
-            {/* Premium progress bar */}
+            {/* Progress bar */}
             <div className={styles.progressContainer}>
               <div className={styles.progressTrack}>
                 <motion.div
@@ -187,7 +332,7 @@ export default function PageLoader() {
               </motion.span>
             </div>
 
-            {/* Loading text with status */}
+            {/* Status text */}
             <motion.div className={styles.statusContainer}>
               <motion.p
                 className={styles.loadingText}
@@ -238,59 +383,24 @@ export default function PageLoader() {
             </motion.div>
           </motion.div>
 
-          {/* Premium animated particles */}
-          <div className={styles.particles}>
-            {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className={styles.particle}
-                style={{
-                  '--angle': `${(360 / 20) * i}deg`,
-                  '--distance': `${150 + Math.random() * 100}px`,
-                }}
-                animate={{
-                  scale: [0, 1.2, 0],
-                  opacity: [0, 0.8, 0],
-                }}
-                transition={{
-                  duration: 2.5,
-                  repeat: Infinity,
-                  delay: i * 0.08,
-                  ease: "easeOut"
-                }}
-              />
-            ))}
-          </div>
-          
-          {/* Background gradient orbs */}
-          <div className={styles.backgroundOrbs}>
-            <motion.div 
-              className={styles.orb}
-              animate={{
-                x: [0, 100, 0],
-                y: [0, -80, 0],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div 
-              className={styles.orb}
-              animate={{
-                x: [0, -120, 0],
-                y: [0, 60, 0],
-                scale: [1, 1.3, 1],
-              }}
-              transition={{
-                duration: 10,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          </div>
+          {/* Scan line effect */}
+          <motion.div 
+            className={styles.scanLine}
+            initial={{ y: -12 }}
+            animate={{ y: '100vh' }}
+            transition={{
+              duration: 1,
+              ease: "linear"
+            }}
+          />
+
+          {/* Border frame */}
+          <motion.div 
+            className={styles.borderFrame}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.22 }}
+            transition={{ duration: 0.6, delay: 1.8 }}
+          />
         </motion.div>
       )}
     </AnimatePresence>

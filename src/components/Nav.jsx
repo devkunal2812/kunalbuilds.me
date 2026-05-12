@@ -41,7 +41,7 @@ export default function Nav() {
         {/* Logo */}
         <Link to="/" className={styles.logo}>
           <span className={styles.logoDot} />
-          <span>Kunal.dev</span>
+          <span>Kunal Builds</span>
         </Link>
 
         {/* Desktop links */}

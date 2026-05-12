@@ -1,4 +1,6 @@
-/* ─── LOADER CONTAINER ─────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════ */
+/* LOADER CONTAINER                                                */
+/* ═══════════════════════════════════════════════════════════════ */
 .loader {
   position: fixed;
   inset: 0;
@@ -7,248 +9,189 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: background 0.3s ease;
-}
-
-/* Dark Mode */
-.loader.dark {
   background: radial-gradient(
     ellipse at center,
-    #0a0a0f 0%,
+    #0d1117 0%,
+    #0a0e14 50%,
     #000000 100%
   );
 }
 
-/* Light Mode */
-.loader.light {
-  background: radial-gradient(
-    ellipse at center,
-    #f8fafc 0%,
-    #e2e8f0 100%
-  );
-}
-
-/* ─── BACKGROUND ORBS ──────────────────────────────────────────── */
-.backgroundOrbs {
+/* ═══════════════════════════════════════════════════════════════ */
+/* ANIMATED GRID BACKGROUND                                        */
+/* ═══════════════════════════════════════════════════════════════ */
+.gridBackground {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  overflow: hidden;
 }
 
-.orb {
+.gridDot {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 400px;
-  height: 400px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
-  filter: blur(80px);
+  background: #3c5064;
   transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
 }
 
-/* Dark Mode Orbs */
-.dark .orb {
-  opacity: 0.15;
-}
-
-.dark .orb:nth-child(1) {
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.4) 0%,
-    transparent 70%
-  );
-}
-
-.dark .orb:nth-child(2) {
-  background: radial-gradient(
-    circle,
-    rgba(139, 92, 246, 0.4) 0%,
-    transparent 70%
-  );
-}
-
-/* Light Mode Orbs */
-.light .orb {
-  opacity: 0.25;
-}
-
-.light .orb:nth-child(1) {
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.3) 0%,
-    transparent 70%
-  );
-}
-
-.light .orb:nth-child(2) {
-  background: radial-gradient(
-    circle,
-    rgba(139, 92, 246, 0.3) 0%,
-    transparent 70%
-  );
-}
-
-/* ─── LOADER CONTENT ───────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════ */
+/* LOADER CONTENT                                                  */
+/* ═══════════════════════════════════════════════════════════════ */
 .loaderContent {
   position: relative;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 40px;
   padding: 40px;
 }
 
-/* ─── LOGO ─────────────────────────────────────────────────────── */
-.logoWrapper {
+/* ═══════════════════════════════════════════════════════════════ */
+/* K LOGO CONTAINER                                                */
+/* ═══════════════════════════════════════════════════════════════ */
+.logoContainer {
   position: relative;
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-.logo {
-  position: relative;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 220px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 24px;
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  transform-style: preserve-3d;
-  transition: all 0.3s ease;
 }
 
-/* Dark Mode Logo */
-.dark .logo {
-  background: linear-gradient(
-    135deg,
-    rgba(59, 130, 246, 0.1) 0%,
-    rgba(139, 92, 246, 0.1) 100%
-  );
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.1),
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-/* Light Mode Logo */
-.light .logo {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(241, 245, 249, 0.9) 100%
-  );
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.08),
-    0 8px 32px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.logoRing {
+/* LED Dot above K */
+.ledDot {
   position: absolute;
-  inset: -12px;
-  border-radius: 28px;
-  border: 2px solid transparent;
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6) border-box;
-  mask: 
-    linear-gradient(#fff 0 0) padding-box, 
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) padding-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  opacity: 0.6;
+  top: 0;
+  left: 50px;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
-.logoRingInner {
+.ledCore {
   position: absolute;
-  inset: -6px;
-  border-radius: 26px;
-  border: 1px solid transparent;
-  background: linear-gradient(225deg, #8b5cf6, #3b82f6) border-box;
-  mask: 
-    linear-gradient(#fff 0 0) padding-box, 
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) padding-box, 
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  opacity: 0.4;
+  inset: 0;
+  border-radius: 50%;
+  background: #63d2ac;
+  box-shadow: 
+    0 0 20px rgba(99, 210, 172, 0.8),
+    0 0 40px rgba(99, 210, 172, 0.4),
+    inset 0 0 10px rgba(255, 255, 255, 0.3);
+  filter: blur(0.5px);
 }
 
-.logoText {
-  font-size: 48px;
-  font-weight: 900;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: 'Georgia', serif;
-  letter-spacing: -0.02em;
-  transition: all 0.3s ease;
-}
-
-/* Dark Mode Text */
-.dark .logoText {
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    #93c5fd 50%,
-    #3b82f6 100%
-  );
-  filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.5));
-}
-
-/* Light Mode Text */
-.light .logoText {
-  background: linear-gradient(
-    135deg,
-    #1e40af 0%,
-    #3b82f6 50%,
-    #60a5fa 100%
-  );
-  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.3));
-}
-
-.logoPulse {
+.ledRing1 {
   position: absolute;
-  inset: -20px;
-  border-radius: 32px;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid #63d2ac;
+  box-shadow: 0 0 15px rgba(99, 210, 172, 0.6);
+}
+
+.ledRing2 {
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  border: 1px solid #63d2ac;
+  box-shadow: 0 0 20px rgba(99, 210, 172, 0.4);
+}
+
+/* K Logo SVG */
+.kLogo {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px rgba(230, 238, 248, 0.3));
+}
+
+/* Accent underbar */
+.accentBar {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 14px;
+  border-radius: 7px;
+  background: #63d2ac;
+  box-shadow: 
+    0 0 20px rgba(99, 210, 172, 0.6),
+    0 0 40px rgba(99, 210, 172, 0.3);
+  overflow: hidden;
+}
+
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(127, 255, 212, 0.8) 50%,
+    transparent 100%
+  );
+  width: 50%;
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* PARTICLE SPRAY EFFECT                                           */
+/* ═══════════════════════════════════════════════════════════════ */
+.particleSpray {
+  position: absolute;
+  inset: 0;
   pointer-events: none;
-  transition: all 0.3s ease;
 }
 
-/* Dark Mode Pulse */
-.dark .logoPulse {
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(59, 130, 246, 0.3) 0%,
-    transparent 70%
+    rgba(99, 210, 172, 0.9) 0%,
+    rgba(99, 210, 172, 0.4) 100%
   );
+  box-shadow: 0 0 10px rgba(99, 210, 172, 0.8);
+  transform: 
+    rotate(var(--angle)) 
+    translateX(var(--distance, 100px))
+    translateY(-50%);
 }
 
-/* Light Mode Pulse */
-.light .logoPulse {
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.2) 0%,
-    transparent 70%
-  );
+/* ═══════════════════════════════════════════════════════════════ */
+/* BRAND TEXT                                                      */
+/* ═══════════════════════════════════════════════════════════════ */
+.brandText {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', 'Monaco', monospace;
+  font-size: 28px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: -10px;
 }
 
-/* ─── PROGRESS BAR ────────────────────────────────────────────── */
+.brandName {
+  font-weight: 300;
+  color: #e6eef8;
+  text-shadow: 0 0 20px rgba(230, 238, 248, 0.3);
+}
+
+.brandAction {
+  font-weight: 500;
+  color: #63d2ac;
+  text-shadow: 0 0 20px rgba(99, 210, 172, 0.5);
+}
+
+/* ═══════════════════════════════════════════════════════════════ */
+/* PROGRESS BAR                                                    */
+/* ═══════════════════════════════════════════════════════════════ */
 .progressContainer {
-  width: 280px;
+  width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
 }
 
@@ -257,24 +200,11 @@
   width: 100%;
   height: 4px;
   border-radius: 4px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-/* Dark Mode Track */
-.dark .progressTrack {
   background: rgba(255, 255, 255, 0.05);
   box-shadow:
     inset 0 1px 2px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.05);
-}
-
-/* Light Mode Track */
-.light .progressTrack {
-  background: rgba(0, 0, 0, 0.08);
-  box-shadow:
-    inset 0 1px 2px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .progressBar {
@@ -284,14 +214,14 @@
   height: 100%;
   background: linear-gradient(
     90deg,
-    #3b82f6 0%,
-    #60a5fa 50%,
-    #93c5fd 100%
+    #63d2ac 0%,
+    #7fffd4 50%,
+    #63d2ac 100%
   );
   border-radius: 4px;
   box-shadow:
-    0 0 20px rgba(59, 130, 246, 0.6),
-    0 0 40px rgba(59, 130, 246, 0.3);
+    0 0 20px rgba(99, 210, 172, 0.8),
+    0 0 40px rgba(99, 210, 172, 0.4);
   transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -302,7 +232,7 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.6) 50%,
     transparent 100%
   );
   animation: shimmer 1.5s infinite;
@@ -320,8 +250,8 @@
   height: calc(100% + 4px);
   background: linear-gradient(
     90deg,
-    rgba(59, 130, 246, 0.4) 0%,
-    rgba(147, 197, 253, 0.4) 100%
+    rgba(99, 210, 172, 0.5) 0%,
+    rgba(127, 255, 212, 0.5) 100%
   );
   border-radius: 6px;
   filter: blur(8px);
@@ -330,26 +260,17 @@
 }
 
 .progressPercent {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
   letter-spacing: 0.05em;
-  transition: all 0.3s ease;
-}
-
-/* Dark Mode Percent */
-.dark .progressPercent {
   color: rgba(255, 255, 255, 0.7);
-  text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  text-shadow: 0 0 10px rgba(99, 210, 172, 0.4);
 }
 
-/* Light Mode Percent */
-.light .progressPercent {
-  color: rgba(0, 0, 0, 0.7);
-  text-shadow: 0 0 5px rgba(59, 130, 246, 0.2);
-}
-
-/* ─── STATUS TEXT ──────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════ */
+/* STATUS TEXT                                                     */
+/* ═══════════════════════════════════════════════════════════════ */
 .statusContainer {
   display: flex;
   flex-direction: column;
@@ -358,23 +279,12 @@
 }
 
 .loadingText {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
   letter-spacing: 0.03em;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  transition: all 0.3s ease;
-}
-
-/* Dark Mode Text */
-.dark .loadingText {
   color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-}
-
-/* Light Mode Text */
-.light .loadingText {
-  color: rgba(0, 0, 0, 0.85);
-  text-shadow: 0 0 10px rgba(59, 130, 246, 0.15);
+  text-shadow: 0 0 20px rgba(99, 210, 172, 0.3);
 }
 
 .loadingDots {
@@ -388,115 +298,113 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #60a5fa);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+  background: linear-gradient(135deg, #63d2ac, #7fffd4);
+  box-shadow: 0 0 10px rgba(99, 210, 172, 0.8);
 }
 
-/* ─── PARTICLES ────────────────────────────────────────────────── */
-.particles {
+/* ═══════════════════════════════════════════════════════════════ */
+/* SCAN LINE EFFECT                                                */
+/* ═══════════════════════════════════════════════════════════════ */
+.scanLine {
   position: absolute;
-  inset: 0;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(99, 210, 172, 0.15) 50%,
+    transparent 100%
+  );
+  box-shadow: 0 0 20px rgba(99, 210, 172, 0.3);
   pointer-events: none;
+  z-index: 1;
 }
 
-.particle {
+/* ═══════════════════════════════════════════════════════════════ */
+/* BORDER FRAME                                                    */
+/* ═══════════════════════════════════════════════════════════════ */
+.borderFrame {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  transform: 
-    rotate(var(--angle)) 
-    translateX(var(--distance, 150px))
-    translateY(-50%);
-  transition: all 0.3s ease;
+  inset: 20px;
+  border: 2.5px solid #63d2ac;
+  border-radius: 40px;
+  pointer-events: none;
+  box-shadow: 
+    inset 0 0 30px rgba(99, 210, 172, 0.1),
+    0 0 30px rgba(99, 210, 172, 0.1);
 }
 
-/* Dark Mode Particles */
-.dark .particle {
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.8) 0%,
-    rgba(139, 92, 246, 0.4) 100%
-  );
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
-}
-
-/* Light Mode Particles */
-.light .particle {
-  background: radial-gradient(
-    circle,
-    rgba(59, 130, 246, 0.7) 0%,
-    rgba(139, 92, 246, 0.3) 100%
-  );
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
-}
-
-/* ─── RESPONSIVE ───────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════ */
+/* RESPONSIVE                                                      */
+/* ═══════════════════════════════════════════════════════════════ */
 @media (max-width: 768px) {
   .loaderContent {
-    gap: 28px;
+    gap: 32px;
     padding: 32px;
   }
 
-  .logo {
-    width: 80px;
-    height: 80px;
+  .logoContainer {
+    width: 160px;
+    height: 176px;
   }
 
-  .logoText {
-    font-size: 40px;
+  .brandText {
+    font-size: 22px;
+    letter-spacing: 6px;
   }
 
   .progressContainer {
-    width: 240px;
+    width: 260px;
+  }
+
+  .loadingText {
+    font-size: 15px;
+  }
+
+  .borderFrame {
+    inset: 15px;
+    border-radius: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loaderContent {
+    gap: 28px;
+    padding: 24px;
+  }
+
+  .logoContainer {
+    width: 140px;
+    height: 154px;
+  }
+
+  .brandText {
+    font-size: 18px;
+    letter-spacing: 5px;
+  }
+
+  .progressContainer {
+    width: 220px;
   }
 
   .loadingText {
     font-size: 14px;
   }
 
-  .orb {
-    width: 300px;
-    height: 300px;
-  }
-}
-
-@media (max-width: 480px) {
-  .loaderContent {
-    gap: 24px;
-    padding: 24px;
-  }
-
-  .logo {
-    width: 70px;
-    height: 70px;
-  }
-
-  .logoText {
-    font-size: 36px;
-  }
-
-  .progressContainer {
-    width: 200px;
-  }
-
-  .loadingText {
+  .progressPercent {
     font-size: 13px;
   }
 
-  .progressPercent {
-    font-size: 12px;
-  }
-
-  .orb {
-    width: 250px;
-    height: 250px;
+  .borderFrame {
+    inset: 12px;
+    border-radius: 25px;
   }
 }
 
-/* ─── PERFORMANCE ──────────────────────────────────────────────── */
+/* ═══════════════════════════════════════════════════════════════ */
+/* PERFORMANCE                                                     */
+/* ═══════════════════════════════════════════════════════════════ */
 .loader * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
