@@ -24,7 +24,13 @@
 
 @media (prefers-color-scheme: dark) {
   .hero {
-    background: linear-gradient(135deg, #0f0f13 0%, #16161c 50%, #1a1a24 100%);
+    background: linear-gradient(135deg, #0a0a0f 0%, #0f0f13 50%, #16161c 100%);
+  }
+  
+  .bgGrid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
   }
 }
 
@@ -52,6 +58,12 @@
   top: -200px; right: -50px;
 }
 
+@media (prefers-color-scheme: dark) {
+  .bgOrb1 {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+  }
+}
+
 .bgOrb2 {
   width: 550px; height: 550px;
   background: radial-gradient(circle, rgba(196, 181, 253, 0.2) 0%, transparent 70%);
@@ -59,11 +71,23 @@
   bottom: -100px; right: 15%;
 }
 
+@media (prefers-color-scheme: dark) {
+  .bgOrb2 {
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  }
+}
+
 .bgOrb3 {
   width: 450px; height: 450px;
   background: radial-gradient(circle, rgba(252, 211, 77, 0.15) 0%, transparent 70%);
   filter: blur(80px);
   top: 40%; left: -50px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bgOrb3 {
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  }
 }
 
 .heroText {
