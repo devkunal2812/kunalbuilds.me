@@ -48,23 +48,24 @@
   transform: rotate(-30deg) translateX(45px) translateY(-3px);
 }
 
-#out2 {
+/* Global animations for SVG elements */
+:global(#out2) {
   animation: rotate16 7s ease-in-out infinite alternate;
   transform-origin: center;
 }
 
-#out3 {
+:global(#out3) {
   animation: rotate16 3s ease-in-out infinite alternate;
   transform-origin: center;
 }
 
-#inner3,
-#inner1 {
+:global(#inner3),
+:global(#inner1) {
   animation: rotate16 4s ease-in-out infinite alternate;
   transform-origin: center;
 }
 
-#center1 {
+:global(#center1) {
   animation: rotate16 2s ease-in-out infinite alternate;
   transform-origin: center;
 }
