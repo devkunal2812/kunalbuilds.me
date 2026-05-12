@@ -143,6 +143,11 @@ export default function App() {
   const isEasterEgg = location.pathname.startsWith('/secret/')
   const showExploreButton = !isDesignBoard && !isEasterEgg
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [location.pathname])
+
   useEffect(() => {
     // Show loader only on initial page load
     const hasLoaded = sessionStorage.getItem('hasLoaded')
