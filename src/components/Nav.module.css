@@ -175,11 +175,27 @@
   backdrop-filter: blur(10px);
 }
 
+@media (prefers-color-scheme: dark) {
+  .status {
+    color: #e0e0e8;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
 .status:hover { 
   background: rgba(255, 255, 255, 1);
   border-color: var(--border-hover);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  .status:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.2);
+  }
 }
 
 .statusDot {
@@ -283,6 +299,12 @@
   font-weight: 500;
   color: var(--text-secondary);
   text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .drawerStatus {
+    color: #b0b0c0;
+  }
 }
 
 .backdrop {

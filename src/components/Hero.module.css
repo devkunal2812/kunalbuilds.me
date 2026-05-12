@@ -169,6 +169,12 @@
   letter-spacing: 0.01em;
 }
 
+@media (prefers-color-scheme: dark) {
+  .sub {
+    color: #c0c0d0;
+  }
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -190,12 +196,29 @@
   backdrop-filter: blur(10px);
 }
 
+@media (prefers-color-scheme: dark) {
+  .chip {
+    color: #b0b0c0;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+}
+
 .chip:hover {
   background: rgba(255, 255, 255, 1);
   border-color: rgba(59,130,246,0.3);
   color: var(--accent);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(59,130,246,0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  .chip:hover {
+    background: rgba(96, 165, 250, 0.15);
+    border-color: rgba(96, 165, 250, 0.4);
+    color: #93c5fd;
+    box-shadow: 0 4px 12px rgba(96, 165, 250, 0.25);
+  }
 }
 
 .stats {
@@ -255,6 +278,12 @@
   font-weight: 500;
   color: var(--text-muted);
   letter-spacing: 0.01em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .statLabel {
+    color: #909098;
+  }
 }
 
 /* ══════════════════════════════════════════
@@ -557,6 +586,16 @@
 .mobileSkillIcon svg {
   width: 17px;
   height: 17px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .mobileSkillIcon {
+    color: #e0e0e8;
+  }
+  
+  .mobileSkillIcon svg {
+    stroke: #e0e0e8;
+  }
 }
 
 .mobileSkillCardActive .mobileSkillIcon {

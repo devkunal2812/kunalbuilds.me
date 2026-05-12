@@ -39,6 +39,12 @@
   overflow: visible;
 }
 
+@media (prefers-color-scheme: dark) {
+  .connections {
+    opacity: 0.8;
+  }
+}
+
 .connLine {
   stroke-dasharray: 5 5;
   animation: dashFlow 3.5s linear infinite;
@@ -169,16 +175,34 @@
   animation: spinCw 14s linear infinite;
 }
 
+@media (prefers-color-scheme: dark) {
+  .ring1 {
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+}
+
 .ring2 {
   width: var(--ring2); height: var(--ring2);
   border: 1px dashed rgba(59,130,246,0.18);
   animation: spinCcw 20s linear infinite;
 }
 
+@media (prefers-color-scheme: dark) {
+  .ring2 {
+    border: 1px dashed rgba(96,165,250,0.3);
+  }
+}
+
 .ring3 {
   width: var(--ring3); height: var(--ring3);
   border: 1px solid rgba(0,0,0,0.06);
   animation: spinCw 30s linear infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  .ring3 {
+    border: 1px solid rgba(255,255,255,0.08);
+  }
 }
 
 @keyframes spinCw  { to { transform: translate(-50%, -50%) rotate(360deg);  } }
@@ -220,6 +244,14 @@
   position: relative;
   z-index: 2;
   white-space: nowrap;
+}
+
+@media (prefers-color-scheme: dark) {
+  .coreLabel {
+    color: #b0b0c0;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
 }
 
 /* ── Responsive scaling via CSS custom props ── */

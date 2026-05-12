@@ -111,37 +111,39 @@ const PATHS = [
 ]
 
 const GRADIENTS = [
-  { id: 'lg-tl', x1: '0%',   y1: '0%',   x2: '100%', y2: '100%', c0: '#888', c1: '#444',   op1: 0.55 },
-  { id: 'lg-tr', x1: '100%', y1: '0%',   x2: '0%',   y2: '100%', c0: '#888', c1: '#3b82f6', op1: 0.5  },
-  { id: 'lg-l',  x1: '0%',   y1: '50%',  x2: '100%', y2: '50%',  c0: '#aaa', c1: '#555',   op1: 0.5  },
-  { id: 'lg-r',  x1: '100%', y1: '50%',  x2: '0%',   y2: '50%',  c0: '#aaa', c1: '#3b82f6', op1: 0.45 },
-  { id: 'lg-bl', x1: '0%',   y1: '100%', x2: '100%', y2: '0%',   c0: '#888', c1: '#6366f1', op1: 0.45 },
-  { id: 'lg-br', x1: '100%', y1: '100%', x2: '0%',   y2: '0%',   c0: '#888', c1: '#444',   op1: 0.5  },
+  { id: 'lg-tl', x1: '0%',   y1: '0%',   x2: '100%', y2: '100%', c0: '#888', c1: '#444',   op1: 0.55, c0Dark: '#ccc', c1Dark: '#888', op1Dark: 0.4 },
+  { id: 'lg-tr', x1: '100%', y1: '0%',   x2: '0%',   y2: '100%', c0: '#888', c1: '#3b82f6', op1: 0.5,  c0Dark: '#ccc', c1Dark: '#60a5fa', op1Dark: 0.5 },
+  { id: 'lg-l',  x1: '0%',   y1: '50%',  x2: '100%', y2: '50%',  c0: '#aaa', c1: '#555',   op1: 0.5,  c0Dark: '#ddd', c1Dark: '#999', op1Dark: 0.4 },
+  { id: 'lg-r',  x1: '100%', y1: '50%',  x2: '0%',   y2: '50%',  c0: '#aaa', c1: '#3b82f6', op1: 0.45, c0Dark: '#ddd', c1Dark: '#60a5fa', op1Dark: 0.5 },
+  { id: 'lg-bl', x1: '0%',   y1: '100%', x2: '100%', y2: '0%',   c0: '#888', c1: '#6366f1', op1: 0.45, c0Dark: '#ccc', c1Dark: '#818cf8', op1Dark: 0.5 },
+  { id: 'lg-br', x1: '100%', y1: '100%', x2: '0%',   y2: '0%',   c0: '#888', c1: '#444',   op1: 0.5,  c0Dark: '#ccc', c1Dark: '#888', op1Dark: 0.4 },
 ]
 
 const PARTICLES = [
-  { fill: '#666',    dur: '2.6s', begin: '0s',   path: '#p-tl', r: 2.5 },
-  { fill: '#3b82f6', dur: '2.9s', begin: '0.6s', path: '#p-tr', r: 2.5 },
-  { fill: '#888',    dur: '2.3s', begin: '1.1s', path: '#p-l',  r: 2.5 },
-  { fill: '#3b82f6', dur: '3.1s', begin: '0.3s', path: '#p-r',  r: 2.5 },
-  { fill: '#6366f1', dur: '2.7s', begin: '0.9s', path: '#p-bl', r: 2.5 },
-  { fill: '#555',    dur: '2.4s', begin: '1.4s', path: '#p-br', r: 2.5 },
-  { fill: '#aaa',    dur: '2.6s', begin: '1.3s', path: '#p-tl', r: 1.8, opacity: 0.6 },
-  { fill: '#3b82f6', dur: '2.9s', begin: '1.9s', path: '#p-tr', r: 1.8, opacity: 0.5 },
-  { fill: '#888',    dur: '2.3s', begin: '0.4s', path: '#p-l',  r: 1.8, opacity: 0.5 },
-  { fill: '#6366f1', dur: '3.0s', begin: '0.7s', path: '#p-bl', r: 1.8, opacity: 0.55 },
-  { fill: '#555',    dur: '2.5s', begin: '1.6s', path: '#p-br', r: 1.8, opacity: 0.5 },
-  { fill: '#3b82f6', dur: '2.8s', begin: '0.2s', path: '#p-r',  r: 1.8, opacity: 0.5 },
+  { fill: '#666',    dur: '2.6s', begin: '0s',   path: '#p-tl', r: 2.5, fillDark: '#aaa' },
+  { fill: '#3b82f6', dur: '2.9s', begin: '0.6s', path: '#p-tr', r: 2.5, fillDark: '#60a5fa' },
+  { fill: '#888',    dur: '2.3s', begin: '1.1s', path: '#p-l',  r: 2.5, fillDark: '#bbb' },
+  { fill: '#3b82f6', dur: '3.1s', begin: '0.3s', path: '#p-r',  r: 2.5, fillDark: '#60a5fa' },
+  { fill: '#6366f1', dur: '2.7s', begin: '0.9s', path: '#p-bl', r: 2.5, fillDark: '#818cf8' },
+  { fill: '#555',    dur: '2.4s', begin: '1.4s', path: '#p-br', r: 2.5, fillDark: '#999' },
+  { fill: '#aaa',    dur: '2.6s', begin: '1.3s', path: '#p-tl', r: 1.8, opacity: 0.6, fillDark: '#ccc' },
+  { fill: '#3b82f6', dur: '2.9s', begin: '1.9s', path: '#p-tr', r: 1.8, opacity: 0.5, fillDark: '#60a5fa' },
+  { fill: '#888',    dur: '2.3s', begin: '0.4s', path: '#p-l',  r: 1.8, opacity: 0.5, fillDark: '#bbb' },
+  { fill: '#6366f1', dur: '3.0s', begin: '0.7s', path: '#p-bl', r: 1.8, opacity: 0.55, fillDark: '#818cf8' },
+  { fill: '#555',    dur: '2.5s', begin: '1.6s', path: '#p-br', r: 1.8, opacity: 0.5, fillDark: '#999' },
+  { fill: '#3b82f6', dur: '2.8s', begin: '0.2s', path: '#p-r',  r: 1.8, opacity: 0.5, fillDark: '#60a5fa' },
 ]
 
 function ConnectionsSVG() {
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  
   return (
     <svg className={styles.connections} viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        {GRADIENTS.map(({ id, x1, y1, x2, y2, c0, c1, op1 }) => (
+        {GRADIENTS.map(({ id, x1, y1, x2, y2, c0, c1, op1, c0Dark, c1Dark, op1Dark }) => (
           <linearGradient key={id} id={id} x1={x1} y1={y1} x2={x2} y2={y2}>
-            <stop offset="0%"   stopColor={c0} stopOpacity="0" />
-            <stop offset="100%" stopColor={c1} stopOpacity={op1} />
+            <stop offset="0%"   stopColor={isDark ? c0Dark : c0} stopOpacity="0" />
+            <stop offset="100%" stopColor={isDark ? c1Dark : c1} stopOpacity={isDark ? op1Dark : op1} />
           </linearGradient>
         ))}
         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -162,7 +164,7 @@ function ConnectionsSVG() {
 
       {/* Animated particles */}
       {PARTICLES.map((p, i) => (
-        <circle key={i} r={p.r} fill={p.fill} opacity={p.opacity ?? 1} filter="url(#pglow)">
+        <circle key={i} r={p.r} fill={isDark ? p.fillDark : p.fill} opacity={p.opacity ?? 1} filter="url(#pglow)">
           <animateMotion dur={p.dur} repeatCount="indefinite" begin={p.begin}>
             <mpath href={p.path} />
           </animateMotion>
