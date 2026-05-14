@@ -1,22 +1,15 @@
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import { useState, useEffect, createContext, useContext } from 'react'
+import { useState, useEffect, createContext, useContext, lazy, Suspense } from 'react'
+import Lenis from 'lenis'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Projects from './pages/Projects'
 import Skills from './pages/Skills'
 import Contact from './pages/Contact'
-import About from './pages/About'
-import DesignBoard from './pages/DesignBoard'
-import Timeline from './pages/Timeline'
-import Gallery from './pages/Gallery'
-import FunFacts from './pages/FunFacts'
-import Achievements from './pages/Achievements'
 import PageLoader from './components/PageLoader'
 import PageTransition from './components/PageTransition'
-import BugModeOverlay from './components/BugModeOverlay'
-import AvgCinematic from './components/AvgCinematic'
 import ScrollProgress from './components/ScrollProgress'
 import ExplorePanel from './components/ExplorePanel'
 import ExploreButton from './components/ExploreButton'
@@ -24,6 +17,17 @@ import { useBugMode } from './hooks/useBugMode'
 import { useAvgTrigger } from './hooks/useAvgTrigger'
 import { useAnalytics } from './hooks/useAnalytics'
 import { initializeGlobalProtection } from './utils/contentProtection'
+import 'lenis/dist/lenis.css'
+
+// Lazy load pages that are not immediately needed
+const About = lazy(() => import('./pages/About'))
+const DesignBoard = lazy(() => import('./pages/DesignBoard'))
+const Timeline = lazy(() => import('./pages/Timeline'))
+const Gallery = lazy(() => import('./pages/Gallery'))
+const FunFacts = lazy(() => import('./pages/FunFacts'))
+const Achievements = lazy(() => import('./pages/Achievements'))
+const BugModeOverlay = lazy(() => import('./components/BugModeOverlay'))
+const AvgCinematic = lazy(() => import('./components/AvgCinematic'))
 
 // Create context for Explore Panel
 const ExplorePanelContext = createContext()
@@ -57,21 +61,29 @@ function Home() {
 function AboutPage() {
   return (
     <PageTransition>
-      <About />
-      <Footer />
+      <Suspense fallback={<PageLoader />}>
+        <About />
+        <Footer />
+      </Suspense>
     </PageTransition>
   )
 }
 
 function DesignBoardPage() {
-  return <DesignBoard />
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <DesignBoard />
+    </Suspense>
+  )
 }
 
 function TimelinePage() {
   return (
     <PageTransition>
-      <Timeline />
-      <Footer />
+      <Suspense fallback={<PageLoader />}>
+        <Timeline />
+        <Footer />
+      </Suspense>
     </PageTransition>
   )
 }
@@ -79,8 +91,10 @@ function TimelinePage() {
 function GalleryPage() {
   return (
     <PageTransition>
-      <Gallery />
-      <Footer />
+      <Suspense fallback={<PageLoader />}>
+        <Gallery />
+        <Footer />
+      </Suspense>
     </PageTransition>
   )
 }
@@ -88,8 +102,10 @@ function GalleryPage() {
 function FunFactsPage() {
   return (
     <PageTransition>
-      <FunFacts />
-      <Footer />
+      <Suspense fallback={<PageLoader />}>
+        <FunFacts />
+        <Footer />
+      </Suspense>
     </PageTransition>
   )
 }
@@ -97,8 +113,10 @@ function FunFactsPage() {
 function AchievementsPage() {
   return (
     <PageTransition>
-      <Achievements />
-      <Footer />
+      <Suspense fallback={<PageLoader />}>
+        <Achievements />
+        <Footer />
+      </Suspense>
     </PageTransition>
   )
 }
@@ -112,7 +130,11 @@ function AvgEasterEggPage() {
     navigate('/')
   }
 
-  return <AvgCinematic isActive={isActive} onComplete={handleComplete} />
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <AvgCinematic isActive={isActive} onComplete={handleComplete} />
+    </Suspense>
+  )
 }
 
 function BugEasterEggPage() {
@@ -127,7 +149,11 @@ function BugEasterEggPage() {
     return () => clearTimeout(timer)
   }, [navigate])
 
-  return <BugModeOverlay isActive={true} />
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <BugModeOverlay isActive={true} />
+    </Suspense>
+  )
 }
 
 export default function App() {
@@ -142,6 +168,32 @@ export default function App() {
   const isDesignBoard = location.pathname === '/design-board'
   const isEasterEgg = location.pathname.startsWith('/secret/')
   const showExploreButton = !isDesignBoard && !isEasterEgg
+
+  // Initialize Lenis smooth scroll
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+      infinite: false,
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
 
   // Scroll to top on route change
   useEffect(() => {
