@@ -1,11 +1,14 @@
-import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef, useState } from 'react'
+import { motion, useScroll, useTransform, useMotionValue, useAnimation } from 'framer-motion'
 import styles from './Projects.module.css'
 import { PROJECTS } from '../data/projects'
 import { getImageProtectionProps } from '../utils/contentProtection'
 
-function ProjectCard({ project, index, totalProjects }) {
+function ProjectCard({ project, index, totalProjects, onRemove, isTop }) {
   const ref = useRef(null)
+  const x = useMotionValue(0)
+  const controls = useAnimation()
+  const [exitX, setExitX] = useState(0)
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -26,6 +29,31 @@ function ProjectCard({ project, index, totalProjects }) {
     [0, 1, 1]
   )
 
+  // Rotation based on drag
+  const rotate = useTransform(x, [-200, 200], [-15, 15])
+
+  const handleDragEnd = (event, info) => {
+    const threshold = 150
+    
+    if (Math.abs(info.offset.x) > threshold) {
+      // Card swiped away
+      setExitX(info.offset.x > 0 ? 300 : -300)
+      controls.start({
+        x: info.offset.x > 0 ? 300 : -300,
+        opacity: 0,
+        transition: { duration: 0.3 }
+      }).then(() => {
+        onRemove(project.id)
+      })
+    } else {
+      // Snap back
+      controls.start({
+        x: 0,
+        transition: { type: 'spring', stiffness: 300, damping: 20 }
+      })
+    }
+  }
+
   return (
     <motion.div
       ref={ref}
@@ -33,10 +61,19 @@ function ProjectCard({ project, index, totalProjects }) {
       style={{ 
         scale,
         opacity,
+        x,
+        rotate,
         '--accent': project.accent,
         '--card-index': index,
         zIndex: totalProjects - index,
+        cursor: isTop ? 'grab' : 'default',
       }}
+      drag={isTop ? 'x' : false}
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.7}
+      onDragEnd={handleDragEnd}
+      animate={controls}
+      whileDrag={{ cursor: 'grabbing', scale: 1.05 }}
     >
         <div className={styles.accentLine} />
         <div className={styles.cardInner}>
@@ -142,11 +179,33 @@ function ProjectCard({ project, index, totalProjects }) {
           </div>
 
         </div>
+        
+        {/* Swipe hint for top card */}
+        {isTop && (
+          <motion.div 
+            className={styles.swipeHint}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            ← Swipe to dismiss →
+          </motion.div>
+        )}
     </motion.div>
   )
 }
 
 export default function Projects() {
+  const [visibleProjects, setVisibleProjects] = useState(PROJECTS)
+
+  const handleRemove = (id) => {
+    setVisibleProjects(prev => prev.filter(p => p.id !== id))
+  }
+
+  const handleReset = () => {
+    setVisibleProjects(PROJECTS)
+  }
+
   return (
     <section className={styles.projects} id="projects">
 
@@ -162,7 +221,7 @@ export default function Projects() {
             Featured
             <span>Projects</span>
           </h2>
-          <p className={styles.subtitle}>Scroll to explore each project</p>
+          <p className={styles.subtitle}>Scroll to explore • Swipe to dismiss</p>
           <div className={styles.scrollHint}>
             <span className={styles.scrollLine} />
             scroll
@@ -172,14 +231,29 @@ export default function Projects() {
       </div>
 
       <div className={styles.stack}>
-        {PROJECTS.map((project, index) => (
-          <ProjectCard
-            key={project.id}
-            project={project}
-            index={index}
-            totalProjects={PROJECTS.length}
-          />
-        ))}
+        {visibleProjects.length === 0 ? (
+          <motion.div 
+            className={styles.emptyState}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+          >
+            <p className={styles.emptyText}>All projects viewed! 🎉</p>
+            <button className={styles.resetBtn} onClick={handleReset}>
+              Reset Stack
+            </button>
+          </motion.div>
+        ) : (
+          visibleProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              totalProjects={visibleProjects.length}
+              onRemove={handleRemove}
+              isTop={index === 0}
+            />
+          ))
+        )}
       </div>
 
       <div className={styles.footer}>
