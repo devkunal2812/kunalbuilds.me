@@ -1,5 +1,7 @@
 import styles from './MarqueeStrip.module.css'
 
+const DUPLICATE_COUNT = 2
+
 function normalizeItem(item, index) {
   if (typeof item === 'string') {
     return { id: `marquee-item-${index}`, text: item }
@@ -16,7 +18,9 @@ export default function MarqueeStrip({
   label = 'Portfolio highlights',
   duration = 28,
 }) {
-  const normalizedItems = items.map(normalizeItem).filter((item) => item.text)
+  const normalizedItems = items
+    .map(normalizeItem)
+    .filter((item) => item.text !== '')
 
   if (normalizedItems.length === 0) {
     return null
@@ -30,11 +34,11 @@ export default function MarqueeStrip({
       >
         <div className={styles.edgeFade} aria-hidden="true" />
         <div className={styles.track}>
-          {[0, 1].map((groupIndex) => (
+          {Array.from({ length: DUPLICATE_COUNT }, (_, groupIndex) => (
             <div
               key={groupIndex}
               className={styles.group}
-              aria-hidden={groupIndex === 1}
+              aria-hidden={groupIndex > 0}
             >
               {normalizedItems.map((item, index) => (
                 <div key={`${groupIndex}-${item.id}`} className={styles.item}>
