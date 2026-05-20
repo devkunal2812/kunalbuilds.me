@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
+import MarqueeStrip from './components/MarqueeStrip'
 import Projects from './pages/Projects'
 import Skills from './pages/Skills'
 import Contact from './pages/Contact'
@@ -16,6 +17,7 @@ import ExploreButton from './components/ExploreButton'
 import { useBugMode } from './hooks/useBugMode'
 import { useAvgTrigger } from './hooks/useAvgTrigger'
 import { useAnalytics } from './hooks/useAnalytics'
+import { MARQUEE_ITEMS } from './data/marqueeItems'
 import { initializeGlobalProtection } from './utils/contentProtection'
 import 'lenis/dist/lenis.css'
 
@@ -49,6 +51,7 @@ function Home() {
     <PageTransition>
       <main id="main-content">
         <Hero />
+        <MarqueeStrip items={MARQUEE_ITEMS} />
         <Projects />
         <Skills />
         <Contact />
