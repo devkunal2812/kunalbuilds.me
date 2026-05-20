@@ -1,0 +1,121 @@
+.marqueeSection {
+  position: relative;
+  width: 100%;
+  padding: 0 0 36px;
+  background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.22) 100%);
+}
+
+.marqueeStrip {
+  --edge-size: clamp(48px, 9vw, 120px);
+  --strip-padding: clamp(14px, 2vw, 18px);
+  --item-gap: clamp(0.85rem, 2vw, 1.35rem);
+  position: relative;
+  overflow: hidden;
+  border-block: 1px solid var(--border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.62)),
+    rgba(255, 255, 255, 0.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 12px 32px rgba(15, 23, 42, 0.04);
+  backdrop-filter: blur(18px);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee var(--marquee-duration, 28s) linear infinite;
+}
+
+.group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--item-gap);
+  padding: var(--strip-padding) var(--item-gap);
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--item-gap);
+}
+
+.itemText {
+  font-family: 'DM Sans', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  font-size: clamp(0.74rem, 1.8vw, 0.92rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dim));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 42%, transparent);
+  flex-shrink: 0;
+}
+
+.edgeFade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, var(--bg-primary) 0%, transparent var(--edge-size)),
+    linear-gradient(270deg, var(--bg-primary) 0%, transparent var(--edge-size));
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .marqueeSection {
+    background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.25) 100%);
+  }
+
+  .marqueeStrip {
+    background:
+      linear-gradient(135deg, rgba(17, 24, 39, 0.88), rgba(15, 23, 42, 0.72)),
+      rgba(15, 23, 42, 0.74);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 12px 32px rgba(2, 6, 23, 0.28);
+  }
+
+  .itemText {
+    color: #d4d8e6;
+  }
+}
+
+@media (max-width: 767px) {
+  .marqueeSection {
+    padding-bottom: 24px;
+  }
+
+  .marqueeStrip {
+    --edge-size: 36px;
+  }
+
+  .itemText {
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
