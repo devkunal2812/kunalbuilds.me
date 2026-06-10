@@ -1,19 +1,19 @@
 # SECURITY FIX REPORT
 
 ## Files Modified
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/CHATBOT_DEBUG_REPORT.md`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/.gitignore`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/.env.example`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/src/components/ChatBot.jsx`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/src/utils/analytics.js`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/api/chat.js`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/api/analytics.js`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/api/health.js`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/analytics-backend/.env.example`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/backend-example/.env.example`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/analytics-backend/server.js`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/backend-example/server.js`
-- `/home/runner/work/kunalbuilds.me/kunalbuilds.me/devkunal2812/kunalbuilds.me/check-analytics.js`
+- `CHATBOT_DEBUG_REPORT.md`
+- `.gitignore`
+- `.env.example`
+- `src/components/ChatBot.jsx`
+- `src/utils/analytics.js`
+- `api/chat.js`
+- `api/analytics.js`
+- `api/health.js`
+- `analytics-backend/.env.example`
+- `backend-example/.env.example`
+- `analytics-backend/server.js`
+- `backend-example/server.js`
+- `check-analytics.js`
 - Documentation files with connection-string examples sanitized to placeholders.
 
 ## Secrets Removed
@@ -44,7 +44,7 @@ pip install git-filter-repo
 
 # Rewrite all matching sensitive strings from history
 cat > /tmp/replacements.txt <<'EOF'
-regex:GEMINI_API_KEY=[^\\n\\r ]+==>GEMINI_API_KEY=YOUR_API_KEY_HERE
+regex:GEMINI_API_KEY=[^\n\r ]+==>GEMINI_API_KEY=YOUR_API_KEY_HERE
 regex:AIza[0-9A-Za-z_-]{20,}==>GEMINI_API_KEY=YOUR_API_KEY_HERE
 EOF
 
@@ -63,7 +63,7 @@ cd kunalbuilds.me.git
 
 # Replace key patterns
 cat > /tmp/bfg-replacements.txt <<'EOF'
-AIza[0-9A-Za-z_-]{20,}==>GEMINI_API_KEY=YOUR_API_KEY_HERE
+regex:AIza[0-9A-Za-z_-]{20,}==>GEMINI_API_KEY=YOUR_API_KEY_HERE
 EOF
 
 java -jar bfg.jar --replace-text /tmp/bfg-replacements.txt

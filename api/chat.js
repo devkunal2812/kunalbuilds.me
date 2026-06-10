@@ -70,7 +70,7 @@ export default async function handler(req, res) {
       })
     }
 
-    if (!/^AIza[0-9A-Za-z_-]{20,}$/.test(geminiApiKey)) {
+    if (!/^AIza[0-9A-Za-z_-]{20,128}$/.test(geminiApiKey)) {
       return res.status(500).json({
         success: false,
         error: 'Invalid GEMINI_API_KEY format. Update the server environment variable.'

@@ -86,8 +86,8 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
 
 **Evidence from Screenshot:**
 ```
-Expected: GEMINI_API_KEY=YOUR_API_KEY_HERE
-Actual:   GEMINI_API_KEY=[TRUNCATED_OR_INVALID_VALUE]
+Expected: YOUR_API_KEY_HERE
+Actual:   [TRUNCATED_OR_INVALID_VALUE]
 Missing:  ^^^
 ```
 
@@ -99,7 +99,7 @@ Missing:  ^^^
 **Fix Required:**
 1. Go to Vercel → Settings → Environment Variables
 2. Edit `GEMINI_API_KEY`
-3. Ensure complete value: `GEMINI_API_KEY=YOUR_API_KEY_HERE`
+3. Ensure complete value: `YOUR_API_KEY_HERE`
 4. Save and redeploy
 
 ---
@@ -235,7 +235,7 @@ if (!response.ok) {
 1. **Add/Fix Environment Variable:**
    ```
    Key: GEMINI_API_KEY
-   Value: GEMINI_API_KEY=YOUR_API_KEY_HERE
+   Value: YOUR_API_KEY_HERE
    Environments: Production, Preview, Development
    ```
 
