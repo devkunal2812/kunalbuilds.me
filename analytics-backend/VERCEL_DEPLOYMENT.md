@@ -72,7 +72,7 @@ git push -u origin main
    
    **Value:** Your full connection string (replace `<db_password>` with actual password):
    ```
-   mongodb+srv://kunaldevofficial07_db_user:YOUR_ACTUAL_PASSWORD@cluster0.wvankzz.mongodb.net/portfolio-analytics?retryWrites=true&w=majority&appName=Cluster0
+   YOUR_MONGODB_CONNECTION_STRING
    ```
    
    **Key:** `PORT`

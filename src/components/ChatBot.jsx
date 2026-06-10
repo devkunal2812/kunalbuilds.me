@@ -1,6 +1,11 @@
 import { useState, useRef, useEffect } from 'react'
 import styles from './ChatBot.module.css'
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim()
+const chatApiUrl = apiBaseUrl
+  ? `${apiBaseUrl.replace(/\/$/, '')}/api/chat`
+  : '/api/chat'
+
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState([
@@ -52,7 +57,7 @@ export default function ChatBot() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch(chatApiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

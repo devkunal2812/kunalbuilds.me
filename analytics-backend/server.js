@@ -10,13 +10,22 @@ require('dotenv').config()
 
 const app = express()
 const PORT = process.env.PORT || 3001
+const mongoUri = process.env.MONGODB_URI?.trim()
+
+if (!mongoUri) {
+  throw new Error('Missing required environment variable: MONGODB_URI')
+}
+
+if (!/^mongodb(\+srv)?:\/\//.test(mongoUri)) {
+  throw new Error('Invalid MONGODB_URI format. Expected mongodb:// or mongodb+srv://')
+}
 
 // Middleware
 app.use(cors())
 app.use(express.json())
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(mongoUri)
 .then(() => console.log('✅ MongoDB Atlas connected'))
 .catch(err => console.error('❌ MongoDB connection error:', err))
 

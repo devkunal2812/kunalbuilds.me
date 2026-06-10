@@ -8,12 +8,29 @@ const mongoose = require('mongoose')
 // MongoDB connection (cached for serverless)
 let cachedDb = null
 
-async function connectToDatabase() {
+function getValidatedMongoUri() {
+  const mongoUri = process.env.MONGODB_URI?.trim()
+  if (!mongoUri) {
+    return {
+      error: 'Missing required environment variable: MONGODB_URI'
+    }
+  }
+
+  if (!/^mongodb(\+srv)?:\/\//.test(mongoUri)) {
+    return {
+      error: 'Invalid MONGODB_URI format. Expected mongodb:// or mongodb+srv://'
+    }
+  }
+
+  return { mongoUri }
+}
+
+async function connectToDatabase(mongoUri) {
   if (cachedDb) {
     return cachedDb
   }
 
-  const connection = await mongoose.connect(process.env.MONGODB_URI, {
+  const connection = await mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -52,16 +69,16 @@ module.exports = async (req, res) => {
   }
 
   try {
-    // Check if MONGODB_URI is configured
-    if (!process.env.MONGODB_URI) {
-      return res.status(500).json({ 
+    const { mongoUri, error: mongoUriError } = getValidatedMongoUri()
+    if (mongoUriError) {
+      return res.status(500).json({
         success: false,
-        error: 'MONGODB_URI not configured in environment variables'
+        error: mongoUriError
       })
     }
 
     // Connect to database
-    await connectToDatabase()
+    await connectToDatabase(mongoUri)
 
     // POST - Track analytics
     if (req.method === 'POST') {

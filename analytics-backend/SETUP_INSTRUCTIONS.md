@@ -37,12 +37,12 @@ Open `.env` file and replace `<db_password>` with your actual MongoDB Atlas pass
 
 **Your connection string:**
 ```
-mongodb+srv://kunaldevofficial07_db_user:<db_password>@cluster0.wvankzz.mongodb.net/portfolio-analytics?retryWrites=true&w=majority&appName=Cluster0
+YOUR_MONGODB_CONNECTION_STRING
 ```
 
 **After replacing password:**
 ```
-MONGODB_URI=mongodb+srv://kunaldevofficial07_db_user:YourActualPassword123@cluster0.wvankzz.mongodb.net/portfolio-analytics?retryWrites=true&w=majority&appName=Cluster0
+MONGODB_URI=YOUR_MONGODB_URI_HERE
 PORT=3001
 ```
 

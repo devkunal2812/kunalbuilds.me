@@ -3,6 +3,16 @@
 //  Clean, efficient visitor tracking with no duplicates
 // ---------------------------------------------------------
 
+const analyticsApiUrl = (() => {
+  const explicitUrl = import.meta.env.VITE_ANALYTICS_API_URL?.trim()
+  if (explicitUrl) return explicitUrl
+
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim()
+  if (apiBaseUrl) return `${apiBaseUrl.replace(/\/$/, '')}/api/analytics`
+
+  return '/api/analytics'
+})()
+
 // Generate or retrieve session ID
 export function getSessionId() {
   let sessionId = localStorage.getItem('portfolio_session_id')
@@ -67,10 +77,7 @@ export function getReferrer() {
 // Send analytics data to backend
 async function sendAnalytics(data) {
   try {
-    // API endpoint (same domain - Vercel serverless function)
-    const API_URL = '/api/analytics'
-    
-    await fetch(API_URL, {
+    await fetch(analyticsApiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -194,7 +201,7 @@ export function setupUnloadTracking() {
         }
         
         // Use sendBeacon for reliable delivery on page unload
-        navigator.sendBeacon('/api/analytics', JSON.stringify(data))
+        navigator.sendBeacon(analyticsApiUrl, JSON.stringify(data))
       }
     }
   })

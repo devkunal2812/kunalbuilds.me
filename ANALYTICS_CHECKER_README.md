@@ -27,7 +27,7 @@ npm install mongoose dotenv
 
 3. Create a `.env` file in the root directory with your MongoDB connection string:
 ```env
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/portfolio-analytics?retryWrites=true&w=majority
+MONGODB_URI=YOUR_MONGODB_URI_HERE
 ```
 
 ### Run the Script

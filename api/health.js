@@ -16,24 +16,31 @@ module.exports = async (req, res) => {
   }
 
   try {
+    const mongoUri = process.env.MONGODB_URI?.trim()
     const health = {
       status: 'ok',
       timestamp: new Date().toISOString(),
       environment: {
-        mongodbConfigured: !!process.env.MONGODB_URI,
+        mongodbConfigured: !!mongoUri,
         nodeVersion: process.version
       }
     }
 
     // Try to connect to MongoDB
-    if (process.env.MONGODB_URI) {
+    if (mongoUri) {
+      if (!/^mongodb(\+srv)?:\/\//.test(mongoUri)) {
+        health.mongodb = 'error'
+        health.message = 'Invalid MONGODB_URI format. Expected mongodb:// or mongodb+srv://'
+        return res.status(500).json(health)
+      }
+
       try {
         // Close any existing connections first
         if (mongoose.connection.readyState !== 0) {
           await mongoose.connection.close()
         }
         
-        await mongoose.connect(process.env.MONGODB_URI, {
+        await mongoose.connect(mongoUri, {
           useNewUrlParser: true,
           useUnifiedTopology: true,
           serverSelectionTimeoutMS: 5000
@@ -48,7 +55,7 @@ module.exports = async (req, res) => {
       }
     } else {
       health.mongodb = 'not configured'
-      health.message = 'Please add MONGODB_URI to Vercel environment variables'
+      health.message = 'Missing required environment variable: MONGODB_URI'
     }
 
     return res.status(200).json(health)
