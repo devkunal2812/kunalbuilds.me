@@ -56,14 +56,14 @@ export const PROJECTS = [
     tech: ['Python', 'Java', 'Logic Design'],
     accent: '#10b981',
     icon: '■',
-    image: null,
+    image: intelliprep,
     stats: [
       { label: 'Approach', value: 'Structured' },
       { label: 'Stage', value: 'Prototype' }
     ],
     year: '2025',
     links: {
-      live: 'https://intelliprep-3lzu.onrender.com/',
+      live: 'https://intelliprep-final.onrender.com',
       github: 'https://github.com/devkunal2812/Intelliprep_final'
     }
   },
