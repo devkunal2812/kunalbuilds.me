@@ -457,8 +457,8 @@ In MongoDB Atlas:
 npm install openai
 
 # 2. Add environment variables to .env
-OPENAI_API_KEY=sk-your-key-here
-MONGODB_URI=your-mongodb-uri
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY_HERE
+MONGODB_URI=YOUR_MONGODB_URI_HERE
 
 # 3. Generate embeddings
 node scripts/generate-embeddings.js

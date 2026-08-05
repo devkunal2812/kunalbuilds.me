@@ -17,7 +17,7 @@ cp .env.example .env
 
 Edit `.env` and replace `<db_password>` with your actual MongoDB Atlas password:
 ```
-MONGODB_URI=mongodb+srv://kunaldevofficial07_db_user:YOUR_ACTUAL_PASSWORD@cluster0.wvankzz.mongodb.net/portfolio-analytics?retryWrites=true&w=majority&appName=Cluster0
+MONGODB_URI=YOUR_MONGODB_URI_HERE
 PORT=3001
 ```
 

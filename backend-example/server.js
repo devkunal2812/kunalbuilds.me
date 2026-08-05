@@ -10,13 +10,18 @@ require('dotenv').config()
 
 const app = express()
 const PORT = process.env.PORT || 3001
+const mongoUri = process.env.MONGODB_URI?.trim() || 'mongodb://localhost:27017/portfolio-analytics'
+
+if (!/^mongodb(\+srv)?:\/\//.test(mongoUri)) {
+  throw new Error('Invalid MONGODB_URI format. Expected mongodb:// or mongodb+srv://')
+}
 
 // Middleware
 app.use(cors())
 app.use(express.json())
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/portfolio-analytics', {
+mongoose.connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })

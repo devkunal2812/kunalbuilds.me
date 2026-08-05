@@ -18,7 +18,7 @@ Your portfolio analytics system is ready! Here's everything you need to know.
 
 ### MongoDB Atlas
 - ✅ Cluster created: `Cluster0`
-- ✅ Connection string: `mongodb+srv://kunaldevofficial07_db_user:...@cluster0.wvankzz.mongodb.net/`
+- ✅ Connection string: `YOUR_MONGODB_CONNECTION_STRING`
 - ✅ Database: `portfolio-analytics`
 - ✅ Collection: `analytics` (auto-created)
 
@@ -34,7 +34,7 @@ cp .env.example .env
 ### 2. Add Your MongoDB Password
 Edit `.env` and replace `<db_password>` with your actual password:
 ```
-MONGODB_URI=mongodb+srv://kunaldevofficial07_db_user:YOUR_PASSWORD@cluster0.wvankzz.mongodb.net/portfolio-analytics?retryWrites=true&w=majority&appName=Cluster0
+MONGODB_URI=YOUR_MONGODB_URI_HERE
 ```
 
 ### 3. Run Backend

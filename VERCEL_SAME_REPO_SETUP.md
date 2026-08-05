@@ -44,7 +44,7 @@ This will install `mongoose` for MongoDB connection.
    - **Name:** `MONGODB_URI`
    - **Value:** Your MongoDB connection string:
    ```
-   mongodb+srv://kunaldevofficial07_db_user:YOUR_PASSWORD@cluster0.wvankzz.mongodb.net/portfolio-analytics?retryWrites=true&w=majority&appName=Cluster0
+   YOUR_MONGODB_CONNECTION_STRING
    ```
    - **Environment:** Production, Preview, Development (select all)
 5. Click **Save**

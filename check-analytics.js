@@ -25,9 +25,18 @@ const Analytics = mongoose.model('Analytics', analyticsSchema)
 async function checkAnalytics() {
   try {
     console.log('🔌 Connecting to MongoDB...\n')
+    const mongoUri = process.env.MONGODB_URI?.trim()
+
+    if (!mongoUri) {
+      throw new Error('Missing required environment variable: MONGODB_URI')
+    }
+
+    if (!/^mongodb(\+srv)?:\/\//.test(mongoUri)) {
+      throw new Error('Invalid MONGODB_URI format. Expected mongodb:// or mongodb+srv://')
+    }
     
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI, {
+    await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
@@ -124,7 +133,7 @@ async function checkAnalytics() {
     
     if (error.message.includes('MONGODB_URI')) {
       console.log('\n💡 TIP: Make sure you have a .env file with MONGODB_URI')
-      console.log('   Example: MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/dbname')
+      console.log('   Example: MONGODB_URI=YOUR_MONGODB_URI_HERE')
     }
   } finally {
     await mongoose.connection.close()

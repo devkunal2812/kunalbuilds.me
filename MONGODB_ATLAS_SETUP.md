@@ -67,14 +67,14 @@ Complete guide to set up MongoDB Atlas for your portfolio analytics.
 6. Copy the connection string:
 
 ```
-mongodb+srv://portfolio_admin:<password>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority
+YOUR_MONGODB_CONNECTION_STRING
 ```
 
 7. **Replace `<password>`** with your actual password
 8. **Add database name** before the `?`:
 
 ```
-mongodb+srv://portfolio_admin:YOUR_PASSWORD@cluster0.xxxxx.mongodb.net/portfolio-analytics?retryWrites=true&w=majority
+YOUR_MONGODB_CONNECTION_STRING
 ```
 
 ## Step 6: Set Up Backend
@@ -101,7 +101,7 @@ npm install --save-dev nodemon
 **1. Create `.env` file:**
 ```bash
 # .env
-MONGODB_URI=mongodb+srv://portfolio_admin:YOUR_PASSWORD@cluster0.xxxxx.mongodb.net/portfolio-analytics?retryWrites=true&w=majority
+MONGODB_URI=YOUR_MONGODB_URI_HERE
 PORT=3001
 ```
 

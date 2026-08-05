@@ -54,6 +54,7 @@ export default async function handler(req, res) {
 
   try {
     const { message, conversationHistory = [] } = req.body
+    const geminiApiKey = process.env.GEMINI_API_KEY?.trim()
 
     if (!message || typeof message !== 'string') {
       return res.status(400).json({ 
@@ -62,16 +63,22 @@ export default async function handler(req, res) {
       })
     }
 
-    // Check API key
-    if (!process.env.GEMINI_API_KEY) {
+    if (!geminiApiKey) {
       return res.status(500).json({
         success: false,
-        error: 'API key not configured. Please contact the site owner.'
+        error: 'Missing required environment variable: GEMINI_API_KEY'
+      })
+    }
+
+    if (!/^AIza[0-9A-Za-z_-]{20,128}$/.test(geminiApiKey)) {
+      return res.status(500).json({
+        success: false,
+        error: 'Invalid GEMINI_API_KEY format. Update the server environment variable.'
       })
     }
 
     // Initialize Gemini
-    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+    const genAI = new GoogleGenerativeAI(geminiApiKey)
 
     // Initialize model
     const model = genAI.getGenerativeModel({ 
